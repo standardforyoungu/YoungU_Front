@@ -4,12 +4,21 @@ export const metadata = {
 }
 import { MswComponent } from "@/components/msw.component"
 import "./global.css"
+import QueryProvider from "@/providers/queryProvider"
+import RecoilProvider from "@/providers/recoilProvider"
+import AuthProvider from "@/providers/authProvider"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
 			<body>
-				<MswComponent /> {children}
+				<QueryProvider>
+					<RecoilProvider>
+						<AuthProvider />
+						<MswComponent />
+						{children}
+					</RecoilProvider>
+				</QueryProvider>
 			</body>
 		</html>
 	)
