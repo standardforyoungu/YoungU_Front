@@ -7,6 +7,7 @@ import "./global.css"
 import QueryProvider from "@/providers/queryProvider"
 import RecoilProvider from "@/providers/recoilProvider"
 import AuthProvider from "@/providers/authProvider"
+import Layout from "@/components/Layout"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
@@ -16,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					<RecoilProvider>
 						<AuthProvider />
 						<MswComponent />
-						{children}
+						<Layout>{children}</Layout>
 					</RecoilProvider>
 				</QueryProvider>
 			</body>
