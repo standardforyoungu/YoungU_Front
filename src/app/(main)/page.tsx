@@ -1,3 +1,4 @@
+import Header from "@/components/@commons/Header";
 import LinkBtn from "@/components/LinkBtn";
 import Image from "next/image";
 import React from "react";
@@ -5,10 +6,6 @@ import React from "react";
 export default function Main() {
 	return (
 		<div className="w-full flex flex-col">
-			<header className="flex justify-between px-[20px] py-[16px] bg-WHITE border-b border-[#0000001a]">
-				<Image src={"/icons/main_symbol.png"} alt={"symbol"} width={30} height={32} />
-				<Image src={"/icons/user.png"} alt={"user"} width={32} height={32} />
-			</header>
 			<div className="bg-gray-99 w-full px-[20px] pb-[20px]">
 				<div className="flex flex-col gap-[10px] justify-center items-center pt-[44px] pb-[28px] relative">
 					<Image
