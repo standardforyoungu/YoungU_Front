@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
 	darkMode: ["class"],
@@ -28,13 +28,13 @@ const config = {
 			"gray-10": "#171717",
 			"orange-200": "#DD6646",
 			"orange-100": "#F6714E",
-			"orange-10": "#f6714e1a",
+			"orange-10": "#F6714E1a",
 			"mint-200": "#009CA9",
 			"mint-100": "#00B8C7",
-			"mint-10": "#00b8c71a",
+			"mint-10": "#00B8C71a",
 			"blue-200": "#4959CB",
 			"blue-100": "#5669EF",
-			"blue-10": "#5669ef1a",
+			"blue-10": "#5669EF1a",
 			BLACK: "#000000",
 			WHITE: "#FFFFFF",
 		},
@@ -96,6 +96,6 @@ const config = {
 		},
 	},
 	plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;
