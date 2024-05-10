@@ -1,10 +1,15 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import MainCards from "./components/MainCards";
+import { useModal } from "@/hooks/useModal";
 
 export default function Main() {
+	const { isOpen, type } = useModal();
+	const isModalOpen = isOpen && type === "login";
+
 	return (
-		<div className="w-full flex flex-col">
+		<div className={`w-full flex flex-col ${isModalOpen && "bg-BLACK opacity-20"}`}>
 			<div className="bg-gray-99 w-full px-[20px] pb-[20px]">
 				<div className="flex flex-col gap-[10px] justify-center items-center pt-[44px] pb-[28px] relative">
 					<Image
