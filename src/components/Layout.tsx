@@ -5,7 +5,7 @@ import { useGetWindowSize } from "@/hooks/useGetWindowSize";
 import Header from "./@commons/Header";
 
 export default function Layout({ children }: { children: ReactNode }) {
-	const screen = useGetWindowSize();
+	const { screen } = useGetWindowSize();
 	return (
 		<div className="min-w-screen w-full flex justify-center items-center gap-[80px] h-full min-h-screen bg-gray-95">
 			{screen === "WEB" && (
