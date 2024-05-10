@@ -8,6 +8,7 @@ import QueryProvider from "@/providers/queryProvider";
 import RecoilProvider from "@/providers/recoilProvider";
 import AuthProvider from "@/providers/authProvider";
 import Layout from "@/components/Layout";
+import ModalProvider from "@/providers/modalProvider";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<QueryProvider>
 					<RecoilProvider>
 						<AuthProvider />
+						<ModalProvider />
 						<MswComponent />
 						<Layout>{children}</Layout>
 					</RecoilProvider>
