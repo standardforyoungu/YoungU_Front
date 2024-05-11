@@ -32,7 +32,6 @@ function page() {
 							2
 						</PaginationLink>
 					</PaginationItem>
-
 					{/* <PaginationItem>
 						<PaginationEllipsis />
 					</PaginationItem> */}
