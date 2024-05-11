@@ -28,7 +28,7 @@ const config = {
 			"gray-10": "#171717",
 			"orange-200": "#DD6646",
 			"orange-100": "#F6714E",
-			"orange-10": "#F6714E1a",
+			"orange-10": "rgba(254, 240, 237, 1)",
 			"mint-200": "#009CA9",
 			"mint-100": "#00B8C7",
 			"mint-10": "#00B8C71a",
