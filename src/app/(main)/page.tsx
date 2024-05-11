@@ -20,7 +20,7 @@ export default function Main() {
 				height={110}
 			/>
 			<Image className="absolute right-0 top-20" src={"/icons/main_layer_4.svg"} alt={"layer"} width={92} height={98} />
-			<div className="bg-gray-99 w-full px-[20px]">
+			<div className="bg-gray-99 w-full px-[20px] pb-[20px]">
 				<div className="flex flex-col gap-[10px] justify-center items-center pt-[44px] pb-[28px] relative">
 					<Image
 						src={"/icons/beta_tag.svg"}
