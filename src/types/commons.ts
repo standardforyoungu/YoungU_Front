@@ -1,0 +1,17 @@
+export type TypoEnum =
+	| "Display1"
+	| "Display2"
+	| "Title1"
+	| "Title2"
+	| "Title3"
+	| "Title4"
+	| "Head1"
+	| "Head2"
+	| "Head3"
+	| "Head4"
+	| "Head5"
+	| "Head6"
+	| "Body1"
+	| "Body2"
+	| "Body3"
+	| "Body4";
