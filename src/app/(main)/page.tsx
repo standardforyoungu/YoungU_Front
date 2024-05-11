@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import MainCards from "./components/MainCards";
+import MainCards from "../../components/home/MainCards";
 import { useModal } from "@/hooks/useModal";
 
 export default function Main() {
