@@ -12,7 +12,7 @@ function ListItem() {
 	const router = useRouter();
 
 	const onClickHandler = () => {
-		router.push("http://3.36.118.161/test");
+		window.location.href = "http://3.36.118.161/test";
 	};
 
 	return (
