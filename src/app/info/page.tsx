@@ -21,11 +21,21 @@ function page() {
 						<PaginationPrevious href="#" />
 					</PaginationItem>
 					<PaginationItem>
-						<PaginationLink href="#">1</PaginationLink>
+						{/* map 으로 버튼 생성 
+							버튼 몇개까지 ?
+						*/}
+						<PaginationLink href="#" className="text-BLACK w-[32px] h-[32px] bg-gray-99 mx-1 ">
+							1
+						</PaginationLink>
+
+						<PaginationLink href="#" className="text-BLACK w-[32px] h-[32px] bg-gray-99 ">
+							2
+						</PaginationLink>
 					</PaginationItem>
-					<PaginationItem>
+
+					{/* <PaginationItem>
 						<PaginationEllipsis />
-					</PaginationItem>
+					</PaginationItem> */}
 					<PaginationItem>
 						<PaginationNext href="#" />
 					</PaginationItem>
