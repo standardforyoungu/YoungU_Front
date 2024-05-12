@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 
 import {
 	Drawer,
@@ -12,6 +12,7 @@ import {
 	DrawerTitle,
 } from "@/components/ui/drawer";
 import { useModal } from "@/hooks/useModal";
+import { getKakaoAuthCode } from "@/utils/getAuthCode";
 
 export default function Login() {
 	const { isOpen, type, onClose, setOpenChange } = useModal();
@@ -25,7 +26,7 @@ export default function Login() {
 					<DrawerDescription>로그인 설명</DrawerDescription>
 				</DrawerHeader>
 				<DrawerFooter>
-					<button>submit</button>
+					<button onClick={getKakaoAuthCode}>로그인하기</button>
 					<DrawerClose asChild>
 						<button onClick={onClose}>cancle</button>
 					</DrawerClose>
