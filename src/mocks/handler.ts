@@ -1,11 +1,13 @@
-import { http, HttpResponse } from "msw"
+import { http, HttpResponse } from "msw";
+
+const baseUrl = "http://43.203.246.164/youngustandard";
 
 export const handler = [
-	http.get("http://localhost:3000/test", () => {
-		console.log("here")
+	http.get(`${baseUrl}/1/1/`, () => {
+		console.log("MSW");
 		return HttpResponse.json({
 			success: true,
 			message: "성공",
-		})
+		});
 	}),
-]
+];

@@ -7,28 +7,36 @@ import phoneIcon from "../../../public/icons/phone-call.svg";
 import mapIcon from "../../../public/icons/map-pin.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import cn from "classnames";
 
-function ListItem() {
+export interface ListItemInterface {
+	title: string;
+	phone: string;
+	address: string;
+	link?: string;
+}
+
+function ListItem({ title, phone, address, link }: ListItemInterface) {
 	const router = useRouter();
 
 	const onClickHandler = () => {
-		window.location.href = "http://3.36.118.161/test";
+		window.location.href = `${link}`;
 	};
 
 	return (
 		<div className="flex flex-col max-h-[165]   w-full py-[1.5rem] px-[1.25rem] bg-WHITE border-b border-[#0000001a]">
-			<h4 className="head4 text-gray-20 my-[0.2rem]">쥬빌리프라임주니어(JUBILEEPRIME)어학학원</h4>
+			<h4 className="head4 text-gray-20 my-[0.2rem]">{title}</h4>
 			<div className="flex flex-row my-[0.2rem]">
 				<Image src={phoneIcon} alt="phoneIcon" />
-				<p className="body2 text-gray-40">정보 010-9805-7346</p>
+				<p className="body2 text-gray-40">정보 {phone}</p>
 			</div>
 			<div className="flex flex-row my-[0.2rem]">
 				<Image src={mapIcon} alt="mapIcon" />
-				<p className="body2 text-gray-40">정보 서울시 성내동 502-1</p>
+				<p className="body2 text-gray-40">정보 {address}</p>
 			</div>
 
-			<Button variant={"primary"} size={"lg"} className="my-[0.2rem]" onClick={onClickHandler}>
-				홈페이지 바로가기
+			<Button variant={link ? "primary" : "disable"} size={"lg"} className="my-[0.2rem]" onClick={onClickHandler}>
+				{link ? "홈페이지 바로가기" : "홈페이지를 찾을 수 없어요 :("}
 			</Button>
 		</div>
 	);
