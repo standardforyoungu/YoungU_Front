@@ -1,4 +1,7 @@
-import ListItem from "@/components/ListItem/Index";
+"use client";
+
+import { useGetKdgnListQuery } from "@/api/list.query";
+import ListItem, { ListItemInterface } from "@/components/ListItem/Index";
 import {
 	Pagination,
 	PaginationContent,
@@ -8,13 +11,33 @@ import {
 	PaginationNext,
 	PaginationPrevious,
 } from "@/components/ui/pagination";
+import { useGetKdgnList } from "@/hooks/list/useGetKdgnList";
 
-import React from "react";
+import React, { useState } from "react";
 
-function page() {
+const testListData: ListItemInterface[] = [
+	{
+		title: "쥬빌리프라임주니어(JUBILEEPRIME)어학학원",
+		phone: "010-9805-7346",
+		address: "서울시 성내동 502-12",
+		link: "http://www.naver.com",
+	},
+	{
+		title: "쥬빌리프라임주니어(JUBILEEPRIME)어학학원",
+		phone: "010-9805-7346",
+		address: "서울시 성내동 502-12",
+		link: "",
+	},
+];
+
+function InfoListPage() {
+	// const { data, isPending } = useGetKdgnListQuery({ regn: 1, offset: 1 });
+
 	return (
 		<div className="h-full">
-			<ListItem />
+			{testListData.map((data) => (
+				<ListItem title={data.title} phone={data.phone} address={data.address} link={data.link} />
+			))}
 			<Pagination>
 				<PaginationContent>
 					<PaginationItem>
@@ -44,4 +67,4 @@ function page() {
 	);
 }
 
-export default page;
+export default InfoListPage;

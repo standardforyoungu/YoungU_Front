@@ -1,6 +1,6 @@
 export const KinderClassListReqSchema = {};
 
-export interface KdgnList {
+export interface KdgnListInterface {
 	engl_kd_clas_id: number;
 	engl_kd_clas_nm: string;
 	engl_kd_clas_addr: string;
@@ -10,7 +10,7 @@ export interface KdgnList {
 
 export interface KdgnListResSchema {
 	result: "Success" | "Fail";
-	kdgn_list: Array<KdgnList>;
+	kdgn_list: Array<KdgnListInterface>;
 }
 
 export interface KdgnListReqSchema {
