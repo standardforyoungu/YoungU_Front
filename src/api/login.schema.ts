@@ -1,5 +1,5 @@
 export interface LoginSuccessResInterface {
-	result: string;
+	result: "Success";
 	exist_yn: string;
 	access_token: string;
 }
