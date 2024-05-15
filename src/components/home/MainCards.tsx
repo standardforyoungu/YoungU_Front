@@ -11,6 +11,11 @@ export default function MainCards() {
 	const { onOpen } = useModal();
 	const [isMount, setIsMount] = useState(false);
 
+	const onLogin = () => {
+		onOpen("login");
+		sessionStorage.setItem("redirect", "/");
+	};
+
 	useEffect(() => {
 		setIsMount(true);
 	}, []);
@@ -31,7 +36,7 @@ export default function MainCards() {
 							<LinkBtn href={"/test"} title={"성향검사 시작하기"} bgColor={"bg-orange-100"} />
 						) : (
 							<button
-								onClick={() => onOpen("login")}
+								onClick={onLogin}
 								className="p-[10px] flex gap-1 bg-orange-100 rounded-[8px] w-[180px] h-[40px] items-center justify-center">
 								<span className="text-WHITE head5">성향검사 시작하기</span>
 								<Image src={"/icons/arrow-right.svg"} alt="arrow" width={16} height={16} />
