@@ -16,7 +16,7 @@ export default function AuthPage() {
 			mutate(authCode, { onSuccess });
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [authCode]);
+	}, []);
 
 	return <></>;
 }

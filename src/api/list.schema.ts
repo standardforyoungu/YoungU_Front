@@ -9,7 +9,7 @@ export interface KdgnListInterface {
 }
 
 export interface KdgnListResSchema {
-	result: "Success" | "Fail";
+	result: "Success";
 	kdgn_list: Array<KdgnListInterface>;
 }
 

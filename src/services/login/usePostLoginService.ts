@@ -1,12 +1,12 @@
 import { usePostLoginMutation } from "@/api/login.query";
-import { LoginSuccessResInterface } from "@/api/login.schema";
+import { LoginResInterface } from "@/api/login.schema";
+import { FailedResInterface } from "@/types/resType";
 import { useRouter } from "next/navigation";
 
 export const usePostLoginService = () => {
 	const router = useRouter();
 	const mutation = usePostLoginMutation();
-
-	const onSuccess = (data: LoginSuccessResInterface) => {
+	const onSuccess = (data: LoginResInterface | FailedResInterface) => {
 		if (data?.result === "Success") {
 			if (typeof window !== "undefined") {
 				window.localStorage.setItem("OU_UserAttribute", data?.access_token);

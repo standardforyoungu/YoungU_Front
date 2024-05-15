@@ -7,7 +7,7 @@ export const useIsLoggedIn = () => {
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
-			!!localStorage.getItem("0U_UserAttribute") && setIsLoggedIn(true);
+			!!localStorage.getItem("OU_UserAttribute") && setIsLoggedIn(true);
 		}
 	}, []);
 
