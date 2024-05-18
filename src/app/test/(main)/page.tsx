@@ -1,5 +1,7 @@
 import React from "react";
 
-export default function TestPage() {
+function page() {
 	return <div>page</div>;
 }
+
+export default page;

@@ -11,13 +11,14 @@ const buttonVariants = cva(
 			variant: {
 				default: "bg-orange-100 text-primary-foreground hover:bg-primary/90",
 				primary: "bg-orange-10 text-orange-100",
+				blank: "bg-white hover:border-orange-100 hover:text-orange-100 border-gray-95 border-[1px]",
 				disable: "bg-gray-99 text-gray-80",
 			},
 			size: {
 				default: "h-[40px] px-4 py-2",
 				lg: "h-[36px] w-full ",
 				md: "h-[40px] max-w-[180px] w-full",
-				sm: "h-[40px] max-w-[100px] w-full",
+				sm: "h-[40px] max-w-[180px] w-full",
 			},
 		},
 		defaultVariants: {
