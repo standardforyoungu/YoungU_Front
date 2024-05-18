@@ -37,10 +37,6 @@ function InfoListPage() {
 						<PaginationPrevious href="#" />
 					</PaginationItem>
 					<PaginationItem>
-						{/* map 으로 버튼 생성 
-							버튼 몇개까지 ?
-						*/}
-
 						{isSuccess &&
 							Array.from({ length: data.last_page_num }, (_, index) => (
 								<PaginationLink href="#" className="text-BLACK w-[32px] h-[32px] bg-gray-99 mx-1 ">
