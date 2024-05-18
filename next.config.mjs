@@ -11,6 +11,14 @@ const nextConfig = {
 		CLIENT_DOMAIN: CLIENT_DOMAIN ?? "",
 		SERVER_DOMAIN: SERVER_DOMAIN ?? "",
 	},
+	webpack: (config) => {
+		config.module.rules.push({
+			test: /\.svg$/i,
+			issuer: /\.[jt]sx?$/,
+			use: ["@svgr/webpack"],
+		});
+		return config;
+	},
 };
 
 export default nextConfig;

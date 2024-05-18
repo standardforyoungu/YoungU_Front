@@ -24,6 +24,7 @@ const config = {
 		},
 		colors: {
 			"gray-99": "#F7F7F7",
+			"gray-97": "#EDEDED",
 			"gray-95": "#E4E4E4",
 			"gray-90": "#C4C4C4",
 			"gray-80": "#B0B0B0",
