@@ -11,6 +11,8 @@ const buttonVariants = cva(
 			variant: {
 				default: "bg-orange-100 text-primary-foreground hover:bg-primary/90",
 				primary: "bg-orange-10 text-orange-100",
+				secondary: "bg-orange-100 text-primary-foreground hover:bg-orange-200",
+
 				blank: "bg-white hover:border-orange-100 hover:text-orange-100 border-gray-95 border-[1px]",
 				disable: "bg-gray-99 text-gray-80",
 			},
