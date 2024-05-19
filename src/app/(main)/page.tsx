@@ -2,14 +2,10 @@
 import Image from "next/image";
 import React from "react";
 import MainCards from "../../components/home/MainCards";
-import { useModal } from "@/hooks/useModal";
 
 export default function Main() {
-	const { isOpen, type } = useModal();
-	const isModalOpen = isOpen && type === "login";
-
 	return (
-		<div className={`w-full flex flex-col ${isModalOpen && "bg-BLACK opacity-20"}`}>
+		<div className="w-full flex flex-col">
 			<Image className="absolute -left-4 top-32" src={"/icons/main_layer_1.svg"} alt={"layer"} width={72} height={72} />
 			<Image className="absolute left-20 top-28" src={"/icons/main_layer_2.svg"} alt={"layer"} width={15} height={15} />
 			<Image

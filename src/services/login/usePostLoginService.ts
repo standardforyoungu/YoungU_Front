@@ -1,7 +1,8 @@
-import { usePostLoginMutation } from "@/api/login.query";
-import { LoginResInterface } from "@/api/login.schema";
+import { usePostLoginMutation } from "@/api/login/login.query";
+import { LoginResInterface } from "@/api/login/login.schema";
 import { FailedResInterface } from "@/types/resType";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export const usePostLoginService = () => {
 	const router = useRouter();
@@ -9,7 +10,9 @@ export const usePostLoginService = () => {
 	const onSuccess = (data: LoginResInterface | FailedResInterface) => {
 		if (data?.result === "Success") {
 			if (typeof window !== "undefined") {
+				toast.success("로그인을 성공했습니다.");
 				window.localStorage.setItem("OU_UserAttribute", data?.access_token);
+				window.localStorage.setItem("mbr_id", data?.mbr_id);
 				const redirect = window.sessionStorage.getItem("redirect");
 				router.push(redirect ?? "/");
 			}
