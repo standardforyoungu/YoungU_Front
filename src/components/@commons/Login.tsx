@@ -2,15 +2,7 @@
 
 import React from "react";
 
-import {
-	Drawer,
-	DrawerClose,
-	DrawerContent,
-	DrawerDescription,
-	DrawerFooter,
-	DrawerHeader,
-	DrawerTitle,
-} from "@/components/ui/drawer";
+import { Drawer, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle } from "@/components/ui/drawer";
 import { useModal } from "@/hooks/useModal";
 import { getKakaoAuthCode } from "@/utils/getAuthCode";
 import { X } from "lucide-react";

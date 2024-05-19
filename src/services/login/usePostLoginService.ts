@@ -12,7 +12,6 @@ export const usePostLoginService = () => {
 			if (typeof window !== "undefined") {
 				toast.success("로그인을 성공했습니다.");
 				window.localStorage.setItem("OU_UserAttribute", data?.access_token);
-				window.localStorage.setItem("mbr_id", data?.mbr_id);
 				const redirect = window.sessionStorage.getItem("redirect");
 				router.push(redirect ?? "/");
 			}
