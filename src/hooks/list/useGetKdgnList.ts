@@ -1,5 +1,5 @@
-import { useGetKdgnListQuery } from "@/api/list.query";
-import { KdgnListReqSchema } from "@/api/list.schema";
+import { useGetKdgnListQuery } from "@/api/list/list.query";
+import { KdgnListReqSchema } from "@/api/list/list.schema";
 import { useMemo } from "react";
 
 export const useGetKdgnList = (req: KdgnListReqSchema) => {
