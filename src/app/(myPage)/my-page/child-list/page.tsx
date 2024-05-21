@@ -49,7 +49,7 @@ export default function ChildList() {
 										<div>
 											<p className="head4 text-gray-20">{el.chl_nck_nm}</p>
 											<p className="flex gap-2 items-center text-gray-40 body2">
-												{el?.chl_sex === "여아" ? (
+												{el?.chl_sex === "F" ? (
 													<>
 														<span className="rotate-45">♀</span> 여자
 													</>
