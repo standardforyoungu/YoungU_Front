@@ -18,7 +18,7 @@ const AlertDialogOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<AlertDialogPrimitive.Overlay
 		className={cn(
-			"fixed inset-0 max-w-[500px] left-[47.9%] w-full z-50 bg-BLACK/25 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+			"fixed inset-0 w-full z-50 bg-BLACK/25 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
 			className,
 		)}
 		{...props}
@@ -36,7 +36,7 @@ const AlertDialogContent = React.forwardRef<
 		<AlertDialogPrimitive.Content
 			ref={ref}
 			className={cn(
-				"fixed rounded-[8px] left-[65%] top-[50%] z-50 grid w-[320px] translate-x-[-50%] translate-y-[-50%] gap-[26.5px] bg-WHITE p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+				`bg-WHITE fixed inset-x-0 bottom-[45%] z-50 mt-24 w-[320px] mx-auto lg:left-[440px] flex h-auto flex-col rounded-[8px] p-6 shadow-lg gap-[26.5px]`,
 				className,
 			)}
 			{...props}
