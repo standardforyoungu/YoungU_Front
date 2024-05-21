@@ -13,14 +13,14 @@ const buttonVariants = cva(
 				primary: "bg-orange-10 text-orange-100",
 				secondary: "bg-orange-100 text-primary-foreground hover:bg-orange-200",
 
-				blank: "bg-white hover:border-orange-100 hover:text-orange-100 border-gray-95 border-[1px]",
+				blank: "bg-white border-gray-95 border-[1px]",
 				disable: "bg-gray-99 text-gray-80",
 			},
 			size: {
 				default: "h-[40px] px-4 py-2",
 				lg: "h-[36px] w-full ",
 				md: "h-[40px] max-w-[180px] w-full",
-				sm: "h-[40px] max-w-[180px] w-full",
+				sm: "h-[41px] max-w-[150px] w-full",
 			},
 		},
 		defaultVariants: {
