@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 export const usePostLoginService = () => {
 	const router = useRouter();
 	const mutation = usePostLoginMutation();
-	const onSuccess = (data: LoginResInterface | FailedResInterface) => {
+	const onSuccess = (data: LoginResInterface) => {
 		if (data?.result === "Success") {
 			if (typeof window !== "undefined") {
 				toast.success("로그인을 성공했습니다.");
