@@ -22,6 +22,7 @@ import Image from "next/image";
 import { ChildInfoInterface } from "@/api/child/child.schema";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
+import { useRouter } from "next/navigation";
 
 const childAgeData = [
 	{
@@ -40,6 +41,7 @@ const childAgeData = [
 ];
 
 function page() {
+	const router = useRouter();
 	// 아이 정보 상태
 	const [childInfo, setChildInfo] = useState<ChildInfoInterface>({
 		chl_nck_nm: "",
@@ -67,7 +69,6 @@ function page() {
 				<div className="flex w-full items-center justify-between">
 					<Input
 						type="text"
-						defaultValue={""}
 						placeholder="별명을 입력해 주세요."
 						className="h-[40px] w-[85%] border-gray-95 rounded-[6px] placeholder:text-gray-95 body2 focus:border-orange-100"
 						value={childInfo.chl_nck_nm}
@@ -127,7 +128,9 @@ function page() {
 					size={"lg"}
 					variant="primary"
 					className="my-3 text-WHITE bg-orange-100 h-[56px] text-[1rem]"
-					type="submit">
+					onClick={() => {
+						router.push("profile");
+					}}>
 					저장하고 검사 시작하기
 				</Button>
 			</div>
