@@ -1,5 +1,6 @@
 "use client";
 
+import ListHeader from "@/components/@commons/ListHeader";
 import LoginMypage from "@/components/myPage/LoginMypage";
 import MyPageList from "@/components/myPage/MyPageList";
 import NonLoginMyPage from "@/components/myPage/NonLoginMyPage";
@@ -11,6 +12,7 @@ export default function MyPage() {
 
 	return (
 		<div>
+			<ListHeader mainTitle="마이페이지" />
 			{isLoggedIn ? <LoginMypage /> : <NonLoginMyPage />}
 			<MyPageList />
 		</div>
