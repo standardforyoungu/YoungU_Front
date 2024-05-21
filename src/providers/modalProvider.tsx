@@ -18,7 +18,7 @@ export default function ModalProvider() {
 	}
 
 	return (
-		<div className="absolute right-0 max-w-[500px] w-full h-screen">
+		<div className="absolute right-0 max-w-[480px] w-full h-screen">
 			<Login />
 			<WithdrawalModal />
 			<MaximumChildModal />

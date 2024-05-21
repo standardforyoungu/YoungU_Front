@@ -30,7 +30,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 			<div className="sm:hidden md:hidden flex justify-center items-center w-[360px] h-screen bg-gray-40">
 				광고 영역
 			</div>
-			<div className="flex flex-col sm:min-w-[360px] !relative sm:max-w-[430px] sm:w-full sm:mx-auto w-[500px] min-h-screen h-full overflow-scroll max-h-screen scrollbar-hide bg-WHITE">
+			<div className="flex flex-col sm:min-w-[360px] !relative sm:max-w-[430px] sm:w-full sm:mx-auto w-[480px] min-h-screen h-full overflow-scroll max-h-screen scrollbar-hide bg-WHITE">
 				<div className="h-screen">{children}</div>
 				<ScrollBtn showBtn={showBtn} scrollTopHandler={scrollTopHandler} />
 			</div>
