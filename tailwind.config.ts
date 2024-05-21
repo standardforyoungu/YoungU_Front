@@ -41,8 +41,13 @@ const config = {
 			"blue-200": "#4959CB",
 			"blue-100": "#5669EF",
 			"blue-10": "#5669EF1a",
+			"yellow-100": "#FFDC27",
 			BLACK: "#000000",
 			WHITE: "#FFFFFF",
+			"Error-1": "#FF4343",
+			"Error-2": "#FF9494",
+			Warning: "#FF9200",
+			Info: "#FF9200",
 		},
 		extend: {
 			colors: {

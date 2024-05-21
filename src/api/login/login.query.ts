@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { http } from "./axios";
+import { http } from "../axios";
 
 export const usePostLoginMutation = () => {
 	return useMutation({

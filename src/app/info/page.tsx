@@ -1,7 +1,7 @@
 "use client";
 
-import { useGetKdgnListQuery } from "@/api/list.query";
-import { KdgnListInterface } from "@/api/list.schema";
+import { useGetKdgnListQuery } from "@/api/list/list.query";
+import { KdgnListInterface } from "@/api/list/list.schema";
 import ListItem, { ListItemInterface } from "@/components/ListItem/Index";
 import {
 	Pagination,
@@ -22,7 +22,7 @@ function InfoListPage() {
 	return (
 		<div className="h-full">
 			{isSuccess &&
-				data.engl_kd_clas_list.map((item: KdgnListInterface) => (
+				data?.engl_kd_clas_list?.map((item: KdgnListInterface) => (
 					<ListItem
 						title={item.engl_kd_clas_nm}
 						phone={item.engl_kd_clas_telno}
@@ -39,7 +39,7 @@ function InfoListPage() {
 					<PaginationItem>
 						{isSuccess &&
 							Array.from({ length: data.last_page_num }, (_, index) => (
-								<PaginationLink href="#" className="text-BLACK w-[32px] h-[32px] bg-gray-99 mx-1 ">
+								<PaginationLink key={index} href="#" className="text-BLACK w-[32px] h-[32px] bg-gray-99 mx-1 ">
 									{index + 1}
 								</PaginationLink>
 							))}

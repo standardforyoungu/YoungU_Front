@@ -8,6 +8,8 @@ import RecoilProvider from "@/providers/recoilProvider";
 import AuthProvider from "@/providers/authProvider";
 import Layout from "@/components/Layout";
 import ModalProvider from "@/providers/modalProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
