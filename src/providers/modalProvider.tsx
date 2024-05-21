@@ -1,6 +1,9 @@
 "use client";
 
 import Login from "@/components/@commons/Login";
+import ConfirmDeleteChildModal from "@/components/myPage/ConfirmDeleteChildModal";
+import MaximumChildModal from "@/components/myPage/MaximumChildModal";
+import WithdrawalModal from "@/components/myPage/WithdrawalModal";
 import React, { useEffect, useState } from "react";
 
 export default function ModalProvider() {
@@ -15,8 +18,11 @@ export default function ModalProvider() {
 	}
 
 	return (
-		<>
+		<div className="absolute right-0 max-w-[500px] w-full h-screen">
 			<Login />
-		</>
+			<WithdrawalModal />
+			<MaximumChildModal />
+			<ConfirmDeleteChildModal />
+		</div>
 	);
 }

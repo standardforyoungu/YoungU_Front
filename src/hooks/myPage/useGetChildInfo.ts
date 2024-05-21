@@ -1,12 +1,10 @@
 import { useGetChildInfoQuery } from "@/api/myPage/myPage.query";
 import { useMemo } from "react";
 
-export const useGetChildInfo = (mbr_id: string) => {
-	const { data, isPending } = useGetChildInfoQuery(mbr_id);
+export const useGetChildInfo = () => {
+	const { data, isPending } = useGetChildInfoQuery();
 
-	const childList = useMemo(() => {
-		data?.chlList ?? [];
-	}, [data?.chlList]);
+	const childList = useMemo(() => data?.child_list ?? [], [data?.child_list]);
 
 	return { isPending, childList };
 };
