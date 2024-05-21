@@ -18,7 +18,8 @@ export default function ConfirmDeleteChildModal() {
 	const { mutate, onSuccess, onError } = useDeleteChildInfoService();
 
 	const onDelete = () => {
-		mutate(data?.idx, { onSuccess, onError });
+		mutate({ chl_id: data?.idx }, { onSuccess, onError });
+		onClose();
 	};
 
 	return (
