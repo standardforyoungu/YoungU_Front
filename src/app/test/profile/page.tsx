@@ -8,10 +8,12 @@ import React, { useState } from "react";
 import MaleIcon from "../../../../public/icons/male.svg";
 import FemaleIcon from "../../../../public/icons/female.svg";
 import { useRouter } from "next/navigation";
+import { useModal } from "@/hooks/useModal";
 
 function page() {
 	const router = useRouter();
 	const [check, setCheck] = useState(false);
+	const { onOpen } = useModal();
 
 	const imageClickHandler = () => {};
 
@@ -54,19 +56,30 @@ function page() {
 							</div>
 						</div>
 						<div className="flex flex-col gap-1">
-							<Trash2 size={22} className="text-gray-80 cursor-pointer" />
+							<Trash2
+								onClick={() => {
+									onOpen("confirmDeleteChild");
+								}}
+								size={22}
+								className="text-gray-80 cursor-pointer"
+							/>
 						</div>
 					</div>
 				</div>
 			</div>
 			<Button
 				className="rounded-[12px] p-[20px] h-[84px] bg-gray-99 flex justify-center items-center gap-2 w-full mb-[35px]"
-				onClick={() => router.push("/test/setting")}>
+				onClick={() => onOpen("maximumChild")}>
 				<Image src={"/icons/add.svg"} alt="addIcon" width={22} height={22} />
 				<p className="text-gray-80 head5">아이 정보 추가하기 </p>
 			</Button>
 
-			<Button size={"lg"} variant={"primary"}>
+			<Button
+				onClick={() => {
+					router.push("/test/process");
+				}}
+				size={"lg"}
+				variant={"primary"}>
 				다음 단계로
 			</Button>
 		</div>

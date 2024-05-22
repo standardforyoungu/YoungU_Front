@@ -1,6 +1,13 @@
 import { atom, useRecoilState } from "recoil";
 
-export type ModalType = "login" | "withdrawal" | "maximumChild" | "confirmDeleteChild" | "confirmEmail";
+export type ModalType =
+	| "login"
+	| "withdrawal"
+	| "maximumChild"
+	| "confirmDeleteChild"
+	| "confirmEmail"
+	| "alert"
+	| "confirm";
 
 /**
  * ModalStore
