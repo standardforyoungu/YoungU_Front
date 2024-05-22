@@ -1,20 +1,32 @@
 import Image from "next/image";
 import React from "react";
 import * as z from "zod";
+import { useForm } from "react-hook-form";
+import { PostChildInfoReqInterface } from "@/api/myPage/myPage.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { UseFormReturn } from "react-hook-form";
-import { PostChildInfoReqInterface } from "@/api/myPage/myPage.schema";
+
+export const formSchema = z.object({
+	chl_nck_nm: z.string(),
+	chl_sex: z.string(),
+	chl_age: z.string(),
+});
 
 interface Props {
-	form: UseFormReturn<PostChildInfoReqInterface>;
+	defaultValue: z.infer<typeof formSchema>;
 	onSubmit: (value: PostChildInfoReqInterface) => void;
 }
 
-export default function ChildForm({ form, onSubmit }: Props) {
+export default function ChildForm({ defaultValue, onSubmit }: Props) {
+	const form = useForm<z.infer<typeof formSchema>>({
+		resolver: zodResolver(formSchema),
+		defaultValues: defaultValue,
+	});
+
 	const isValid = !!(form.getValues("chl_age") && form.getValues("chl_sex") && form.getValues("chl_nck_nm"));
 
 	return (
@@ -62,17 +74,17 @@ export default function ChildForm({ form, onSubmit }: Props) {
 											<Button
 												type="button"
 												variant={"blank"}
-												className={`head5 w-full ${field.value === "남아" && "border-orange-200 text-orange-200"}`}
-												onClick={() => field.onChange("남아")}>
+												className={`head5 w-full ${field.value === "M" && "border-orange-200 text-orange-200"}`}
+												onClick={() => field.onChange("M")}>
 												♂ 남자
 											</Button>
 											<Button
 												type="button"
 												variant={"blank"}
 												className={`head5 flex gap-1 w-full ${
-													field.value === "여아" && "border-orange-200 text-orange-200"
+													field.value === "F" && "border-orange-200 text-orange-200"
 												}`}
-												onClick={() => field.onChange("여아")}>
+												onClick={() => field.onChange("F")}>
 												<span className="rotate-45">♀</span> 여자
 											</Button>
 										</div>
