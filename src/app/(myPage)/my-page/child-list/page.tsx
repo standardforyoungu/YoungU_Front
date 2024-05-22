@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useGetChildInfo } from "@/hooks/myPage/useGetChildInfo";
+import { useGetChildListInfo } from "@/hooks/myPage/useGetChildListInfo";
 import { useModal } from "@/hooks/useModal";
 import { PenLine, Plus, Trash2 } from "lucide-react";
 import Image from "next/image";
@@ -12,7 +12,7 @@ import { ChildList as ChildListSchema } from "@/api/myPage/myPage.schema";
 export default function ChildList() {
 	const router = useRouter();
 	const { onOpen } = useModal();
-	const { childList } = useGetChildInfo();
+	const { childList } = useGetChildListInfo();
 
 	const onClickAddBtn = () => {
 		if (childList?.length >= 3) {
