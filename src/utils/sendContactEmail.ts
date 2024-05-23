@@ -1,3 +1,4 @@
+
 import { toast } from "./toast";
 
 interface ReqInterface {
@@ -18,6 +19,7 @@ export const sendContactEmail = async (req: ReqInterface) => {
 
 		return await response.json();
 	} catch (err: any) {
+
 		toast("Error", "오류가 발생했어요, 다시 시도해주세요.");
 		if (err.name === "AbortError") {
 			throw new Error("failed SendEmailAuthCode");

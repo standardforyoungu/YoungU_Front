@@ -52,6 +52,7 @@ const config = {
 			"Error-2": "#FF9494",
 			Warning: "#FF9200",
 			Info: "#FF9200",
+			Primary: "#F6714E",
 		},
 		extend: {
 			colors: {
