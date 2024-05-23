@@ -7,6 +7,8 @@ export const toast = (type: "Success" | "Error", message: string) => {
 			icon: () => <Image className=" text-start" src="/icons/round_checkbox.svg" alt="icon" width={22} height={22} />,
 		});
 	} else {
-		return toastify.error(message);
+		return toastify.error(message, {
+			icon: () => <Image className=" text-start" src="/icons/error.svg" alt="icon" width={22} height={22} />,
+		});
 	}
 };
