@@ -3,8 +3,8 @@
 import React from "react";
 import { Button } from "../ui/button";
 
-import phoneIcon from "../../../public/icons/phone-call.svg";
-import mapIcon from "../../../public/icons/map-pin.svg";
+import PhoneIcon from "../../../public/icons/phone-call.svg";
+import MapIcon from "../../../public/icons/map-pin.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import cn from "classnames";
@@ -27,11 +27,11 @@ function ListItem({ title, phone, address, link }: ListItemInterface) {
 		<div className="flex flex-col max-h-[165]   w-full py-[1.5rem] px-[1.25rem] bg-White border-b border-[#0000001a]">
 			<h4 className="head4 text-gray-20 my-[0.2rem]">{title}</h4>
 			<div className="flex flex-row my-[0.2rem]">
-				<Image src={phoneIcon} alt="phoneIcon" />
+				<PhoneIcon />
 				<p className="body2 text-gray-40">정보 {phone}</p>
 			</div>
 			<div className="flex flex-row my-[0.2rem]">
-				<Image src={mapIcon} alt="mapIcon" />
+				<MapIcon />
 				<p className="body2 text-gray-40">정보 {address}</p>
 			</div>
 
