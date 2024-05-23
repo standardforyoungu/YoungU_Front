@@ -1,6 +1,6 @@
-import { toast } from "react-toastify";
-import { FailedResInterface, SuccessResInterface } from "./../../types/resType";
+import { SuccessResInterface } from "./../../types/resType";
 import { usePostChildInfoMutation } from "@/api/myPage/myPage.query";
+import { toast } from "@/utils/toast";
 import { useRouter } from "next/navigation";
 
 export const usePostChildInfoService = () => {
@@ -9,13 +9,13 @@ export const usePostChildInfoService = () => {
 
 	const onSuccess = (data: SuccessResInterface) => {
 		if (data?.result === "Success") {
-			toast.success(data?.message);
+			toast("Success", data?.message);
 			router.push("/my-page/child-list");
 		}
 	};
 
 	const onError = (error: any) => {
-		toast.error(error.response.data.message);
+		toast("Error", error.response.data.message);
 	};
 
 	return { ...mutation, onSuccess, onError };

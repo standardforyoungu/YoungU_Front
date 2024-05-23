@@ -9,11 +9,17 @@ const buttonVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: "bg-orange-100 text-primary-foreground hover:bg-primary/90",
-				primary: "bg-Primary text-WHITE ",
-				secondary: "bg-orange-100 text-primary-foreground hover:bg-orange-200",
-				blank: "bg-white border-gray-95 border-[1px]",
-				disable: "bg-gray-90 text-WHITE",
+				// orange-100 버튼 btn_large
+				default:
+					"bg-orange-100 !h-[56px] text-White !head4 disabled:bg-gray-90 disabled:text-White hover:bg-orange-200",
+				// default와 동일
+				primary:
+					"bg-orange-100 !h-[56px] text-White !head4 disabled:bg-gray-90 disabled:text-White hover:bg-orange-200",
+				// orange-10 버튼 btn_list
+				secondary:
+					"bg-orange-10 !h-[36px] text-orange-100 !head6 disabled:bg-gray-99 disabled:text-gray-80 hover:bg-orange-15",
+				blank: "bg-White hover:border-orange-100 hover:text-orange-100 border-gray-95 border-[1px]",
+				disable: "bg-gray-99 text-gray-80",
 			},
 			size: {
 				default: "h-[40px] px-4 py-2",

@@ -24,7 +24,7 @@ function ListItem({ title, phone, address, link }: ListItemInterface) {
 	};
 
 	return (
-		<div className="flex flex-col max-h-[165]   w-full py-[1.5rem] px-[1.25rem] bg-WHITE border-b border-[#0000001a]">
+		<div className="flex flex-col max-h-[165]   w-full py-[1.5rem] px-[1.25rem] bg-White border-b border-[#0000001a]">
 			<h4 className="head4 text-gray-20 my-[0.2rem]">{title}</h4>
 			<div className="flex flex-row my-[0.2rem]">
 				<PhoneIcon />

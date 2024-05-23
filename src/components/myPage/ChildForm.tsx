@@ -11,9 +11,9 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export const formSchema = z.object({
-	chl_nck_nm: z.string(),
-	chl_sex: z.string(),
-	chl_age: z.string(),
+	chl_nck_nm: z.string().min(1),
+	chl_sex: z.string().min(1),
+	chl_age: z.string().min(1),
 });
 
 interface Props {
@@ -25,9 +25,8 @@ export default function ChildForm({ defaultValue, onSubmit }: Props) {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: defaultValue,
+		mode: "onBlur",
 	});
-
-	const isValid = !!(form.getValues("chl_age") && form.getValues("chl_sex") && form.getValues("chl_nck_nm"));
 
 	return (
 		<div className="px-[20px] py-[12px]">
@@ -103,17 +102,18 @@ export default function ChildForm({ defaultValue, onSubmit }: Props) {
 								<FormLabel className="!head3">우리 아이는</FormLabel>
 								<div className="flex gap-[8px] items-center w-full">
 									<FormControl>
-										<Select onValueChange={field.onChange}>
+										<Select value={field.value} onValueChange={field.onChange}>
 											<SelectTrigger
 												className={`w-full text-gray-95 border-gray-95 focus:border-orange-200 rounded-[6px] ${
 													field.value && "border-orange-200 text-orange-200"
 												}`}>
 												<SelectValue
 													placeholder="반을 선택해주세요."
-													className="placeholder:text-gray-95 text-orange-200"
-												/>
+													className="placeholder:text-gray-95 text-orange-200">
+													{field.value ? `${field.value}세 반` : ""}
+												</SelectValue>
 											</SelectTrigger>
-											<SelectContent className="bg-WHITE shadow-lg rounded-[6px] border-none">
+											<SelectContent className="bg-White shadow-lg rounded-[6px] border-none">
 												{["4", "5", "6", "7"].map((el) => (
 													<SelectItem value={el} key={el} className={`${field.value === el && "text-orange-200"}`}>
 														{el}세 반
@@ -127,7 +127,7 @@ export default function ChildForm({ defaultValue, onSubmit }: Props) {
 							</FormItem>
 						)}
 					/>
-					<Button type="submit" className="head4 text-WHITE w-full mt-[12px]" disabled={!isValid}>
+					<Button type="submit" variant={"default"} className="w-full mt-[12px]" disabled={!form.formState.isValid}>
 						저장하기
 					</Button>
 				</form>

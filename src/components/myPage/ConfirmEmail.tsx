@@ -1,7 +1,6 @@
 import { useModal } from "@/hooks/useModal";
 import React from "react";
 import { sendContactEmail } from "@/utils/sendContactEmail";
-import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
 import {
@@ -13,6 +12,7 @@ import {
 	AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "../ui/button";
+import { toast } from "@/utils/toast";
 
 export default function ConfirmEmail() {
 	const router = useRouter();
@@ -24,7 +24,7 @@ export default function ConfirmEmail() {
 		data?.setIsLoading(true);
 		sendContactEmail(data?.value)
 			.then(() => {
-				toast.success("성공적으로 메일을 전송했습니다.");
+				toast("Success", "답변이 제출되었습니다.");
 				router.push("/my-page");
 			})
 			.finally(() => {
@@ -43,10 +43,10 @@ export default function ConfirmEmail() {
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter className="gap-[10px]">
-					<Button onClick={onClose} className="bg-gray-95 text-gray-60 w-full">
+					<Button onClick={onClose} className="!h-[40px] !head5 bg-gray-95 text-gray-60 w-full hover:bg-gray-95">
 						아니요, 수정할게요
 					</Button>
-					<Button onClick={onConfirm} className="text-WHITE w-full">
+					<Button onClick={onConfirm} className="!h-[40px] !head5 text-White w-full hover:bg-orange-100">
 						네, 맞아요
 					</Button>
 				</AlertDialogFooter>
