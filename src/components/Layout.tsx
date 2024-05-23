@@ -36,15 +36,15 @@ export default function Layout({ children }: { children: ReactNode }) {
 				ref={contentsRef}>
 				<div className="h-screen">{children}</div>
 				<ScrollBtn showBtn={showBtn} scrollTopHandler={scrollTopHandler} />
+				<ToastContainer
+					autoClose={1000}
+					hideProgressBar
+					closeOnClick
+					theme="dark"
+					closeButton={false}
+					position={"bottom-right"}
+				/>
 			</div>
-			<ToastContainer
-				autoClose={1000}
-				hideProgressBar
-				closeOnClick
-				theme="dark"
-				closeButton={false}
-				position={"bottom-right"}
-			/>
 		</div>
 	);
 }
