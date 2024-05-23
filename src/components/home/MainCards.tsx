@@ -31,7 +31,8 @@ export default function MainCards() {
 		<div className="flex flex-col gap-[10px]">
 			{isMount && (
 				<>
-					<div className={`w-full h-fit rounded-[12px] py-8 flex flex-col gap-4 items-center bg-orange-10`}>
+					<div
+						className={`w-full h-fit rounded-[12px] py-8 flex flex-col gap-4 items-center bg-orange-10 hover:-translate-y-2 duration-300`}>
 						<Image src={`/icons/symbol_orange.svg`} alt="symbol" width={24} height={26} />
 						<h1 className={`text-orange-200 head3 text-center`}>
 							성향검사를 통해
@@ -46,7 +47,8 @@ export default function MainCards() {
 							<Image src={"/icons/arrow-right.svg"} alt="arrow" width={16} height={16} />
 						</Button>
 					</div>
-					<div className={`w-full h-fit rounded-[12px] py-8 flex flex-col gap-4 items-center bg-mint-10`}>
+					<div
+						className={`w-full h-fit rounded-[12px] py-8 flex flex-col gap-4 items-center bg-mint-10 hover:-translate-y-2 duration-300`}>
 						<Image src={`/icons/symbol_mint.svg`} alt="symbol" width={24} height={26} />
 						<h1 className={`text-mint-200 head3 text-center`}>
 							우리 동네 영어 유치부 정보를
@@ -57,7 +59,8 @@ export default function MainCards() {
 						<LinkBtn href={"/info"} title={"영어 유치부 알아보기"} bgColor={"bg-mint-100"} />
 						<p className="text-[#8a8a8a] body3">송파/강동 이외 지역은 순차 오픈 예정입니다.</p>
 					</div>
-					<div className={`w-full h-fit rounded-[12px] py-8 flex flex-col gap-4 items-center bg-blue-10`}>
+					<div
+						className={`w-full h-fit rounded-[12px] py-8 flex flex-col gap-4 items-center bg-blue-10 hover:-translate-y-2 duration-300`}>
 						<Image src={`/icons/symbol_blue.svg`} alt="symbol" width={24} height={26} />
 						<h1 className={`text-blue-200 head3 text-center`}>
 							영유스탠다드가 찾아갈

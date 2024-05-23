@@ -28,8 +28,6 @@ export default function ChildForm({ defaultValue, onSubmit }: Props) {
 		mode: "onBlur",
 	});
 
-	console.log(defaultValue);
-
 	return (
 		<div className="px-[20px] py-[12px]">
 			<p className="h-[72px] flex items-center justify-center bg-mint-10 text-mint-200 rounded-[8px] body1">
