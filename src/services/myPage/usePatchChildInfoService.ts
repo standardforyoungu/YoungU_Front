@@ -1,7 +1,7 @@
 import { usePatchChildInfoMutation } from "@/api/myPage/myPage.query";
 import { SuccessResInterface } from "@/types/resType";
+import { toast } from "@/utils/toast";
 import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
 
 export const usePatchChildInfoService = () => {
 	const mutation = usePatchChildInfoMutation();
@@ -9,13 +9,13 @@ export const usePatchChildInfoService = () => {
 
 	const onSuccess = (data: SuccessResInterface) => {
 		if (data?.result === "Success") {
-			toast.success(data?.message);
+			toast("Success", data?.message);
 			router.push("/my-page/child-list");
 		}
 	};
 
 	const onError = (error: any) => {
-		toast.error(error.response.data.message);
+		toast("Error", error.response.data.message);
 	};
 
 	return { ...mutation, onSuccess, onError };

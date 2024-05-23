@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+import { toast } from "./toast";
 
 interface ReqInterface {
 	email: string;
@@ -18,7 +18,7 @@ export const sendContactEmail = async (req: ReqInterface) => {
 
 		return await response.json();
 	} catch (err: any) {
-		toast.error("메일 전송을 실패했습니다. 잠시 후 다시 시도해주세요.");
+		toast("Error", "오류가 발생했어요, 다시 시도해주세요.");
 		if (err.name === "AbortError") {
 			throw new Error("failed SendEmailAuthCode");
 		} else {
