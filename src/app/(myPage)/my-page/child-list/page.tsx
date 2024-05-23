@@ -74,7 +74,7 @@ export default function ChildList() {
 										/>
 									</div>
 								</div>
-								<Button className="bg-orange-10 text-orange-100" disabled={!el?.chl_mbti}>
+								<Button variant={"secondary"} disabled={!el?.chl_mbti}>
 									검사 결과 보기
 								</Button>
 							</div>
@@ -82,7 +82,7 @@ export default function ChildList() {
 					</div>
 					<Button
 						onClick={onClickAddBtn}
-						className="rounded-[12px] p-[20px] h-[84px] bg-gray-99 flex justify-center items-center gap-2 w-full">
+						className="rounded-[12px] p-[20px] !h-[84px] bg-gray-99 flex justify-center items-center gap-2 w-full hover:bg-gray-99">
 						<div className="w-[20px] h-[20px] rounded-full bg-gray-95 relative">
 							<Plus size={10} className="right-[4.8px] top-[4.3px] text-gray-80 absolute head5" strokeWidth={3} />
 						</div>

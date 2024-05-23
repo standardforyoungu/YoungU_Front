@@ -53,7 +53,7 @@ export default function VotePage() {
 					</div>
 				))}
 			</div>
-			<Button onClick={onSubmit} className="h-[56px] text-White !head4 mt-2">
+			<Button onClick={onSubmit} className="h-[56px] text-White !head4 mt-2 hover:bg-orange-200">
 				투표 하기
 			</Button>
 		</div>

@@ -15,7 +15,7 @@ export default function LoginMypage() {
 		<div className="px-5 py-6 flex flex-col gap-4">
 			<div className="flex justify-between items-start">
 				<div className="flex gap-2 items-center">
-					<Image src={userInfo?.prf_img} alt="profileImg" width={48} height={48} className="rounded-full" />
+					<Image src={userInfo?.prf_img} alt="profileImg" width={48} height={48} className="rounded-full" priority />
 					<div className="head4 text-gray-80">
 						<p className="flex gap-1">
 							<span className="text-gray-20 max-w-[203px] truncate break-all block">{userInfo?.mbr_nck_nm}</span> 님

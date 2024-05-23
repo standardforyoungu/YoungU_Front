@@ -127,7 +127,7 @@ export default function ChildForm({ defaultValue, onSubmit }: Props) {
 							</FormItem>
 						)}
 					/>
-					<Button type="submit" className="head4 text-White w-full mt-[12px]" disabled={!isValid}>
+					<Button type="submit" variant={"default"} className="w-full mt-[12px]" disabled={!isValid}>
 						저장하기
 					</Button>
 				</form>
