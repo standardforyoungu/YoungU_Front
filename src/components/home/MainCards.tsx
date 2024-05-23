@@ -5,15 +5,22 @@ import React, { useEffect, useState } from "react";
 import LinkBtn from "@/components/LinkBtn";
 import { useIsLoggedIn } from "@/hooks/useIsLoggedIn";
 import { useModal } from "@/hooks/useModal";
+import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
 
 export default function MainCards() {
+	const router = useRouter();
 	const { isLoggedIn } = useIsLoggedIn();
 	const { onOpen } = useModal();
 	const [isMount, setIsMount] = useState(false);
 
-	const onLogin = () => {
-		onOpen("login");
-		sessionStorage.setItem("redirect", "/");
+	const onClickBtn = () => {
+		if (!isLoggedIn) {
+			onOpen("login");
+			sessionStorage.setItem("redirect", "/");
+		} else {
+			router.push("/test");
+		}
 	};
 
 	useEffect(() => {
@@ -32,16 +39,12 @@ export default function MainCards() {
 							아이에게 맞는 학습법을 알아보세요!
 						</h1>
 						<Image src={"/images/search.svg"} alt="cardImg" width={105} height={99} />
-						{isLoggedIn ? (
-							<LinkBtn href={"/test"} title={"성향검사 시작하기"} bgColor={"bg-orange-100"} />
-						) : (
-							<button
-								onClick={onLogin}
-								className="p-[10px] flex gap-1 bg-orange-100 rounded-[8px] w-[180px] h-[40px] items-center justify-center">
-								<span className="text-WHITE head5">성향검사 시작하기</span>
-								<Image src={"/icons/arrow-right.svg"} alt="arrow" width={16} height={16} />
-							</button>
-						)}
+						<Button
+							onClick={onClickBtn}
+							className="w-[180px] !h-[40px] flex gap-1 items-center bg-orange-100 text-White !head5 hover:bg-orange-200 disabled:test-gray-60 disabled:bg-gray-95">
+							<span className="text-White head5">성향검사 시작하기</span>
+							<Image src={"/icons/arrow-right.svg"} alt="arrow" width={16} height={16} />
+						</Button>
 					</div>
 					<div className={`w-full h-fit rounded-[12px] py-8 flex flex-col gap-4 items-center bg-mint-10`}>
 						<Image src={`/icons/symbol_mint.svg`} alt="symbol" width={24} height={26} />

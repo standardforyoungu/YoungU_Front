@@ -40,9 +40,12 @@ const childAgeData = [
 	},
 ];
 
-function page() {
-	const router = useRouter();
-	// 아이 정보 상태
+function Page() {
+	const [hoverCheck, setHoverCheck] = useState({
+		man: false,
+		female: false,
+	});
+
 	const [childInfo, setChildInfo] = useState<ChildInfoInterface>({
 		chl_nck_nm: "",
 		chl_sex: "",
@@ -110,12 +113,12 @@ function page() {
 						<SelectTrigger className="w-[80%] border-b-[1px] border-gray-97  ">
 							<SelectValue placeholder="반을 선택해주세요." className="text-gray-95 placeholder:text-gray-95" />
 						</SelectTrigger>
-						<SelectContent className="border-b-[1px] border-gray-97 z-10 bg-WHITE ">
+						<SelectContent className="border-b-[1px] border-gray-97 z-10 bg-White ">
 							{childAgeData.map((data: any) => (
 								<SelectItem
+									key={data.age}
 									className="focus:bg-orange-10 focus:text-orange-100 h-[42px]"
-									value={data.age}
-									key={data.age}>
+									value={data.age}>
 									{data.text}
 								</SelectItem>
 							))}
@@ -138,4 +141,4 @@ function page() {
 	);
 }
 
-export default page;
+export default Page;

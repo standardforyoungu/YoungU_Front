@@ -34,10 +34,10 @@ export default function ConfirmDeleteChildModal() {
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter className="gap-[10px]">
-					<Button onClick={onClose} className="bg-gray-95 text-gray-60 w-full">
+					<Button onClick={onClose} className="!h-[40px] !head5 bg-gray-95 text-gray-60 w-full hover:bg-gray-95">
 						취소
 					</Button>
-					<Button className="text-WHITE w-full" onClick={onDelete}>
+					<Button className="!h-[40px] !head5 text-White w-full hover:bg-orange-100" onClick={onDelete}>
 						삭제하기
 					</Button>
 				</AlertDialogFooter>

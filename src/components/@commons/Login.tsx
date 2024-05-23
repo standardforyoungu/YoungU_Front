@@ -14,7 +14,7 @@ export default function Login() {
 
 	return (
 		<Drawer open={isModalOpen} onDrag={onClose} onOpenChange={setOpenChange}>
-			<DrawerContent className="bg-WHITE">
+			<DrawerContent className="bg-White">
 				<DrawerHeader className="flex flex-col gap-6">
 					<div className="flex justify-end">
 						<X size={24} className="text-gray-90" onClick={onClose} />

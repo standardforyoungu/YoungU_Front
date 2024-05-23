@@ -8,7 +8,7 @@ export const useGetWindowSize = () => {
 			setScreen("WEB");
 		} else if (window.innerWidth >= 431 && window.innerWidth <= 1023) {
 			setScreen("TABLET");
-		} else if (window.innerWidth <= 430) {
+		} else if (window.innerWidth <= 480) {
 			setScreen("MOBILE");
 		}
 	};

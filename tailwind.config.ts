@@ -18,8 +18,8 @@ const config = {
 			},
 		},
 		screens: {
-			sm: { max: "430px" }, // 모바일 전용 (iPhone 14 pro Max 기준)
-			md: { min: "431px", max: "1023px" }, // 태블릿 전용
+			sm: { max: "480px" }, // 모바일 전용
+			md: { min: "481px", max: "1023px" }, // 태블릿 전용
 			lg: "1024px", // 웹 전용
 		},
 		colors: {
@@ -32,8 +32,12 @@ const config = {
 			"gray-40": "#5C5C5C",
 			"gray-20": "#2A2A2A",
 			"gray-10": "#171717",
+			Black: "#000000",
+			White: "#FFFFFF",
 			"orange-200": "#DD6646",
 			"orange-100": "#F6714E",
+			"orange-30": "rgba(254, 240, 237, 3)",
+			"orange-15": "rgba(254, 240, 237, 1.5)",
 			"orange-10": "rgba(254, 240, 237, 1)",
 			"mint-200": "#009CA9",
 			"mint-100": "#00B8C7",
@@ -42,8 +46,8 @@ const config = {
 			"blue-100": "#5669EF",
 			"blue-10": "#5669EF1a",
 			"yellow-100": "#FFDC27",
-			BLACK: "#000000",
-			WHITE: "#FFFFFF",
+			Primary: "#F6714E",
+			Secondary: "#00B8C7",
 			"Error-1": "#FF4343",
 			"Error-2": "#FF9494",
 			Warning: "#FF9200",
