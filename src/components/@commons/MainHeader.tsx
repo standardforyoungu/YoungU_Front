@@ -4,7 +4,7 @@ import React from "react";
 
 function MainHeader() {
 	return (
-		<header className="flex justify-between items-center px-[20px] py-[16px] bg-WHITE border-b border-[#0000001a] w-full sticky top-0 z-10 ">
+		<header className="flex justify-between items-center px-[20px] py-[16px] bg-White border-b border-[#0000001a] w-full sticky top-0 z-10 ">
 			<Link href={"/"}>
 				<Image src={"/icons/main_symbol.svg"} alt={"symbol"} width={30} height={32} />
 			</Link>

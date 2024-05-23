@@ -45,7 +45,7 @@ export default function InquiryPage() {
 				<div className="w-full h-full flex justify-center items-center">
 					<div className="relative">
 						<div className="w-12 h-12 bg-gradient-to-br from-orange-200 to-orange-10 rounded-full animate-spin" />
-						<div className="w-8 h-8 bg-WHITE rounded-full absolute top-2 right-[7.5px]" />
+						<div className="w-8 h-8 bg-White rounded-full absolute top-2 right-[7.5px]" />
 					</div>
 				</div>
 			) : (
@@ -96,7 +96,7 @@ export default function InquiryPage() {
 								)}
 							/>
 							<Button
-								className="h-[56px] bg-orange-100 !head4 text-WHITE disabled:bg-gray-90"
+								className="h-[56px] bg-orange-100 !head4 text-White disabled:bg-gray-90"
 								type="submit"
 								disabled={!isValid}>
 								영유스탠다드에 문의하기

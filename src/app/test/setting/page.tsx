@@ -37,7 +37,7 @@ const childAgeData = [
 	},
 ];
 
-function page() {
+function Page() {
 	const [hoverCheck, setHoverCheck] = useState({
 		man: false,
 		female: false,
@@ -104,9 +104,12 @@ function page() {
 						<SelectTrigger className="w-[80%] border-b-[1px] border-gray-97  ">
 							<SelectValue placeholder="반을 선택해주세요." className="text-gray-95 placeholder:text-gray-95" />
 						</SelectTrigger>
-						<SelectContent className="border-b-[1px] border-gray-97 z-10 bg-WHITE ">
+						<SelectContent className="border-b-[1px] border-gray-97 z-10 bg-White ">
 							{childAgeData.map((data: any) => (
-								<SelectItem className="focus:bg-orange-10 focus:text-orange-100 h-[42px]" value={data.age}>
+								<SelectItem
+									key={data.age}
+									className="focus:bg-orange-10 focus:text-orange-100 h-[42px]"
+									value={data.age}>
 									{data.text}
 								</SelectItem>
 							))}
@@ -115,7 +118,7 @@ function page() {
 					<p className="body01 mx-1">에 갈거예요.</p>
 				</div>
 
-				<Button size={"lg"} variant="primary" className="my-3 text-WHITE bg-orange-100 h-[56px] text-[1rem]">
+				<Button size={"lg"} variant="primary" className="my-3 text-White bg-orange-100 h-[56px] text-[1rem]">
 					저장하고 검사 시작하기
 				</Button>
 			</div>
@@ -123,4 +126,4 @@ function page() {
 	);
 }
 
-export default page;
+export default Page;

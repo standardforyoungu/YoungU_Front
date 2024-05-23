@@ -16,7 +16,7 @@ export default function NonLoginMyPage() {
 				<span className="text-orange-100">로그인</span>하여
 				<br />더 많은 정보를 확인하세요
 			</h2>
-			<Button onClick={onLogin} className="!head5 text-WHITE">
+			<Button onClick={onLogin} className="!head5 text-White">
 				로그인
 			</Button>
 		</div>

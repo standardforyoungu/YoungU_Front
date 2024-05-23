@@ -38,7 +38,7 @@ export default function MainCards() {
 							<button
 								onClick={onLogin}
 								className="p-[10px] flex gap-1 bg-orange-100 rounded-[8px] w-[180px] h-[40px] items-center justify-center">
-								<span className="text-WHITE head5">성향검사 시작하기</span>
+								<span className="text-White head5">성향검사 시작하기</span>
 								<Image src={"/icons/arrow-right.svg"} alt="arrow" width={16} height={16} />
 							</button>
 						)}

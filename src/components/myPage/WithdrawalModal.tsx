@@ -30,7 +30,7 @@ export default function WithdrawalModal() {
 					<Button onClick={onClose} className="bg-gray-95 text-gray-60 w-full">
 						취소
 					</Button>
-					<Button className="text-WHITE w-full">확인</Button>
+					<Button className="text-White w-full">확인</Button>
 				</AlertDialogFooter>
 			</AlertDialogContent>
 		</AlertDialog>

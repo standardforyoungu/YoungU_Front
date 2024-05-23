@@ -25,7 +25,7 @@ export default function MaximumChildModal() {
 					</AlertDialogTitle>
 				</AlertDialogHeader>
 				<AlertDialogFooter>
-					<Button className="text-WHITE w-full" onClick={onClose}>
+					<Button className="text-White w-full" onClick={onClose}>
 						확인
 					</Button>
 				</AlertDialogFooter>

@@ -46,7 +46,7 @@ export default function ConfirmEmail() {
 					<Button onClick={onClose} className="bg-gray-95 text-gray-60 w-full">
 						아니요, 수정할게요
 					</Button>
-					<Button onClick={onConfirm} className="text-WHITE w-full">
+					<Button onClick={onConfirm} className="text-White w-full">
 						네, 맞아요
 					</Button>
 				</AlertDialogFooter>

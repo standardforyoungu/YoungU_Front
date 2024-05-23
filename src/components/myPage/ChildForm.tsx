@@ -113,7 +113,7 @@ export default function ChildForm({ defaultValue, onSubmit }: Props) {
 													className="placeholder:text-gray-95 text-orange-200"
 												/>
 											</SelectTrigger>
-											<SelectContent className="bg-WHITE shadow-lg rounded-[6px] border-none">
+											<SelectContent className="bg-White shadow-lg rounded-[6px] border-none">
 												{["4", "5", "6", "7"].map((el) => (
 													<SelectItem value={el} key={el} className={`${field.value === el && "text-orange-200"}`}>
 														{el}세 반
@@ -127,7 +127,7 @@ export default function ChildForm({ defaultValue, onSubmit }: Props) {
 							</FormItem>
 						)}
 					/>
-					<Button type="submit" className="head4 text-WHITE w-full mt-[12px]" disabled={!isValid}>
+					<Button type="submit" className="head4 text-White w-full mt-[12px]" disabled={!isValid}>
 						저장하기
 					</Button>
 				</form>

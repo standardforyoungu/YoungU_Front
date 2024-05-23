@@ -39,7 +39,7 @@ function InfoListPage() {
 					<PaginationItem>
 						{isSuccess &&
 							Array.from({ length: data.last_page_num }, (_, index) => (
-								<PaginationLink key={index} href="#" className="text-BLACK w-[32px] h-[32px] bg-gray-99 mx-1 ">
+								<PaginationLink key={index} href="#" className="text-Black w-[32px] h-[32px] bg-gray-99 mx-1 ">
 									{index + 1}
 								</PaginationLink>
 							))}
