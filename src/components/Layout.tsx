@@ -2,6 +2,7 @@
 
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import ScrollBtn from "@/components/@commons/ScrollBtn";
+import { ToastContainer } from "react-toastify";
 
 export default function Layout({ children }: { children: ReactNode }) {
 	const contentsRef = useRef<HTMLDivElement>(null);
@@ -36,6 +37,14 @@ export default function Layout({ children }: { children: ReactNode }) {
 				<div className="h-screen">{children}</div>
 				<ScrollBtn showBtn={showBtn} scrollTopHandler={scrollTopHandler} />
 			</div>
+			<ToastContainer
+				autoClose={1000}
+				hideProgressBar
+				closeOnClick
+				theme="dark"
+				closeButton={false}
+				position={"bottom-right"}
+			/>
 		</div>
 	);
 }
