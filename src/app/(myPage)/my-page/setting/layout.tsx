@@ -4,7 +4,7 @@ import React from "react";
 export default function layout({ children }: { children: React.ReactNode }) {
 	return (
 		<>
-			<ListHeader mainTitle="설정" />
+			<ListHeader mainTitle="설정" url="/my-page" />
 			{children}
 		</>
 	);

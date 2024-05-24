@@ -15,7 +15,7 @@ export default function MyPage() {
 
 	return (
 		<div>
-			<ListHeader mainTitle="마이페이지" />
+			<ListHeader mainTitle="마이페이지" url="/" />
 			{isMount && (
 				<>
 					{isLoggedIn ? <LoginMypage /> : <NonLoginMyPage />}

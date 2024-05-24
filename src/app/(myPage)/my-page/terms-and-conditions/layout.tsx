@@ -5,9 +5,9 @@ import React from "react";
 
 export default function layout({ children }: { children: React.ReactNode }) {
 	return (
-		<>
-			<ListHeader mainTitle="이용약관" />
+		<div>
+			<ListHeader mainTitle="이용약관" url="/" />
 			{children}
-		</>
+		</div>
 	);
 }
