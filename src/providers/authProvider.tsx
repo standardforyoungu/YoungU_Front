@@ -12,8 +12,8 @@ export default function AuthProvider() {
 		if (!!window.localStorage.getItem("OU_UserAttribute")) {
 			path.includes("oauth") && router.push("/");
 		} else {
-			["/test", "/setting", "/child-list", "/child-list/add-child", "/child-list/edit-child"].includes(path) &&
-				router.back();
+			path.includes("/child-list") && router.push("/");
+			["/test", "/setting"].includes(path) && router.push("/");
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [path]);
