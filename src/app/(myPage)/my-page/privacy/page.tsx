@@ -348,8 +348,8 @@ export default function Privacy() {
 				고지 즉시 개정될 것입니다. 현재 효력을 발생하는 본 방침의 공고일자와 시행일자, 이전 개인정보처리방침은 아래와
 				같습니다.
 			</p>
-			<p className="body2">· 공고일자: 2024년 5월 XX일</p>
-			<p className="body2">· 시행일자: 2024년 5월 XX일</p>
+			<p className="body2">· 공고일자: 2024년 6월 1일</p>
+			<p className="body2">· 시행일자: 2024년 6월 1일</p>
 			<p className="body2">· 버전: 1.00 </p>
 		</div>
 	);
