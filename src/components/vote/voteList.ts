@@ -17,7 +17,7 @@ export const voteList = [
 			{ title: "구리, 남양주", value: "8" },
 			{ title: "하남, 광주", value: "9" },
 			{ title: "성남, 용인", value: "10" },
-			{ title: "안양, 과천, 의왕, 안산, 수언", value: "11" },
+			{ title: "안양, 과천, 의왕, 안산, 수원", value: "11" },
 			{ title: "인천, 부천, 김포, 광명, 시흥", value: "12" },
 			{ title: "파주, 고양", value: "13" },
 		],

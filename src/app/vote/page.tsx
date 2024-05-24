@@ -30,14 +30,10 @@ export default function VotePage() {
 				{voteList.map((el) => (
 					<div key={el.cityname} className="flex flex-col gap-2">
 						<h4 className="head4 text-gray-80">{el.cityname} 지역</h4>
-						<RadioGroup defaultValue={selected} onValueChange={setSelected} className="flex flex-col gap-3">
+						<RadioGroup value={selected} onValueChange={setSelected} className="flex flex-col gap-3">
 							{el.list.map(({ title, value }) => (
 								<div key={value} className="flex items-center h-12 w-full gap-[13px]">
-									<RadioGroupItem
-										value={value}
-										id={value}
-										className={value === selected ? "border-orange-100" : "[&_Circle]:hidden"}
-									/>
+									<RadioGroupItem value={value} id={value} className={value === selected ? "border-orange-100" : ""} />
 									<Label
 										className={`py-[13.5px] w-full px-4 border rounded-[8px] ${
 											value === selected
