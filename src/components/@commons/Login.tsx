@@ -7,6 +7,7 @@ import { useModal } from "@/hooks/useModal";
 import { getKakaoAuthCode } from "@/utils/getAuthCode";
 import { X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Login() {
 	const { isOpen, type, onClose, setOpenChange } = useModal();
@@ -41,9 +42,21 @@ export default function Login() {
 						<span className="text-center">카카오 로그인</span>
 					</button>
 					<p className="text-gray-60 body3 text-center">
-						회원가입과 함께 <span className="font-semibold underline underline-offset-2 cursor-pointer">이용약관</span>{" "}
-						및 <span className="font-semibold underline underline-offset-2 cursor-pointer">개인정보처리방침</span>에
-						동의합니다.
+						회원가입과 함께{" "}
+						<Link
+							href={"/my-page/terms-and-conditions"}
+							onClick={onClose}
+							className="font-semibold underline underline-offset-2 cursor-pointer">
+							이용약관
+						</Link>{" "}
+						및{" "}
+						<Link
+							href={"/my-page/privacy"}
+							onClick={onClose}
+							className="font-semibold underline underline-offset-2 cursor-pointer">
+							개인정보처리방침
+						</Link>
+						에 동의합니다.
 					</p>
 				</DrawerFooter>
 			</DrawerContent>
