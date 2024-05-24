@@ -247,37 +247,45 @@ export default function Privacy() {
 			</p>
 			<p className="body2">1. 개인정보의 처리를 위탁하는 경우</p>
 			<table className="body3 border">
-				<tr className="border">
-					<th className="border-r">위탁 목적</th>
-					<th>수탁자</th>
-				</tr>
-				<tr className="border">
-					<td className="border-r text-center">SMS 및 메시지 발송</td>
-					<td className="text-center">(주)카카오</td>
-				</tr>
-				<tr className="border">
-					<td className="border-r text-center">데이터 보관</td>
-					<td className="text-center">Amazon Web Services Inc.</td>
-				</tr>
+				<thead className="border">
+					<tr>
+						<th className="border-r">위탁 목적</th>
+						<th>수탁자</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr className="border">
+						<td className="border-r text-center">SMS 및 메시지 발송</td>
+						<td className="text-center">(주)카카오</td>
+					</tr>
+					<tr className="border">
+						<td className="border-r text-center">데이터 보관</td>
+						<td className="text-center">Amazon Web Services Inc.</td>
+					</tr>
+				</tbody>
 			</table>
 			<p className="body2">2. 개인정보의 처리를 국외 이전하여 위탁하는 경우</p>
 			<table className="body3">
-				<tr className="border">
-					<th className="border-r text-center">수탁자</th>
-					<th className="border-r text-center">이전 국가</th>
-					<th className="border-r text-center">이용목적</th>
-					<th className="border-r text-center">이전항목</th>
-					<th className="border-r text-center">이전일시 및 방법</th>
-					<th className="text-center">보유 및 이용기간</th>
-				</tr>
-				<tr className="border">
-					<td className="border-r text-center">Meta, Google</td>
-					<td className="border-r text-center">미국</td>
-					<td className="border-r text-center">맞춤형 광고제공</td>
-					<td className="border-r text-center">성향검사 참여 기록</td>
-					<td className="border-r text-center">서비스 이용 시점에 네트워크를 통한 전송</td>
-					<td className="text-center">발송 후 2년</td>
-				</tr>
+				<thead className="border">
+					<tr>
+						<th className="border-r text-center">수탁자</th>
+						<th className="border-r text-center">이전 국가</th>
+						<th className="border-r text-center">이용목적</th>
+						<th className="border-r text-center">이전항목</th>
+						<th className="border-r text-center">이전일시 및 방법</th>
+						<th className="text-center">보유 및 이용기간</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr className="border">
+						<td className="border-r text-center">Meta, Google</td>
+						<td className="border-r text-center">미국</td>
+						<td className="border-r text-center">맞춤형 광고제공</td>
+						<td className="border-r text-center">성향검사 참여 기록</td>
+						<td className="border-r text-center">서비스 이용 시점에 네트워크를 통한 전송</td>
+						<td className="text-center">발송 후 2년</td>
+					</tr>
+				</tbody>
 			</table>
 			<h4 className="head4">제10조 개인정보의 안전성 확보 조치</h4>
 			<p className="body2">
