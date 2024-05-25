@@ -4,15 +4,19 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import { voteList } from "@/components/vote/voteList";
+import { usePostVoteService } from "@/services/vote/usePostVoteService";
+import { useGetRegn } from "@/hooks/vote/useGetRegn";
 
 export default function VotePage() {
-	const [selected, setSelected] = useState("1");
+	const voteList = useGetRegn();
+	const [selected, setSelected] = useState<Array<{ regn: string; city: string }>>([]);
+	const { mutate, onSuccess, onError } = usePostVoteService();
 
 	const onSubmit = () => {
-		// 투표 제출
+		const req = { info: selected?.map(({ regn, city }) => [regn, city]) };
+		mutate(req, { onSuccess, onError });
 	};
 
 	return (
@@ -27,29 +31,44 @@ export default function VotePage() {
 				<Image src="/images/map.svg" alt="map" width={143.22} height={110} />
 			</div>
 			<div className="flex flex-col gap-7">
-				{voteList.map((el) => (
+				{voteList.map((el, index) => (
 					<div key={el.cityname} className="flex flex-col gap-2">
 						<h4 className="head4 text-gray-80">{el.cityname} 지역</h4>
-						<RadioGroup value={selected} onValueChange={setSelected} className="flex flex-col gap-3">
+						<div className="flex flex-col gap-3">
 							{el.list.map(({ title, value }) => (
 								<div key={value} className="flex items-center h-12 w-full gap-[13px]">
-									<RadioGroupItem value={value} id={value} className={value === selected ? "border-orange-100" : ""} />
+									<Checkbox
+										onCheckedChange={(isChecked) => {
+											if (isChecked) {
+												setSelected([...selected, { regn: `${index}`, city: `${value}` }]);
+											} else {
+												setSelected(selected.filter(({ city }: { city: string }) => +city !== value));
+											}
+										}}
+										id={title}
+										className={`${
+											!!selected?.find(({ city }: { city: string }) => +city === value) && "border-orange-100"
+										}`}
+									/>
 									<Label
 										className={`py-[13.5px] w-full px-4 border rounded-[8px] ${
-											value === selected
+											value === +selected
 												? "bg-orange-10 border-orange-100 text-orange-200 !head4"
 												: "border-gray-97 text-gray-40 !body1"
 										}`}
-										htmlFor={value}>
+										htmlFor={title}>
 										{title}
 									</Label>
 								</div>
 							))}
-						</RadioGroup>
+						</div>
 					</div>
 				))}
 			</div>
-			<Button onClick={onSubmit} className="h-[56px] text-White !head4 mt-2 hover:bg-orange-200">
+			<Button
+				disabled={!selected.length}
+				onClick={onSubmit}
+				className="h-[56px] text-White !head4 mt-2 hover:bg-orange-200">
 				투표 하기
 			</Button>
 		</div>
