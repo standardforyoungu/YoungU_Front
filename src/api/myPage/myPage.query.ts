@@ -29,7 +29,7 @@ export const useGetChildInfoQuery = (childId: number) => {
 			const data = await response.data;
 
 			const child = data?.child_list?.find(({ chl_id }: { chl_id: number }) => chl_id === childId) ?? null;
-			return child;
+			return { ...child, chl_age: child.chl_age.toString() };
 		},
 		enabled: !!window.localStorage.getItem("OU_UserAttribute"),
 	});

@@ -38,16 +38,18 @@ export default function Layout({ children }: { children: ReactNode }) {
 					찾기
 				</h3>
 				<div className="absolute flex flex-col justify-center items-center gap-4 bottom-[40px] text-gray-60 body3">
-					<button className="w-12 h-12 flex justify-center items-center rounded-full bg-gray-90">
+					<Link
+						href={"https://www.instagram.com/youngu_standard?igsh=cTE5Nzlxa2JyOHc3&utm_source=qr"}
+						className="w-12 h-12 flex justify-center items-center rounded-full bg-gray-90">
 						<Instagram className="text-gray-40" size={24} />
-					</button>
+					</Link>
 					<div className="flex flex-col gap-[4px] items-center justify-center">
 						<p>email: youngustandard2024@gmail.com</p>
 						<div className="flex gap-3">
-							<Link href={""} className="underline underline-offset-1">
+							<Link href={"/my-page/terms-and-conditions"} className="underline underline-offset-1">
 								이용약관
 							</Link>
-							<Link href={""} className="underline underline-offset-1">
+							<Link href={"/my-page/privacy"} className="underline underline-offset-1">
 								개인정보 처리방침
 							</Link>
 						</div>
