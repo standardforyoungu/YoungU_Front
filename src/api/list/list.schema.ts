@@ -1,5 +1,3 @@
-export const KinderClassListReqSchema = {};
-
 export interface KdgnListInterface {
 	engl_kd_clas_id: number;
 	engl_kd_clas_nm: string;
@@ -8,12 +6,20 @@ export interface KdgnListInterface {
 	engl_kd_clas_lnk?: string;
 }
 
-export interface KdgnListResSchema {
-	result: "Success";
-	kdgn_list: Array<KdgnListInterface>;
+export interface KdgnListReqInterface {
+	regn: number;
+	city_cd: number;
+	offset: number;
 }
 
-export interface KdgnListReqSchema {
-	regn: number;
-	offset: number;
+export interface KdgnListInterface {
+	result: string;
+	last_page_num: number;
+	current_page: number;
+	engl_kd_clas_list: Array<KdgnListInterface>;
+}
+
+export interface RecommendKdgnListInterface {
+	result: string;
+	engl_kd_clas_list: Array<KdgnListInterface>;
 }

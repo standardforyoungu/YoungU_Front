@@ -2,7 +2,7 @@
 
 import { useGetKdgnListQuery } from "@/api/list/list.query";
 import { KdgnListInterface } from "@/api/list/list.schema";
-import ListItem, { ListItemInterface } from "@/components/ListItem/Index";
+import ListItem, { ListItemInterface } from "@/components/molcules/ListItem/Index";
 import {
 	Pagination,
 	PaginationContent,
@@ -17,20 +17,27 @@ import { useGetKdgnList } from "@/hooks/list/useGetKdgnList";
 import React, { useState } from "react";
 
 function InfoListPage() {
-	const { data, isPending, isSuccess } = useGetKdgnListQuery({ regn: 1, offset: 1 });
+	const { data, isPending, isSuccess } = useGetKdgnListQuery({ regn: 1, city_cd: 1, offset: 1 });
+
+	if (isSuccess) {
+		console.log(data);
+	}
 
 	return (
 		<div className="h-full">
-			{isSuccess &&
-				data?.engl_kd_clas_list?.map((item: KdgnListInterface) => (
-					<ListItem
-						title={item.engl_kd_clas_nm}
-						phone={item.engl_kd_clas_telno}
-						address={item.engl_kd_clas_addr}
-						link={item.engl_kd_clas_lnk}
-						key={item.engl_kd_clas_id}
-					/>
-				))}
+			<div className="py-[1.5rem] px-[1.5rem]">
+				{isSuccess &&
+					data?.engl_kd_clas_list?.map((item: KdgnListInterface) => (
+						<ListItem
+							title={item.engl_kd_clas_nm}
+							phone={item.engl_kd_clas_telno}
+							address={item.engl_kd_clas_addr}
+							link={item.engl_kd_clas_lnk}
+							key={item.engl_kd_clas_id}
+						/>
+					))}
+			</div>
+
 			<Pagination>
 				<PaginationContent>
 					<PaginationItem>

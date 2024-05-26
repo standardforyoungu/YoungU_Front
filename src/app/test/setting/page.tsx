@@ -23,6 +23,9 @@ import { ChildInfoInterface } from "@/api/child/child.schema";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import { useRouter } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
+import { usePostSaveChildInfoQuery } from "@/api/child/child.query";
+import { userPostSaveChildInfoService } from "@/services/user/usePostSaveChildInfoService";
 
 const childAgeData = [
 	{
@@ -41,6 +44,8 @@ const childAgeData = [
 ];
 
 function Page() {
+	const { mutate, onSuccess, onError } = userPostSaveChildInfoService();
+	const router = useRouter();
 	const [hoverCheck, setHoverCheck] = useState({
 		man: false,
 		female: false,
@@ -56,10 +61,6 @@ function Page() {
 		e.preventDefault();
 		setChildInfo({ ...childInfo, chl_sex: sex });
 	};
-
-	useEffect(() => {
-		console.log(childInfo);
-	}, [childInfo]);
 
 	return (
 		<div className="px-[2rem] py-[1rem] w-full h-full">
@@ -89,17 +90,17 @@ function Page() {
 						variant={"blank"}
 						size={"sm"}
 						className={`text-gray-60 ${childInfo.chl_sex === "man" ? "border-orange-100 text-orange-100" : ""} `}
-						onClick={(e) => onClickHandler("man", e)}>
+						onClick={(e) => onClickHandler("M", e)}>
 						{/* <Image src={maleIcon} alt="male" className="mx-1" /> */}
-						<MaleIcon fill={childInfo.chl_sex === "man" ? "#F6714E" : "#8A8A8A"} />
+						<MaleIcon fill={childInfo.chl_sex === "M" ? "#F6714E" : "#8A8A8A"} />
 						남자
 					</Button>
 					<Button
 						variant={"blank"}
 						size={"sm"}
 						className={`text-gray-60 ${childInfo.chl_sex === "female" ? "border-orange-100 text-orange-100" : ""} `}
-						onClick={(e) => onClickHandler("female", e)}>
-						<FemaleIcon fill={childInfo.chl_sex === "female" ? "#F6714E" : "#8A8A8A"} />
+						onClick={(e) => onClickHandler("F", e)}>
+						<FemaleIcon fill={childInfo.chl_sex === "F" ? "#F6714E" : "#8A8A8A"} />
 						여자
 					</Button>
 					<p className="body01">에요.</p>
@@ -107,7 +108,7 @@ function Page() {
 			</div>
 			<div className="flex flex-col justify-center items-center w-full py-[1rem] border-b-[1px] border-gray-97">
 				<SpeechBubble text="03" />
-				<p className="body0 my-[10px]">우리 아이는</p>
+				<p className="body1 my-[10px]">우리 아이는</p>
 				<div className="flex w-full items-center  justify-between">
 					<Select onValueChange={(value) => setChildInfo({ ...childInfo, chl_age: value })}>
 						<SelectTrigger className="w-[80%] border-b-[1px] border-gray-97  ">
@@ -124,15 +125,15 @@ function Page() {
 							))}
 						</SelectContent>
 					</Select>
-					<p className="body01 mx-1">에 갈거예요.</p>
+					<p className="body2 mx-1">에 갈거예요.</p>
 				</div>
 
 				<Button
 					size={"lg"}
 					variant="primary"
-					className="my-3 text-WHITE bg-orange-100 h-[56px] text-[1rem]"
+					className="my-3 h-[56px] text-[1rem]"
 					onClick={() => {
-						router.push("profile");
+						mutate(childInfo, { onSuccess, onError });
 					}}>
 					저장하고 검사 시작하기
 				</Button>
