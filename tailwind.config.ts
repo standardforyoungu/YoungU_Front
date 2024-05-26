@@ -39,6 +39,7 @@ const config = {
 			"orange-30": "rgba(254, 240, 237, 3)",
 			"orange-15": "rgba(254, 240, 237, 1.5)",
 			"orange-10": "rgba(254, 240, 237, 1)",
+			"orange-5": "rgba(246, 113, 78, 0.05)",
 			"mint-200": "#009CA9",
 			"mint-100": "#00B8C7",
 			"mint-10": "#00B8C71a",
