@@ -10,13 +10,19 @@ import {
 	AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "../ui/button";
+import { useDeleteWithdrawService } from "@/services/login/useDeleteWithdrawService";
 
 export default function WithdrawalModal() {
-	const { type, isOpen, onClose } = useModal();
+	const { type, isOpen, onClose, setOpenChange } = useModal();
 	const isModalOpen = isOpen && type === "withdrawal";
+	const { mutate, onSuccess, onError } = useDeleteWithdrawService();
 
+	const onWithdraw = () => {
+		mutate(undefined, { onSuccess, onError });
+		onClose();
+	};
 	return (
-		<AlertDialog open={isModalOpen}>
+		<AlertDialog open={isModalOpen} onOpenChange={setOpenChange}>
 			<AlertDialogContent>
 				<AlertDialogHeader>
 					<AlertDialogTitle className="head4 text-gray-20">회원탈퇴 확인</AlertDialogTitle>
@@ -30,7 +36,9 @@ export default function WithdrawalModal() {
 					<Button onClick={onClose} className="!h-[40px] !head5 bg-gray-95 text-gray-60 w-full hover:bg-gray-95">
 						취소
 					</Button>
-					<Button className="!h-[40px] !head5 text-White w-full hover:bg-orange-100">확인</Button>
+					<Button onClick={onWithdraw} className="!h-[40px] !head5 text-White w-full hover:bg-orange-100">
+						확인
+					</Button>
 				</AlertDialogFooter>
 			</AlertDialogContent>
 		</AlertDialog>
