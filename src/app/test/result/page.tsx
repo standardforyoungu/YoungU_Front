@@ -7,7 +7,7 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 
-function page() {
+function ResultPage() {
 	const { data, isSuccess } = useGetRecommendKdgnListQuery("ISTJ");
 
 	if (isSuccess) {
@@ -75,4 +75,4 @@ function page() {
 	);
 }
 
-export default page;
+export default ResultPage;

@@ -13,15 +13,17 @@ import { useDeleteChildInfoQuery, useGetChildInfoListQuery } from "@/api/child/c
 import { ChildProfileItem } from "@/components/molcules/ChildProfileItem/Index";
 import { ChildInfoInterface } from "@/api/child/child.schema";
 
-function page() {
+function ProfilePage() {
 	const { data, isSuccess } = useGetChildInfoListQuery("3483424773");
 	const router = useRouter();
 	const [check, setCheck] = useState(false);
 	const { onOpen } = useModal();
+	const mutation = useDeleteChildInfoQuery();
 
 	const deleteChildInfo = (chl_id: number) => {
-		const { data, isSuccess } = useDeleteChildInfoQuery("3483424773", chl_id);
+		mutation.mutate({ mbr_id: "3483424773", chl_id });
 	};
+
 	return (
 		<div className="px-[2rem] py-[1rem] w-full h-full">
 			<p className=" text-mint-200 body1 bg-mint-10 w-full h-[56px] flex justify-center items-center rounded-[8px] mt- ">
@@ -73,4 +75,4 @@ function page() {
 	);
 }
 
-export default page;
+export default ProfilePage;

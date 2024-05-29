@@ -1,31 +1,16 @@
 "use client";
 
 import { SpeechBubble } from "@/components/atoms/SpeechBubble/Index";
-import {
-	Select,
-	SelectContent,
-	SelectGroup,
-	SelectItem,
-	SelectLabel,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import React, { use, useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import MaleIcon from "../../../../public/icons/male.svg";
 import FemaleIcon from "../../../../public/icons/female.svg";
-// import { ReactComponent as MaleIcon } from "../../../../public/icons/male.svg";
-import femaleIcon from "../../../../public/icons/female.svg";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { ChildInfoInterface } from "@/api/child/child.schema";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { DevTool } from "@hookform/devtools";
 import { useRouter } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
-import { usePostSaveChildInfoQuery } from "@/api/child/child.query";
-import { userPostSaveChildInfoService } from "@/services/user/usePostSaveChildInfoService";
+import { usePostSaveChildInfoService } from "@/services/user/usePostSaveChildInfoService";
 
 const childAgeData = [
 	{
@@ -44,7 +29,7 @@ const childAgeData = [
 ];
 
 function Page() {
-	const { mutate, onSuccess, onError } = userPostSaveChildInfoService();
+	const { mutate, onSuccess, onError } = usePostSaveChildInfoService();
 	const router = useRouter();
 	const [hoverCheck, setHoverCheck] = useState({
 		man: false,

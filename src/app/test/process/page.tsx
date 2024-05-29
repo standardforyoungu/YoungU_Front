@@ -11,7 +11,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import LeftIcon from "../../../../public/icons/arrow-left.svg";
 import RightIcon from "../../../../public/icons/arrow-right.svg";
 
-function page() {
+function ProcessPage() {
 	const router = useRouter();
 	const { data: queryDate, isSuccess, isLoading } = useGetPropensityListQuery();
 	const { mutate, data: mutateData, isError } = usePostPropensitySaveQuery();
@@ -132,4 +132,4 @@ function page() {
 	);
 }
 
-export default page;
+export default ProcessPage;

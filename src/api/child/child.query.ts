@@ -16,13 +16,10 @@ export const useGetChildInfoListQuery = (mbr_id: string) => {
 	});
 };
 
-export const useDeleteChildInfoQuery = (mbr_id: string, chl_id: number) => {
+export const useDeleteChildInfoQuery = () => {
 	return useMutation({
 		mutationKey: ["DELETE", "deleteChildInfo"],
-		mutationFn: async () => {
-			await (
-				await http.delete(`/youngustandard/user/${mbr_id}/child`, { data: chl_id })
-			).data;
-		},
+		mutationFn: ({ mbr_id, chl_id }: { mbr_id: string; chl_id: number }) =>
+			http.delete(`/youngustandard/user/${mbr_id}/child`, { data: chl_id }).then((res) => res.data),
 	});
 };

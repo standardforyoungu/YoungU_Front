@@ -11,9 +11,11 @@ export default function AuthProvider() {
 	useEffect(() => {
 		if (!!window.localStorage.getItem("OU_UserAttribute")) {
 			path.includes("oauth") && router.push("/");
+			return;
 		} else {
 			path.includes("/child-list") && router.push("/");
 			["/test", "/setting"].includes(path) && router.push("/");
+			return;
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [path]);

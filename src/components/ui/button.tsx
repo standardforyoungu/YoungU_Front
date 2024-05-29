@@ -18,6 +18,8 @@ const buttonVariants = cva(
 				// orange-10 버튼 btn_list
 				secondary:
 					"bg-orange-10 !h-[36px] text-orange-100 !head6 disabled:bg-gray-99 disabled:text-gray-80 hover:bg-orange-15",
+				outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+				ghost: "hover:bg-accent hover:text-accent-foreground",
 				blank: "bg-White hover:border-orange-100 hover:text-orange-100 border-gray-95 border-[1px]",
 				disable: "bg-gray-99 text-gray-80",
 			},
@@ -26,6 +28,7 @@ const buttonVariants = cva(
 				lg: "w-full h-[56px] text-[1rem]",
 				md: "h-[40px] max-w-[180px] w-full",
 				sm: "h-[41px] max-w-[150px] w-full",
+				icon: "h-10 w-10",
 			},
 		},
 		defaultVariants: {

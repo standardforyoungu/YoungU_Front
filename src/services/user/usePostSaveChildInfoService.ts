@@ -1,13 +1,13 @@
-import { ChildInfoResSchema } from "@/api/child/child.schema";
+import { ChildInfoListInterface } from "@/api/child/child.schema";
 import { usePostChildInfoMutation } from "@/api/myPage/myPage.query";
 import { toast } from "@/utils/toast";
 import { useRouter } from "next/navigation";
 
-export const userPostSaveChildInfoService = () => {
+export const usePostSaveChildInfoService = () => {
 	const router = useRouter();
 	const mutation = usePostChildInfoMutation();
 
-	const onSuccess = (data: ChildInfoResSchema) => {
+	const onSuccess = (data: ChildInfoListInterface) => {
 		if (data?.result === "Success") {
 			if (typeof window !== "undefined") {
 				toast("Success", "아이정보 저장에 성공했습니다.");

@@ -1,5 +1,4 @@
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { http } from "../axios";
+import { useQuery } from "@tanstack/react-query";
 import { requestGetKdgnList, requestGetRecommendKdgnList } from "./list.api";
 import { KdgnListInterface, KdgnListReqInterface, RecommendKdgnListInterface } from "./list.schema";
 
