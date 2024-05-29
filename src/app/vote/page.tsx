@@ -65,10 +65,7 @@ export default function VotePage() {
 					</div>
 				))}
 			</div>
-			<Button
-				disabled={!selected.length}
-				onClick={onSubmit}
-				className="h-[56px] text-White !head4 mt-2 hover:bg-orange-200">
+			<Button disabled={!selected.length} variant={"big"} onClick={onSubmit} className="mt-2">
 				투표 하기
 			</Button>
 		</div>

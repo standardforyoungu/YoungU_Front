@@ -28,7 +28,6 @@ export default function InquiryPage() {
 		mode: "onBlur",
 	});
 
-
 	const onSubmit = (value: z.infer<typeof formSchema>) => {
 		form.reset();
 		onOpen("confirmEmail", { value, setIsLoading });
@@ -90,10 +89,7 @@ export default function InquiryPage() {
 									</FormItem>
 								)}
 							/>
-							<Button
-								className="h-[56px] bg-orange-100 !head4 text-White disabled:bg-gray-90"
-								type="submit"
-								disabled={!form.formState.isValid}>
+							<Button variant={"big"} type="submit" disabled={!form.formState.isValid}>
 								영유스탠다드에 문의하기
 							</Button>
 						</form>

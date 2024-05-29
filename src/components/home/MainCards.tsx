@@ -27,7 +27,7 @@ export default function MainCards() {
 			<div
 				className={`w-full h-fit rounded-[12px] py-8 flex flex-col gap-4 items-center bg-orange-10 hover:-translate-y-2 duration-300`}>
 				<Image src={`/icons/symbol_orange.svg`} alt="symbol" width={24} height={26} />
-				<h1 className={`text-orange-200 head3 text-center`}>
+				<h1 className={`text-orange-200 head3 text-white text-center`}>
 					성향검사를 통해
 					<br />
 					아이에게 맞는 학습법을 알아보세요!
@@ -35,7 +35,7 @@ export default function MainCards() {
 				<Image src={"/images/search.svg"} alt="cardImg" width={105} height={99} />
 				<Button
 					onClick={onClickBtn}
-					className="w-[180px] !h-[40px] flex gap-1 items-center bg-orange-100 text-White !head5 hover:bg-orange-200 disabled:test-gray-60 disabled:bg-gray-95">
+					className="w-[180px] !h-[40px] flex gap-1 items-center bg-orange-100 text-White !head5">
 					<span className="text-White head5">성향검사 시작하기</span>
 					<Image src={"/icons/arrow-right.svg"} alt="arrow" width={16} height={16} />
 				</Button>
