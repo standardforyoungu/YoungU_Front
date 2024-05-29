@@ -5,30 +5,25 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-	"inline-flex items-center justify-center whitespace-nowrap rounded-[8px] text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50  ",
+	"inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
 	{
 		variants: {
 			variant: {
-				// orange-100 버튼 btn_large
-				default:
-					"bg-orange-100 !h-[56px] text-White !head4 disabled:bg-gray-90 disabled:text-White hover:bg-orange-200",
-				// default와 동일
-				primary:
-					"bg-orange-100 !h-[56px] text-White !head4 disabled:bg-gray-90 disabled:text-White hover:bg-orange-200",
-				// orange-10 버튼 btn_list
-				secondary:
-					"bg-orange-10 !h-[36px] text-orange-100 !head6 disabled:bg-gray-99 disabled:text-gray-80 hover:bg-orange-15",
+				default: "bg-primary text-primary-foreground text-white hover:bg-primary/90",
+				destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
 				outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+				outlinePrimary: "text-primary border border-primary bg-background hover:bg-accent/60",
+				secondary: "bg-accent text-primary hover:bg-slate-100",
 				ghost: "hover:bg-accent hover:text-accent-foreground",
-				blank: "bg-White hover:border-orange-100 hover:text-orange-100 border-gray-95 border-[1px]",
-				disable: "bg-gray-99 text-gray-80",
+				link: "text-primary underline-offset-4 hover:underline",
+				disable: "bg-slate-100 text-slate-400 cursor-default",
 			},
 			size: {
-				default: "h-[40px] px-4 py-2",
-				lg: "w-full h-[56px] text-[1rem]",
-				md: "h-[40px] max-w-[180px] w-full",
-				sm: "h-[41px] max-w-[150px] w-full",
+				default: "h-12 px-5 py-2",
+				sm: "h-9 rounded-md px-4",
+				lg: "h-14 rounded-md px-10",
 				icon: "h-10 w-10",
+				iconSm: "h-[25px] w-[25px]",
 			},
 		},
 		defaultVariants: {
