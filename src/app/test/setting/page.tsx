@@ -72,7 +72,7 @@ function Page() {
 				<p className="body0 my-[10px]">우리 아이 성별은</p>
 				<div className="flex w-full items-center  justify-between">
 					<Button
-						variant={"blank"}
+						variant={"outline"}
 						size={"sm"}
 						className={`text-gray-60 ${childInfo.chl_sex === "man" ? "border-orange-100 text-orange-100" : ""} `}
 						onClick={(e) => onClickHandler("M", e)}>
@@ -81,7 +81,7 @@ function Page() {
 						남자
 					</Button>
 					<Button
-						variant={"blank"}
+						variant={"outline"}
 						size={"sm"}
 						className={`text-gray-60 ${childInfo.chl_sex === "female" ? "border-orange-100 text-orange-100" : ""} `}
 						onClick={(e) => onClickHandler("F", e)}>
@@ -115,7 +115,7 @@ function Page() {
 
 				<Button
 					size={"lg"}
-					variant="primary"
+					variant="big"
 					className="my-3 h-[56px] text-[1rem]"
 					onClick={() => {
 						mutate(childInfo, { onSuccess, onError });

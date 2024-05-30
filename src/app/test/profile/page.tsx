@@ -68,7 +68,7 @@ function ProfilePage() {
 					router.push("/test/process");
 				}}
 				size={"lg"}
-				variant={"primary"}>
+				variant={"big"}>
 				다음 단계로
 			</Button>
 		</div>

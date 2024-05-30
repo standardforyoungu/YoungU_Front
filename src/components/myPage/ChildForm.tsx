@@ -72,14 +72,14 @@ export default function ChildForm({ defaultValue, onSubmit }: Props) {
 										<div className="flex gap-[8px] w-full">
 											<Button
 												type="button"
-												variant={"blank"}
+												variant={"outline"}
 												className={`head5 w-full ${field.value === "M" && "border-orange-200 text-orange-200"}`}
 												onClick={() => field.onChange("M")}>
 												♂ 남자
 											</Button>
 											<Button
 												type="button"
-												variant={"blank"}
+												variant={"outline"}
 												className={`head5 flex gap-1 w-full ${
 													field.value === "F" && "border-orange-200 text-orange-200"
 												}`}
