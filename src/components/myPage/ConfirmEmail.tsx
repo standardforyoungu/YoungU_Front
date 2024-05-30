@@ -43,10 +43,10 @@ export default function ConfirmEmail() {
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter className="gap-[10px]">
-					<Button onClick={onClose} className="!h-[40px] !head5 bg-gray-95 text-gray-60 w-full hover:bg-gray-95">
+					<Button onClick={onClose} variant={"popup-secondary"} className="shrink-0">
 						아니요, 수정할게요
 					</Button>
-					<Button onClick={onConfirm} className="!h-[40px] !head5 text-White w-full hover:bg-orange-100">
+					<Button onClick={onConfirm} variant={"popup"} className="w-full">
 						네, 맞아요
 					</Button>
 				</AlertDialogFooter>

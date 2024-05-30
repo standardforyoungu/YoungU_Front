@@ -74,7 +74,7 @@ export default function ChildList() {
 										/>
 									</div>
 								</div>
-								<Button variant={"secondary"} disabled={!el?.chl_mbti}>
+								<Button variant={"list-big"} disabled={!el?.chl_mbti}>
 									검사 결과 보기
 								</Button>
 							</div>

@@ -21,7 +21,7 @@ const buttonVariants = cva(
 					"bg-orange-10 text-orange-100 !head6 !h-[36px] hover:bg-orange-15 disabled:bg-gray-99 disabled:text-gray-80",
 				big: "bg-orange-100 text-White !head4 !h-[56px] hover:bg-orange-200 disabled:bg-gray-90",
 				medium: "bg-orange-100 text-White !head5 !h-[40px] hover:bg-orange-200 disabled:bg-gray-95 disabled:bg-gray-60",
-				popup: "bg-orange-100 text-White !head5 !h-[40px]",
+				popup: "!bg-orange-100 text-White !head5 !h-[40px]",
 				"popup-secondary": "bg-gray-95 text-gray-60 !head5 !h-[40px]",
 			},
 			size: {

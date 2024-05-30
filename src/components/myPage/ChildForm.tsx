@@ -47,7 +47,7 @@ export default function ChildForm({ defaultValue, onSubmit }: Props) {
 										<Input
 											placeholder="별명을 입력해주세요."
 											{...field}
-											className={`w-full h-[40px] rounded-[6px] border border-gray-95 focus:border-orange-200 text-orange-200 head5 placeholder:text-gray-95 ${
+											className={`w-full h-[40px] rounded-[6px] border border-gray-95 focus:border-orange-200 text-orange-200 head5 placeholder:text-gray-60 ${
 												field.value && "border-orange-200"
 											}`}
 										/>
@@ -73,15 +73,17 @@ export default function ChildForm({ defaultValue, onSubmit }: Props) {
 											<Button
 												type="button"
 												variant={"outline"}
-												className={`head5 w-full ${field.value === "M" && "border-orange-200 text-orange-200"}`}
+												className={`head5 w-full border-gray-95 text-gray-60 ${
+													field.value === "M" && "border-orange-200 text-orange-200 hover:text-orange-200"
+												}`}
 												onClick={() => field.onChange("M")}>
 												♂ 남자
 											</Button>
 											<Button
 												type="button"
 												variant={"outline"}
-												className={`head5 flex gap-1 w-full ${
-													field.value === "F" && "border-orange-200 text-orange-200"
+												className={`head5 flex gap-1 border-gray-95 w-full text-gray-60 ${
+													field.value === "F" && "border-orange-200 text-orange-200 hover:text-orange-200"
 												}`}
 												onClick={() => field.onChange("F")}>
 												<span className="rotate-45">♀</span> 여자
@@ -104,7 +106,7 @@ export default function ChildForm({ defaultValue, onSubmit }: Props) {
 									<FormControl>
 										<Select value={field.value} onValueChange={field.onChange}>
 											<SelectTrigger
-												className={`w-full text-gray-95 border-gray-95 focus:border-orange-200 rounded-[6px] ${
+												className={`w-full text-gray-60 border-gray-95 focus:border-orange-200 rounded-[6px] ${
 													field.value && "border-orange-200 text-orange-200"
 												}`}>
 												<SelectValue
@@ -127,7 +129,7 @@ export default function ChildForm({ defaultValue, onSubmit }: Props) {
 							</FormItem>
 						)}
 					/>
-					<Button type="submit" variant={"default"} className="w-full mt-[12px]" disabled={!form.formState.isValid}>
+					<Button type="submit" variant={"big"} className="w-full mt-[12px]" disabled={!form.formState.isValid}>
 						저장하기
 					</Button>
 				</form>

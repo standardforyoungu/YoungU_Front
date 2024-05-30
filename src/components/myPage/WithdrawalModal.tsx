@@ -33,10 +33,10 @@ export default function WithdrawalModal() {
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter className="gap-[10px]">
-					<Button onClick={onClose} className="!h-[40px] !head5 bg-gray-95 text-gray-60 w-full hover:bg-gray-95">
+					<Button onClick={onClose} variant={"popup-secondary"} className="w-full">
 						취소
 					</Button>
-					<Button onClick={onWithdraw} className="!h-[40px] !head5 text-White w-full hover:bg-orange-100">
+					<Button onClick={onWithdraw} variant={"popup"} className="w-full">
 						확인
 					</Button>
 				</AlertDialogFooter>
