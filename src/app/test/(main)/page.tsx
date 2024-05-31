@@ -1,3 +1,5 @@
+"use client";
+
 import IconBadge from "@/components/@commons/IconBadge";
 import InfoBadge from "@/components/@commons/InfoBadge";
 import ContentBox from "@/components/@layouts/ContentBox";
@@ -6,8 +8,12 @@ import footerText from "./footer-data.json";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useGetUserInfo } from "@/hooks/myPage/useGetUserInfo";
 
 export default function TestPage() {
+	const { userInfo } = useGetUserInfo();
+	const childCnt = userInfo?.chl_list?.length ?? 0;
+
 	return (
 		<div className="w-full h-auto flex flex-col">
 			<ContentBox>
@@ -33,7 +39,7 @@ export default function TestPage() {
 					<div className="w-[10rem] h-[10rem] relative">
 						<Image src="/images/infoPic.svg" alt="infoPic" layout="fill" objectFit="cover" className="w-full" />
 					</div>
-					<Link href="/test/setting">
+					<Link href={childCnt ? "/test/profile" : "/test/setting"}>
 						<Button variant={"medium"} className="w-[13.5rem] mt-10">
 							성향 검사 시작하기
 						</Button>
