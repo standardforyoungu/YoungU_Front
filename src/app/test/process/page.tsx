@@ -121,7 +121,7 @@ function ProcessPage() {
 				</div>
 
 				{currentQuestionIdx === (queryDate?.question_list.length as number) - 1 ? (
-					<Button variant={"primary"} size={"lg"} onClick={completePropensityTest}>
+					<Button variant={"big"} size={"lg"} onClick={completePropensityTest}>
 						성향검사 완료하기
 					</Button>
 				) : (

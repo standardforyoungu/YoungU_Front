@@ -34,13 +34,8 @@ export default function TestPage() {
 						<Image src="/images/infoPic.svg" alt="infoPic" layout="fill" objectFit="cover" className="w-full" />
 					</div>
 					<Link href="/test/setting">
-						<Button
-							variant={"medium"}
-							className="text-WHITE w-[13.5rem] h-[3rem] mt-10 relative flex justify-center items-center gap-1">
-							<p className="body1 text-White">성향 검사 시작하기</p>
-							<div className="w-[1rem] h-[1rem] relative">
-								<Image src="/icons/arrow-right.svg" layout="fill" objectFit="cover" alt="arrow" />
-							</div>
+						<Button variant={"medium"} className="w-[13.5rem] mt-10">
+							성향 검사 시작하기
 						</Button>
 					</Link>
 				</div>

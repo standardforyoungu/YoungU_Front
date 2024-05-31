@@ -9,7 +9,7 @@ const buttonVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: "bg-primary text-primary-foreground text-white hover:bg-primary/90",
+				default: "bg-primary text-primary-foreground text-white",
 				destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
 				outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
 				outlinePrimary: "text-primary border border-primary bg-background hover:bg-accent/60",
@@ -21,7 +21,7 @@ const buttonVariants = cva(
 					"bg-orange-10 text-orange-100 !head6 !h-[36px] hover:bg-orange-15 disabled:bg-gray-99 disabled:text-gray-80",
 				big: "bg-orange-100 text-White !head4 !h-[56px] hover:bg-orange-200 disabled:bg-gray-90",
 				medium: "bg-orange-100 text-White !head5 !h-[40px] hover:bg-orange-200 disabled:bg-gray-95 disabled:bg-gray-60",
-				popup: "bg-orange-100 text-White !head5 !h-[40px]",
+				popup: "!bg-orange-100 text-White !head5 !h-[40px]",
 				"popup-secondary": "bg-gray-95 text-gray-60 !head5 !h-[40px]",
 				choice: "border-gray-95 border hover:border-orange-100 hover:text-orange-100 text-gray-60 !body2",
 			},

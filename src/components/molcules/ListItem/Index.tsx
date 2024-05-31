@@ -35,7 +35,7 @@ function ListItem({ title, phone, address, link }: ListItemInterface) {
 				<p className="body2 text-gray-40">정보 {address}</p>
 			</div>
 
-			<Button variant={link ? "primary" : "disable"} size={"lg"} className="my-[0.2rem]" onClick={onClickHandler}>
+			<Button variant={link ? "big" : "disable"} size={"lg"} className="my-[0.2rem]" onClick={onClickHandler}>
 				{link ? "홈페이지 바로가기" : "홈페이지를 찾을 수 없어요 :("}
 			</Button>
 		</div>
