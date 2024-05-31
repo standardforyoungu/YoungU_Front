@@ -23,6 +23,7 @@ const buttonVariants = cva(
 				medium: "bg-orange-100 text-White !head5 !h-[40px] hover:bg-orange-200 disabled:bg-gray-95 disabled:bg-gray-60",
 				popup: "bg-orange-100 text-White !head5 !h-[40px]",
 				"popup-secondary": "bg-gray-95 text-gray-60 !head5 !h-[40px]",
+				choice: "border-gray-95 border hover:border-orange-100 hover:text-orange-100 text-gray-60 !body2",
 			},
 			size: {
 				default: "h-12 px-5 py-2",

@@ -3,7 +3,7 @@
 import { SpeechBubble } from "@/components/atoms/SpeechBubble/Index";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import MaleIcon from "../../../../public/icons/male.svg";
 import FemaleIcon from "../../../../public/icons/female.svg";
@@ -72,20 +72,33 @@ function Page() {
 				<p className="body0 my-[10px]">우리 아이 성별은</p>
 				<div className="flex w-full items-center  justify-between">
 					<Button
-						variant={"blank"}
+						variant={"choice"}
 						size={"sm"}
-						className={`text-gray-60 ${childInfo.chl_sex === "man" ? "border-orange-100 text-orange-100" : ""} `}
-						onClick={(e) => onClickHandler("M", e)}>
-						{/* <Image src={maleIcon} alt="male" className="mx-1" /> */}
-						<MaleIcon fill={childInfo.chl_sex === "M" ? "#F6714E" : "#8A8A8A"} />
+						className={`${
+							childInfo.chl_sex === "M" ? "border-orange-100 text-orange-100" : "border-gray-95 text-gray-60"
+						} w-[40%] rounded-[6px]`}
+						onClick={(e) => onClickHandler("M", e)}
+						onMouseOver={() => setHoverCheck({ ...hoverCheck, man: true })}
+						onMouseLeave={() => setHoverCheck({ ...hoverCheck, man: false })}>
+						<MaleIcon
+							fill={childInfo.chl_sex === "M" ? "#F6714E" : "#8A8A8A"}
+							className={`${hoverCheck.man ? "fill-[#F6714E]" : ""}`}
+						/>
 						남자
 					</Button>
 					<Button
-						variant={"blank"}
+						variant={"choice"}
 						size={"sm"}
-						className={`text-gray-60 ${childInfo.chl_sex === "female" ? "border-orange-100 text-orange-100" : ""} `}
-						onClick={(e) => onClickHandler("F", e)}>
-						<FemaleIcon fill={childInfo.chl_sex === "F" ? "#F6714E" : "#8A8A8A"} />
+						className={`${
+							childInfo.chl_sex === "F" ? "border-orange-100 text-orange-100" : "border-gray-95 text-gray-60"
+						} w-[40%] rounded-[6px]`}
+						onClick={(e) => onClickHandler("F", e)}
+						onMouseOver={() => setHoverCheck({ ...hoverCheck, female: true })}
+						onMouseLeave={() => setHoverCheck({ ...hoverCheck, female: false })}>
+						<FemaleIcon
+							fill={childInfo.chl_sex === "F" ? "#F6714E" : "#8A8A8A"}
+							className={`${hoverCheck.female ? "fill-[#F6714E]" : ""}`}
+						/>
 						여자
 					</Button>
 					<p className="body01">에요.</p>
@@ -96,10 +109,13 @@ function Page() {
 				<p className="body1 my-[10px]">우리 아이는</p>
 				<div className="flex w-full items-center  justify-between">
 					<Select onValueChange={(value) => setChildInfo({ ...childInfo, chl_age: value })}>
-						<SelectTrigger className="w-[80%] border-b-[1px] border-gray-97  ">
-							<SelectValue placeholder="반을 선택해주세요." className="text-gray-95 placeholder:text-gray-95" />
+						<SelectTrigger
+							className={`w-[80%] border-b-[1px]  rounded-[8px]  ${
+								childInfo.chl_age ? "border-orange-100 text-orange-100" : "border-gray-97 text-gray-60"
+							}`}>
+							<SelectValue placeholder="반을 선택해주세요." className={`text-gray-95 placeholder:text-gray-95 `} />
 						</SelectTrigger>
-						<SelectContent className="border-b-[1px] border-gray-97 z-10 bg-White ">
+						<SelectContent className={`border-b-[1px] border-gray-97 z-10 bg-White   `}>
 							{childAgeData.map((data: any) => (
 								<SelectItem
 									key={data.age}
@@ -116,7 +132,7 @@ function Page() {
 				<Button
 					size={"lg"}
 					variant="big"
-					className="my-3 h-[56px] text-[1rem]"
+					className="my-3 max-h-[56px] text-[1rem] w-full rounded-[8px]"
 					onClick={() => {
 						mutate(childInfo, { onSuccess, onError });
 					}}>

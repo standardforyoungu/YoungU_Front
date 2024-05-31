@@ -68,7 +68,8 @@ function ProfilePage() {
 					router.push("/test/process");
 				}}
 				size={"lg"}
-				variant={"big"}>
+				variant={"big"}
+				className="w-full rounded-[8px]">
 				다음 단계로
 			</Button>
 		</div>
