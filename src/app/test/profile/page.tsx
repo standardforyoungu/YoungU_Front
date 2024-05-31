@@ -1,12 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { PenLine, Plus, Trash2 } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
 
-import MaleIcon from "../../../../public/icons/male.svg";
-import FemaleIcon from "../../../../public/icons/female.svg";
 import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/useModal";
 import { useDeleteChildInfoQuery, useGetChildInfoListQuery } from "@/api/child/child.query";
@@ -14,14 +11,14 @@ import { ChildProfileItem } from "@/components/molcules/ChildProfileItem/Index";
 import { ChildInfoInterface } from "@/api/child/child.schema";
 
 function ProfilePage() {
-	const { data, isSuccess } = useGetChildInfoListQuery("3483424773");
+	const { data, isSuccess } = useGetChildInfoListQuery();
 	const router = useRouter();
 	const [check, setCheck] = useState(false);
 	const { onOpen } = useModal();
 	const mutation = useDeleteChildInfoQuery();
 
 	const deleteChildInfo = (chl_id: number) => {
-		mutation.mutate({ mbr_id: "3483424773", chl_id });
+		mutation.mutate({ chl_id });
 	};
 
 	return (

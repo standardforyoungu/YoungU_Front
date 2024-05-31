@@ -6,8 +6,7 @@ import { DeleteChildInfoReqInterface, PatchChildInfoReqInterface, PostChildInfoR
 export const useGetUserInfoQuery = () => {
 	return useQuery({
 		queryKey: ["GET", "user"],
-		queryFn: () => http.get(`/youngustandard/user/3483424773`).then((res) => res.data),
-		enabled: !!window.localStorage.getItem("OU_UserAttribute"),
+		queryFn: () => http.get(`/youngustandard/user`).then((res) => res.data),
 	});
 };
 
@@ -15,8 +14,7 @@ export const useGetUserInfoQuery = () => {
 export const useGetChildInfoListQuery = () => {
 	return useQuery({
 		queryKey: ["GET", "childInfo"],
-		queryFn: () => http.get(`/youngustandard/user/3483424773/child`).then((res) => res.data),
-		enabled: !!window.localStorage.getItem("OU_UserAttribute"),
+		queryFn: () => http.get(`/youngustandard/user/child`).then((res) => res.data),
 	});
 };
 
@@ -25,13 +23,12 @@ export const useGetChildInfoQuery = (childId: number) => {
 	return useQuery({
 		queryKey: ["GET", "childInfo", childId],
 		queryFn: async () => {
-			const response = await http.get(`/youngustandard/user/3483424773/child`);
+			const response = await http.get(`/youngustandard/user/child`);
 			const data = await response.data;
 
 			const child = data?.child_list?.find(({ chl_id }: { chl_id: number }) => chl_id === childId) ?? null;
 			return { ...child, chl_age: child.chl_age.toString() };
 		},
-		enabled: !!window.localStorage.getItem("OU_UserAttribute"),
 	});
 };
 
@@ -40,7 +37,7 @@ export const usePostChildInfoMutation = () => {
 	return useMutation({
 		mutationKey: ["POST", "childInfo"],
 		mutationFn: (req: PostChildInfoReqInterface) =>
-			http.post(`/youngustandard/user/3483424773/child`, req).then((res) => res.data),
+			http.post(`/youngustandard/user/child`, req).then((res) => res.data),
 	});
 };
 
@@ -49,7 +46,7 @@ export const usePatchChildInfoMutation = () => {
 	return useMutation({
 		mutationKey: ["PATCH", "childInfo"],
 		mutationFn: (req: PatchChildInfoReqInterface) =>
-			http.patch(`/youngustandard/user/3483424773/child`, req).then((res) => res.data),
+			http.patch(`/youngustandard/user/child`, req).then((res) => res.data),
 	});
 };
 
@@ -58,6 +55,6 @@ export const useDeleteChildInfoMutation = () => {
 	return useMutation({
 		mutationKey: ["DELETE", "childInfo"],
 		mutationFn: (req: DeleteChildInfoReqInterface) =>
-			http.delete(`/youngustandard/user/3483424773/child`, { data: req }).then((res) => res.data),
+			http.delete(`/youngustandard/user/child`, { data: req }).then((res) => res.data),
 	});
 };

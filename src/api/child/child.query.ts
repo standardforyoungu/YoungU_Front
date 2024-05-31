@@ -9,17 +9,17 @@ export const usePostSaveChildInfoQuery = () => {
 	});
 };
 
-export const useGetChildInfoListQuery = (mbr_id: string) => {
+export const useGetChildInfoListQuery = () => {
 	return useQuery<ChildInfoListInterface, Error>({
 		queryKey: ["GET", "getChildInfoList"],
-		queryFn: async () => await (await http.get(`/youngustandard/user/${mbr_id}/child`)).data,
+		queryFn: async () => await (await http.get(`/youngustandard/user/child`)).data,
 	});
 };
 
 export const useDeleteChildInfoQuery = () => {
 	return useMutation({
 		mutationKey: ["DELETE", "deleteChildInfo"],
-		mutationFn: ({ mbr_id, chl_id }: { mbr_id: string; chl_id: number }) =>
-			http.delete(`/youngustandard/user/${mbr_id}/child`, { data: chl_id }).then((res) => res.data),
+		mutationFn: ({ chl_id }: { chl_id: number }) =>
+			http.delete(`/youngustandard/user/child`, { data: chl_id }).then((res) => res.data),
 	});
 };
