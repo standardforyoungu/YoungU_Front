@@ -1,146 +1,140 @@
 "use client";
 
-import { SpeechBubble } from "@/components/atoms/SpeechBubble/Index";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import React from "react";
+import * as z from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-import MaleIcon from "../../../../public/icons/male.svg";
-import FemaleIcon from "../../../../public/icons/female.svg";
 import { Button } from "@/components/ui/button";
-import { ChildInfoInterface } from "@/api/child/child.schema";
-import { useRouter } from "next/navigation";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { usePostSaveChildInfoService } from "@/services/user/usePostSaveChildInfoService";
+import { formSchema } from "@/components/myPage/ChildForm";
 
-const childAgeData = [
-	{
-		age: "4",
-		text: "4세 반",
-	},
-	{
-		age: "5",
-		text: "5세 반",
-	},
-	{ age: "6", text: "6세 반" },
-	{
-		age: "7",
-		text: "7세 반",
-	},
-];
-
-function Page() {
+export default function SettingPage() {
 	const { mutate, onSuccess, onError } = usePostSaveChildInfoService();
-	const router = useRouter();
-	const [hoverCheck, setHoverCheck] = useState({
-		man: false,
-		female: false,
+	const form = useForm<z.infer<typeof formSchema>>({
+		resolver: zodResolver(formSchema),
+		defaultValues: {
+			chl_nck_nm: "",
+			chl_sex: "",
+			chl_age: "",
+		},
+		mode: "onBlur",
 	});
 
-	const [childInfo, setChildInfo] = useState<ChildInfoInterface>({
-		chl_nck_nm: "",
-		chl_sex: "",
-		chl_age: "",
-	});
-
-	const onClickHandler = (sex: string, e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-		e.preventDefault();
-		setChildInfo({ ...childInfo, chl_sex: sex });
+	const onSubmit = (value: z.infer<typeof formSchema>) => {
+		mutate(value, { onSuccess, onError });
 	};
 
 	return (
-		<div className="px-[2rem] py-[1rem] w-full h-full">
-			<p className=" text-mint-200 body1 bg-mint-10 w-full h-[56px] flex justify-center items-center rounded-[8px] mt- ">
+		<div className="px-[20px] py-[12px]">
+			<p className="h-[72px] flex items-center justify-center bg-mint-10 text-mint-200 rounded-[8px] body1">
 				검사를 진행할 아이 정보를 작성해주세요.
 			</p>
-			<div className="flex flex-col justify-center items-center w-full py-[1rem] border-b-[1px] border-gray-97">
-				<SpeechBubble text="01" />
-				<p className="body0 my-[10px]">우리 아이 별명은</p>
-				<div className="flex w-full items-center justify-between">
-					<Input
-						type="text"
-						placeholder="별명을 입력해 주세요."
-						className="h-[40px] w-[85%] border-gray-95 rounded-[6px] placeholder:text-gray-95 body2 focus:border-orange-100"
-						value={childInfo.chl_nck_nm}
-						onChange={(e) => setChildInfo({ ...childInfo, chl_nck_nm: e.target.value })}
+			<Form {...form}>
+				<form onSubmit={form.handleSubmit(onSubmit)}>
+					<FormField
+						control={form.control}
+						name="chl_nck_nm"
+						render={({ field }) => (
+							<FormItem className="flex flex-col items-center gap-2 text-gray-10 head3 py-5 border-b border-gray-97">
+								<Image src={"/icons/bubble_1.svg"} alt="bubble" width={28} height={26} />
+								<FormLabel className="!head3">우리 아이 별명은</FormLabel>
+								<div className="flex gap-[8px] items-center w-full">
+									<FormControl>
+										<Input
+											placeholder="별명을 입력해주세요."
+											{...field}
+											className={`w-full h-[40px] rounded-[6px] border border-gray-95 focus:border-orange-200 text-orange-200 head5 placeholder:text-gray-60 ${
+												field.value && "border-orange-200"
+											}`}
+										/>
+									</FormControl>
+									<span className="shrink-0">에요.</span>
+								</div>
+								<FormDescription className="body3 text-gray-80">
+									*별명은 최대 10자로 한글, 영어, 숫자만 사용 가능해요
+								</FormDescription>
+							</FormItem>
+						)}
 					/>
-					<p className="body01 mx-1">에요.</p>
-				</div>
-				<p className="body3 text-gray-80 my-2">*별명은 최대 10자로 한글, 영어, 숫자만 사용 가능해요</p>
-			</div>
-			<div className="flex flex-col justify-center items-center w-full py-[1rem] border-b-[1px] border-gray-97">
-				<SpeechBubble text="02" />
-				<p className="body0 my-[10px]">우리 아이 성별은</p>
-				<div className="flex w-full items-center  justify-between">
-					<Button
-						variant={"choice"}
-						size={"sm"}
-						className={`${
-							childInfo.chl_sex === "M" ? "border-orange-100 text-orange-100" : "border-gray-95 text-gray-60"
-						} w-[40%] rounded-[6px]`}
-						onClick={(e) => onClickHandler("M", e)}
-						onMouseOver={() => setHoverCheck({ ...hoverCheck, man: true })}
-						onMouseLeave={() => setHoverCheck({ ...hoverCheck, man: false })}>
-						<MaleIcon
-							fill={childInfo.chl_sex === "M" ? "#F6714E" : "#8A8A8A"}
-							className={`${hoverCheck.man ? "fill-[#F6714E]" : ""}`}
-						/>
-						남자
+					<FormField
+						control={form.control}
+						name="chl_sex"
+						render={({ field }) => (
+							<FormItem className="flex flex-col items-center gap-2 text-gray-10 head3 py-5 border-b border-gray-97">
+								<Image src={"/icons/bubble_2.svg"} alt="bubble" width={28} height={26} />
+								<FormLabel className="!head3">우리 아이 성별은</FormLabel>
+								<div className="w-full flex gap-[8px] items-center">
+									<FormControl>
+										<div className="flex gap-[8px] w-full">
+											<Button
+												type="button"
+												variant={"outline"}
+												className={`head5 w-full border-gray-95 text-gray-60 ${
+													field.value === "M" && "border-orange-200 text-orange-200 hover:text-orange-200"
+												}`}
+												onClick={() => field.onChange("M")}>
+												♂ 남자
+											</Button>
+											<Button
+												type="button"
+												variant={"outline"}
+												className={`head5 flex gap-1 border-gray-95 w-full text-gray-60 ${
+													field.value === "F" && "border-orange-200 text-orange-200 hover:text-orange-200"
+												}`}
+												onClick={() => field.onChange("F")}>
+												<span className="rotate-45">♀</span> 여자
+											</Button>
+										</div>
+									</FormControl>
+									<span className="shrink-0">에요.</span>
+								</div>
+							</FormItem>
+						)}
+					/>
+					<FormField
+						control={form.control}
+						name="chl_age"
+						render={({ field }) => (
+							<FormItem className="flex flex-col items-center gap-2 text-gray-10 head3 py-5">
+								<Image src={"/icons/bubble_3.svg"} alt="bubble" width={28} height={26} />
+								<FormLabel className="!head3">우리 아이는</FormLabel>
+								<div className="flex gap-[8px] items-center w-full">
+									<FormControl>
+										<Select value={field.value} onValueChange={field.onChange}>
+											<SelectTrigger
+												className={`w-full text-gray-60 border-gray-95 focus:border-orange-200 rounded-[6px] ${
+													field.value && "border-orange-200 text-orange-200"
+												}`}>
+												<SelectValue
+													placeholder="반을 선택해주세요."
+													className="placeholder:text-gray-95 text-orange-200">
+													{field.value ? `${field.value}세 반` : ""}
+												</SelectValue>
+											</SelectTrigger>
+											<SelectContent className="bg-White shadow-lg rounded-[6px] border-none">
+												{["4", "5", "6", "7"].map((el) => (
+													<SelectItem value={el} key={el} className={`${field.value === el && "text-orange-200"}`}>
+														{el}세 반
+													</SelectItem>
+												))}
+											</SelectContent>
+										</Select>
+									</FormControl>
+									<span className="shrink-0">에 갈거예요.</span>
+								</div>
+							</FormItem>
+						)}
+					/>
+					<Button type="submit" variant={"big"} className="w-full mt-[12px]" disabled={!form.formState.isValid}>
+						저장하고 검사 시작하기
 					</Button>
-					<Button
-						variant={"choice"}
-						size={"sm"}
-						className={`${
-							childInfo.chl_sex === "F" ? "border-orange-100 text-orange-100" : "border-gray-95 text-gray-60"
-						} w-[40%] rounded-[6px]`}
-						onClick={(e) => onClickHandler("F", e)}
-						onMouseOver={() => setHoverCheck({ ...hoverCheck, female: true })}
-						onMouseLeave={() => setHoverCheck({ ...hoverCheck, female: false })}>
-						<FemaleIcon
-							fill={childInfo.chl_sex === "F" ? "#F6714E" : "#8A8A8A"}
-							className={`${hoverCheck.female ? "fill-[#F6714E]" : ""}`}
-						/>
-						여자
-					</Button>
-					<p className="body01">에요.</p>
-				</div>
-			</div>
-			<div className="flex flex-col justify-center items-center w-full py-[1rem] border-b-[1px] border-gray-97">
-				<SpeechBubble text="03" />
-				<p className="body1 my-[10px]">우리 아이는</p>
-				<div className="flex w-full items-center  justify-between">
-					<Select onValueChange={(value) => setChildInfo({ ...childInfo, chl_age: value })}>
-						<SelectTrigger
-							className={`w-[80%] border-b-[1px]  rounded-[8px]  ${
-								childInfo.chl_age ? "border-orange-100 text-orange-100" : "border-gray-97 text-gray-60"
-							}`}>
-							<SelectValue placeholder="반을 선택해주세요." className={`text-gray-95 placeholder:text-gray-95 `} />
-						</SelectTrigger>
-						<SelectContent className={`border-b-[1px] border-gray-97 z-10 bg-White   `}>
-							{childAgeData.map((data: any) => (
-								<SelectItem
-									key={data.age}
-									className="focus:bg-orange-10 focus:text-orange-100 h-[42px]"
-									value={data.age}>
-									{data.text}
-								</SelectItem>
-							))}
-						</SelectContent>
-					</Select>
-					<p className="body2 mx-1">에 갈거예요.</p>
-				</div>
-
-				<Button
-					size={"lg"}
-					variant="big"
-					className="my-3 max-h-[56px] text-[1rem] w-full rounded-[8px]"
-					onClick={() => {
-						mutate(childInfo, { onSuccess, onError });
-					}}>
-					저장하고 검사 시작하기
-				</Button>
-			</div>
+				</form>
+			</Form>
 		</div>
 	);
 }
-
-export default Page;
