@@ -1,7 +1,7 @@
 import { http } from "../axios";
-import { KdgnListInterface, KdgnListReqInterface, RecommendKdgnListInterface } from "./list.schema";
+import { KdgnListReqInterface, KdgnListResInterface, RecommendKdgnListInterface } from "./list.schema";
 
-export const requestGetKdgnList = async (req: KdgnListReqInterface): Promise<KdgnListInterface> => {
+export const requestGetKdgnList = async (req: KdgnListReqInterface): Promise<KdgnListResInterface> => {
 	try {
 		return await (
 			await http.get(`/youngustandard/${req.regn}/${req.city_cd}/${req.offset}`)

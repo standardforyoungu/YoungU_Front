@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { requestGetKdgnList, requestGetRecommendKdgnList } from "./list.api";
-import { KdgnListInterface, KdgnListReqInterface, RecommendKdgnListInterface } from "./list.schema";
+import { KdgnListReqInterface, KdgnListResInterface, RecommendKdgnListInterface } from "./list.schema";
 
 export const useGetKdgnListQuery = (req: KdgnListReqInterface) => {
-	return useQuery<KdgnListInterface>({
+	return useQuery<KdgnListResInterface>({
 		queryKey: ["GET", req],
 		queryFn: () => requestGetKdgnList(req),
 	});

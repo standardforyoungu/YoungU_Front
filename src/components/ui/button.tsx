@@ -16,7 +16,7 @@ const buttonVariants = cva(
 				secondary: "bg-accent text-primary hover:bg-slate-100",
 				ghost: "hover:bg-accent hover:text-accent-foreground",
 				link: "text-primary underline-offset-4 hover:underline",
-				disable: "bg-slate-100 text-slate-400 cursor-default",
+				disable: "bg-gray-99 text-gray-80 !head6 !h-[36px] cursor-default",
 				"list-big":
 					"bg-orange-10 text-orange-100 !head6 !h-[36px] hover:bg-orange-15 disabled:bg-gray-99 disabled:text-gray-80",
 				big: "bg-orange-100 text-White !head4 !h-[56px] hover:bg-orange-200 disabled:bg-gray-90",

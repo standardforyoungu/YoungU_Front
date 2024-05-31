@@ -1,6 +1,5 @@
 "use client";
 
-import { useGetKdgnListQuery } from "@/api/list/list.query";
 import { KdgnListInterface } from "@/api/list/list.schema";
 import ListItem from "@/components/molcules/ListItem/Index";
 import { Button } from "@/components/ui/button";
@@ -12,47 +11,76 @@ import {
 	PaginationNext,
 	PaginationPrevious,
 } from "@/components/ui/pagination";
+import { useGetKdgnList } from "@/hooks/list/useGetKdgnList";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import React from "react";
+import React, { useState } from "react";
 
 function InfoListPage() {
 	const router = useRouter();
-	const { data, isSuccess } = useGetKdgnListQuery({ regn: 1, city_cd: 1, offset: 1 });
+	const [currentPageNum, setCurrentPageNum] = useState(1);
+	const { isSuccess, lastPageNum, currentPage, classList } = useGetKdgnList({
+		regn: 1,
+		city_cd: 1,
+		offset: currentPageNum,
+	});
 
 	return (
 		<>
 			{isSuccess ? (
 				<div className="h-full">
-					<div className="py-[1.5rem] px-[1.5rem]">
-						{isSuccess &&
-							data?.engl_kd_clas_list?.map((item: KdgnListInterface) => (
-								<ListItem
-									title={item.engl_kd_clas_nm}
-									phone={item.engl_kd_clas_telno}
-									address={item.engl_kd_clas_addr}
-									link={item.engl_kd_clas_lnk}
-									key={item.engl_kd_clas_id}
-								/>
-							))}
+					<div className="px-[1.5rem]">
+						{classList?.map((item: KdgnListInterface) => (
+							<ListItem
+								title={item.engl_kd_clas_nm}
+								phone={item.engl_kd_clas_telno}
+								address={item.engl_kd_clas_addr}
+								link={item.engl_kd_clas_lnk}
+								key={item.engl_kd_clas_id}
+							/>
+						))}
 					</div>
 
 					<Pagination>
 						<PaginationContent>
 							<PaginationItem>
-								<PaginationPrevious href="#" />
+								<PaginationPrevious
+									href="#"
+									onClick={() => {
+										if (currentPage! <= 1) {
+											return;
+										} else {
+											setCurrentPageNum(1);
+										}
+									}}
+								/>
 							</PaginationItem>
 							<PaginationItem>
-								{isSuccess &&
-									Array.from({ length: data.last_page_num }, (_, index) => (
-										<PaginationLink key={index} href="#" className="text-Black w-[32px] h-[32px] bg-gray-99 mx-1 ">
+								{lastPageNum &&
+									Array.from({ length: lastPageNum }, (_, index) => (
+										<PaginationLink
+											onClick={() => setCurrentPageNum(index + 1)}
+											key={index}
+											href="#"
+											className={`w-[32px] h-[32px] mx-1 text-gray-80 hover:text-gray-10 hover:bg-gray-99 ${
+												index + 1 === currentPageNum && "text-gray-10 bg-gray-99"
+											}`}>
 											{index + 1}
 										</PaginationLink>
 									))}
 							</PaginationItem>
 							<PaginationItem>
-								<PaginationNext href="#" />
+								<PaginationNext
+									onClick={() => {
+										if (currentPage! >= lastPageNum!) {
+											return;
+										} else {
+											setCurrentPageNum(lastPageNum!);
+										}
+									}}
+									href="#"
+								/>
 							</PaginationItem>
 						</PaginationContent>
 					</Pagination>

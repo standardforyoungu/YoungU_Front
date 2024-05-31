@@ -12,7 +12,7 @@ export interface KdgnListReqInterface {
 	offset: number;
 }
 
-export interface KdgnListInterface {
+export interface KdgnListResInterface {
 	result: string;
 	last_page_num: number;
 	current_page: number;
