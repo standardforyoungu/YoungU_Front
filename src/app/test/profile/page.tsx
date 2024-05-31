@@ -57,7 +57,7 @@ function ProfilePage() {
 				))}
 
 			<Button
-				className="rounded-[12px] p-[20px] h-[84px] bg-gray-99 flex justify-center items-center gap-2 w-full mb-[35px]"
+				className="rounded-[12px] p-[20px] h-[84px] bg-gray-99 flex justify-center items-center gap-2 w-full my-[35px] "
 				onClick={() => onOpen("maximumChild")}>
 				<Image src={"/icons/add.svg"} alt="addIcon" width={22} height={22} />
 				<p className="text-gray-80 head5">아이 정보 추가하기 </p>
@@ -68,7 +68,7 @@ function ProfilePage() {
 					router.push("/test/process");
 				}}
 				size={"lg"}
-				variant={"primary"}>
+				variant={"big"}>
 				다음 단계로
 			</Button>
 		</div>

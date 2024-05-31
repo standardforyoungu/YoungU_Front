@@ -35,7 +35,7 @@ export default function TestPage() {
 					</div>
 					<Link href="/test/setting">
 						<Button
-							variant={"primary"}
+							variant={"medium"}
 							className="text-WHITE w-[13.5rem] h-[3rem] mt-10 relative flex justify-center items-center gap-1">
 							<p className="body1 text-White">성향 검사 시작하기</p>
 							<div className="w-[1rem] h-[1rem] relative">

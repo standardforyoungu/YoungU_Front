@@ -115,7 +115,7 @@ function Page() {
 
 				<Button
 					size={"lg"}
-					variant="primary"
+					variant="big"
 					className="my-3 h-[56px] text-[1rem]"
 					onClick={() => {
 						mutate(childInfo, { onSuccess, onError });
