@@ -40,8 +40,20 @@ function ResultPage() {
 							height={94}
 							className="w-[75%] max-h-[126px]"
 						/>
-
-						<AnimalIcon className="absolute top-[80%] left-[50%] translate-x-[-50%] translate-y-[-80%]" />
+						<motion.div
+							animate={{
+								opacity: [0, 1, 1, 1],
+								scale: [0, 1, 0.8, 1],
+								rotate: [0, 0, -20, 0],
+							}}
+							transition={{
+								duration: 0.7,
+								delay: 1.5,
+							}}
+							className="absolute top-[53%] left-[35%]">
+							<Image src={"/images/animal_hedgehog.svg"} alt="결과 이미지" width={102} height={72} />
+							{/* // <AnimalIcon className="absolute top-[80%] left-[50%] translate-x-[-50%] translate-y-[-80%]" /> */}
+						</motion.div>
 					</div>
 				</div>
 				<div className="h-[154px]  bg-orange-5 w-full rounded-b-[16px] flex flex-col items-center px-[40px] pt-[24px] ">
