@@ -4,26 +4,51 @@ import { DeleteChildInfoReqInterface, PatchChildInfoReqInterface, PostChildInfoR
 
 // 유저 정보 조회
 export const useGetUserInfoQuery = () => {
+	let mbr_id: string;
+	if (typeof window !== "undefined") {
+		try {
+			mbr_id = window.localStorage.getItem("mbr_id") ?? "";
+		} catch {
+			mbr_id = "";
+		}
+	}
 	return useQuery({
 		queryKey: ["GET", "user"],
-		queryFn: () => http.get(`/youngustandard/user`).then((res) => res.data),
+		queryFn: () => http.get(`/youngustandard/user/${mbr_id}`).then((res) => res.data),
+		enabled: typeof window !== undefined,
 	});
 };
 
 // 아이 정보 리스트 조회
 export const useGetChildInfoListQuery = () => {
+	let mbr_id: string;
+	if (typeof window !== "undefined") {
+		try {
+			mbr_id = window.localStorage.getItem("mbr_id") ?? "";
+		} catch {
+			mbr_id = "";
+		}
+	}
 	return useQuery({
 		queryKey: ["GET", "childInfo"],
-		queryFn: () => http.get(`/youngustandard/user/child`).then((res) => res.data),
+		queryFn: () => http.get(`/youngustandard/user/${mbr_id}/child`).then((res) => res.data),
 	});
 };
 
 // 아이 정보 조회
 export const useGetChildInfoQuery = (childId: number) => {
+	let mbr_id: string;
+	if (typeof window !== "undefined") {
+		try {
+			mbr_id = window.localStorage.getItem("mbr_id") ?? "";
+		} catch {
+			mbr_id = "";
+		}
+	}
 	return useQuery({
 		queryKey: ["GET", "childInfo", childId],
 		queryFn: async () => {
-			const response = await http.get(`/youngustandard/user/child`);
+			const response = await http.get(`/youngustandard/user/${mbr_id}/child`);
 			const data = await response.data;
 
 			const child = data?.child_list?.find(({ chl_id }: { chl_id: number }) => chl_id === childId) ?? null;
@@ -34,27 +59,51 @@ export const useGetChildInfoQuery = (childId: number) => {
 
 // 아이 정보 저장
 export const usePostChildInfoMutation = () => {
+	let mbr_id: string;
+	if (typeof window !== "undefined") {
+		try {
+			mbr_id = window.localStorage.getItem("mbr_id") ?? "";
+		} catch {
+			mbr_id = "";
+		}
+	}
 	return useMutation({
 		mutationKey: ["POST", "childInfo"],
 		mutationFn: (req: PostChildInfoReqInterface) =>
-			http.post(`/youngustandard/user/child`, req).then((res) => res.data),
+			http.post(`/youngustandard/user/${mbr_id}/child`, req).then((res) => res.data),
 	});
 };
 
 // 아이 정보 수정
 export const usePatchChildInfoMutation = () => {
+	let mbr_id: string;
+	if (typeof window !== "undefined") {
+		try {
+			mbr_id = window.localStorage.getItem("mbr_id") ?? "";
+		} catch {
+			mbr_id = "";
+		}
+	}
 	return useMutation({
 		mutationKey: ["PATCH", "childInfo"],
 		mutationFn: (req: PatchChildInfoReqInterface) =>
-			http.patch(`/youngustandard/user/child`, req).then((res) => res.data),
+			http.patch(`/youngustandard/user/${mbr_id}/child`, req).then((res) => res.data),
 	});
 };
 
 // 아이 정보 삭제
 export const useDeleteChildInfoMutation = () => {
+	let mbr_id: string;
+	if (typeof window !== "undefined") {
+		try {
+			mbr_id = window.localStorage.getItem("mbr_id") ?? "";
+		} catch {
+			mbr_id = "";
+		}
+	}
 	return useMutation({
 		mutationKey: ["DELETE", "childInfo"],
 		mutationFn: (req: DeleteChildInfoReqInterface) =>
-			http.delete(`/youngustandard/user/child`, { data: req }).then((res) => res.data),
+			http.delete(`/youngustandard/user/${mbr_id}/child`, { data: req }).then((res) => res.data),
 	});
 };

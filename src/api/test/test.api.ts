@@ -16,11 +16,15 @@ export const requestGetPropensityList = async () => {
 };
 
 export const requestSavePropensityResult = async (req: PropensityResultSaveInterface) => {
-	try {
-		return await (
-			await http.post(`/youngustandard/propensity/result/3478817030`, req)
-		).data;
-	} catch (error) {
-		throw error;
+	let mbr_id = "";
+
+	if (typeof window !== "undefined") {
+		try {
+			mbr_id = window.localStorage.getItem("mbr_id") ?? "";
+		} catch (error) {
+			console.error("로컬 스토리지 접근 중 에러 발생:", error);
+		}
 	}
+
+	return await http.post(`/youngustandard/propensity/result/${mbr_id}`, req).then((res) => res.data);
 };
