@@ -12,8 +12,10 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { usePostSaveChildInfoService } from "@/services/user/usePostSaveChildInfoService";
 import { formSchema } from "@/components/myPage/ChildForm";
+import { useRouter } from "next/navigation";
 
 export default function SettingPage() {
+	const router = useRouter();
 	const { mutate, onSuccess, onError } = usePostSaveChildInfoService();
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -27,6 +29,7 @@ export default function SettingPage() {
 
 	const onSubmit = (value: z.infer<typeof formSchema>) => {
 		mutate(value, { onSuccess, onError });
+		// TODO_JIYEON : onSuccess 시 해당 아이의 idx를 받아와햐 함 -> router.push(`/test/process?childIdx=${childIdx}`)
 	};
 
 	return (
