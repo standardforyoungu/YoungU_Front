@@ -5,18 +5,24 @@ import { PropensityResultSaveInterface } from "@/api/test/test.schema";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { toast } from "@/utils/toast";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useMemo, useState } from "react";
 
 import LeftIcon from "../../../../public/icons/arrow-left.svg";
 import RightIcon from "../../../../public/icons/arrow-right.svg";
 
 function ProcessPage() {
+	const searchParams = useSearchParams();
+	const childIdx = searchParams?.get("childIdx") as string;
 	const router = useRouter();
+
+	// 질문 리스트
 	const { data: queryDate, isSuccess, isLoading } = useGetPropensityListQuery();
+	// 질문 저장
 	const { mutate, data: mutateData, isError } = usePostPropensitySaveQuery();
+
 	const [userPropensity, setUserPropensity] = useState<PropensityResultSaveInterface>({
-		chl_id: 1,
+		chl_id: +childIdx,
 		result_list: new Array(20).fill(""),
 	});
 	const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
