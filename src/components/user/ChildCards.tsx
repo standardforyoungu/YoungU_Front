@@ -1,57 +1,61 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import React, { useState } from "react";
-
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import React from "react";
 import { useModal } from "@/hooks/useModal";
-import { ChildList as ChildListSchema } from "@/api/user/user.schema";
-import { Plus, Trash2 } from "lucide-react";
-import { Checkbox } from "@/components/ui/checkbox";
-import { CheckedState } from "@radix-ui/react-checkbox";
 import { useGetChildListInfo } from "@/hooks/user/useGetChildListInfo";
+import { ChildList as ChildListType } from "@/api/user/user.schema";
 
-function ProfilePage() {
-	const { childList } = useGetChildListInfo();
+import { Checkbox } from "../ui/checkbox";
+import { CheckedState } from "@radix-ui/react-checkbox";
+import { Button } from "../ui/button";
+import { PenLine, Plus, Trash2 } from "lucide-react";
+
+interface Props {
+	type: "test" | "myPage";
+	checked?: number;
+	setChecked?: (checked: number) => void;
+}
+
+export default function ChildCards({ type, checked, setChecked }: Props) {
 	const router = useRouter();
+	const { childList } = useGetChildListInfo();
 	const { onOpen } = useModal();
-	const [checked, setChecked] = useState<number>();
 
 	const onClickAddBtn = () => {
 		if (childList?.length >= 3) {
 			onOpen("maximumChild");
 		} else {
-			router.push("/test/add-child");
+			router.push(type === "test" ? "/test/add-child" : "/my-page/child-list/add-child");
 		}
+	};
+
+	const onClickEditBtn = (idx: number) => {
+		router.push(`/my-page/child-list/edit-child/${idx}`);
 	};
 
 	const onClickDeleteBtn = (idx: number) => {
 		onOpen("confirmDeleteChild", { idx });
 	};
 
-	const onNextStep = () => {
-		router.push(`/test/process?childIdx=${checked}`);
-	};
-
 	return (
-		<div className="px-[2rem] py-[1rem] w-full h-full">
-			<p className=" text-mint-200 body1 bg-mint-10 w-full h-[56px] flex justify-center items-center rounded-[8px] mt- ">
-				검사를 진행할 아이 정보를 선택해주세요.
-			</p>
-			{childList && (
+		<>
+			{!!childList?.length ? (
 				<div className="pt-[20px] pb-[36px]">
 					<div className="flex flex-col gap-3 pb-3">
-						{childList.map((el: ChildListSchema, index: number) => (
+						{childList.map((el: ChildListType, index: number) => (
 							<div key={el?.chl_id} className="flex gap-4 items-center">
-								<Checkbox
-									checked={el?.chl_id === checked}
-									onCheckedChange={(checked: CheckedState) => {
-										if (checked) {
-											setChecked(el?.chl_id);
-										}
-									}}
-								/>
+								{type === "test" && (
+									<Checkbox
+										checked={el?.chl_id === checked}
+										onCheckedChange={(checked: CheckedState) => {
+											if (checked && !!setChecked) {
+												setChecked(el?.chl_id);
+											}
+										}}
+									/>
+								)}
 								<div className="flex flex-col gap-[10px] p-4 border border-gray-97 rounded-[12px] w-full">
 									<div className="flex justify-between items-center">
 										<div className="flex gap-2">
@@ -78,6 +82,13 @@ function ProfilePage() {
 											</div>
 										</div>
 										<div className="flex flex-col gap-1">
+											{type === "myPage" && (
+												<PenLine
+													onClick={() => onClickEditBtn(el?.chl_id)}
+													size={22}
+													className="text-gray-80 cursor-pointer"
+												/>
+											)}
 											<Trash2
 												onClick={() => onClickDeleteBtn(el?.chl_id)}
 												size={22}
@@ -98,12 +109,18 @@ function ProfilePage() {
 						<p className="text-gray-80 head5">아이 정보 추가하기</p>
 					</Button>
 				</div>
+			) : (
+				<div className="flex flex-col items-center justify-center gap-4 h-full">
+					<Image src="/images/icon_diabled.svg" alt="logo" width={72} height={72} />
+					<div className="flex flex-col gap-[2px] items-center">
+						<p className="head4 text-gray-40">등록된 아이가 없습니다</p>
+						<p className="body1 text-gray-60">아이정보를 추가해주세요</p>
+					</div>
+					<Button className="bg-orange-10 text-orange-100 head5" onClick={onClickAddBtn}>
+						아이 정보 추가
+					</Button>
+				</div>
 			)}
-			<Button onClick={onNextStep} size={"lg"} variant={"big"} className="w-full rounded-[8px]">
-				다음 단계로
-			</Button>
-		</div>
+		</>
 	);
 }
-
-export default ProfilePage;
