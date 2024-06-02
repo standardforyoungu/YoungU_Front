@@ -6,6 +6,7 @@ import ConfirmEmail from "@/components/myPage/ConfirmEmail";
 import MaximumChildModal from "@/components/myPage/MaximumChildModal";
 import WithdrawalModal from "@/components/myPage/WithdrawalModal";
 import ReviewModal from "@/components/test/ReviewModal";
+import Share from "@/components/test/Share";
 import React, { useEffect, useState } from "react";
 
 export default function ModalProvider() {
@@ -27,6 +28,7 @@ export default function ModalProvider() {
 			<ConfirmDeleteChildModal />
 			<ConfirmEmail />
 			<ReviewModal />
+			<Share />
 		</div>
 	);
 }

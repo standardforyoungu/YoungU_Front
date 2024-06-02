@@ -1,17 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import { requestGetKdgnList, requestGetRecommendKdgnList } from "./list.api";
 import { KdgnListReqInterface, KdgnListResInterface, RecommendKdgnListInterface } from "./list.schema";
+import { http } from "../axios";
 
 export const useGetKdgnListQuery = (req: KdgnListReqInterface) => {
 	return useQuery<KdgnListResInterface>({
 		queryKey: ["GET", req],
-		queryFn: () => requestGetKdgnList(req),
+		queryFn: () => http.get(`/youngustandard/${req.regn}/${req.city_cd}/${req.offset}`).then((res) => res.data),
 	});
 };
 
 export const useGetRecommendKdgnListQuery = (prpns_data: string) => {
 	return useQuery<RecommendKdgnListInterface>({
 		queryKey: ["GET", prpns_data],
-		queryFn: () => requestGetRecommendKdgnList(prpns_data),
+		queryFn: () => http.get(`youngustandard/recommend/${prpns_data}`).then((res) => res.data),
 	});
 };

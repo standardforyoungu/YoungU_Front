@@ -8,7 +8,8 @@ export type ModalType =
 	| "confirmEmail"
 	| "alert"
 	| "confirm"
-	| "review";
+	| "review"
+	| "share";
 
 /**
  * ModalStore

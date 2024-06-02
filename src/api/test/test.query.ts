@@ -24,3 +24,18 @@ export const usePostPropensityResultMutation = () => {
 			http.post(`/youngustandard/propensity/result/${mbr_id}`, req).then((res) => res.data),
 	});
 };
+
+export const useGetPropensityResultQuery = (chl_id: string) => {
+	let mbr_id: string;
+	if (typeof window !== "undefined") {
+		try {
+			mbr_id = window.localStorage.getItem("mbr_id") ?? "";
+		} catch {
+			mbr_id = "";
+		}
+	}
+	return useQuery({
+		queryKey: ["GET", "propensity", "result", chl_id],
+		queryFn: () => http.get(`/youngustandard/propensity/result/${mbr_id}/${chl_id}`).then((res) => res.data),
+	});
+};
