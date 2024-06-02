@@ -8,6 +8,7 @@ import { usePostPropensityResultService } from "@/services/test/usePostPropensit
 
 import { Progress } from "../ui/progress";
 import { ArrowLeft } from "lucide-react";
+import { Button } from "../ui/button";
 
 export default function ProcessPage() {
 	const searchParams = useSearchParams();
@@ -17,6 +18,8 @@ export default function ProcessPage() {
 	const [result, setResult] = useState<Array<string>>([]);
 	const currentQuestion: QuestionList = questionList?.[currentIdx - 1];
 	const { mutate, onError } = usePostPropensityResultService();
+	const [isDisabled, setIsDisabled] = useState(true);
+	const splited = currentQuestion?.test_qstn_cntnt?.split(",");
 
 	const onPrevNext = (type: "prev" | "next") => {
 		if (type === "prev") {
@@ -36,13 +39,8 @@ export default function ProcessPage() {
 
 	const onNextQuestion = (answer: string) => {
 		if (currentIdx === 20) {
-			const chl_id = searchParams.get("childIdx");
-			if (chl_id) {
-				mutate(
-					{ chl_id, result_list: result },
-					{ onError, onSuccess: () => router.push(`/test/result?childIdx=${chl_id}`) },
-				);
-			}
+			setResult([...result, answer]);
+			setIsDisabled(false);
 		} else {
 			if (!result[currentIdx - 1]) {
 				setResult([...result, answer]);
@@ -50,6 +48,16 @@ export default function ProcessPage() {
 				setResult(result?.map((el, idx) => (idx === currentIdx - 1 ? answer : el)));
 			}
 			onPrevNext("next");
+		}
+	};
+
+	const onSubmit = () => {
+		const chl_id = searchParams.get("childIdx");
+		if (chl_id) {
+			mutate(
+				{ chl_id, result_list: result },
+				{ onError, onSuccess: () => router.push(`/test/result?childIdx=${chl_id}`) },
+			);
 		}
 	};
 
@@ -70,7 +78,13 @@ export default function ProcessPage() {
 					</p>
 				</div>
 				<div className="flex flex-col gap-6 items-center w-full">
-					<p className="head3 gray-20">{currentQuestion?.test_qstn_cntnt}</p>
+					<div className="h-[50px]">
+						{splited?.map((el, index) => (
+							<p key={index} className="head3 gray-20 text-center">
+								{splited?.length - 1 === index ? el : `${el},`}
+							</p>
+						))}
+					</div>
 					<div className="flex flex-col gap-2 w-full">
 						<div
 							onClick={() => onNextQuestion(currentQuestion?.chc1_prpns)}
@@ -78,7 +92,7 @@ export default function ProcessPage() {
 								result?.[currentIdx - 1] === currentQuestion?.chc1_prpns
 									? "bg-orange-15 text-orange-200 border border-orange-200"
 									: "bg-gray-99 text-gray-40"
-							} rounded-[8px] hover:bg-orange-15 hover:text-orange-200 hover:border hover:border-orange-200 p-5 flex items-center cursor-pointer`}>
+							} rounded-[8px] hover:bg-orange-15 hover:text-orange-200 hover:border hover:border-orange-200 p-5 flex items-center cursor-pointer justify-center`}>
 							{currentQuestion?.chc1_cntnt}
 						</div>
 						<div
@@ -87,11 +101,16 @@ export default function ProcessPage() {
 								result?.[currentIdx - 1] === currentQuestion?.chc2_prpns
 									? "bg-orange-15 text-orange-200 border border-orange-200"
 									: "bg-gray-99 text-gray-40"
-							} rounded-[8px] hover:bg-orange-15 hover:text-orange-200 hover:border hover:border-orange-200 p-5 flex items-center cursor-pointer`}>
+							} rounded-[8px] hover:bg-orange-15 hover:text-orange-200 hover:border hover:border-orange-200 p-5 flex items-center cursor-pointer justify-center`}>
 							{currentQuestion?.chc2_cntnt}
 						</div>
 					</div>
 				</div>
+				{currentIdx === 20 && (
+					<Button onClick={onSubmit} disabled={isDisabled} variant={"big"} className="mt-[21px] w-full">
+						성향검사 완료하기
+					</Button>
+				)}
 			</div>
 		</div>
 	);
