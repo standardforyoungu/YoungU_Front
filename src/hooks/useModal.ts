@@ -7,7 +7,8 @@ export type ModalType =
 	| "confirmDeleteChild"
 	| "confirmEmail"
 	| "alert"
-	| "confirm";
+	| "confirm"
+	| "review";
 
 /**
  * ModalStore
