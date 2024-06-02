@@ -1,141 +1,98 @@
 "use client";
 
-import { useGetPropensityListQuery, usePostPropensitySaveQuery } from "@/api/test/test.query";
-import { PropensityResultSaveInterface } from "@/api/test/test.schema";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { toast } from "@/utils/toast";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useState } from "react";
+import { useGetPropensityQuestion } from "@/hooks/test/useGetPropensityQuestion";
+import { QuestionList } from "@/api/test/test.schema";
+import { usePostPropensityResultService } from "@/services/test/usePostPropensityResultService";
 
-import LeftIcon from "../../../public/icons/arrow-left.svg";
-import RightIcon from "../../../public/icons/arrow-right.svg";
+import { Progress } from "../ui/progress";
+import { ArrowLeft } from "lucide-react";
 
-function ProcessPage() {
+export default function ProcessPage() {
 	const searchParams = useSearchParams();
-	const childIdx = searchParams?.get("childIdx") as string;
 	const router = useRouter();
+	const { questionList } = useGetPropensityQuestion();
+	const [currentIdx, setCurrentIdx] = useState(1);
+	const [result, setResult] = useState<Array<string>>([]);
+	const currentQuestion: QuestionList = questionList?.[currentIdx - 1];
+	const { mutate, onError } = usePostPropensityResultService();
 
-	// 질문 리스트
-	const { data: queryDate, isSuccess, isLoading } = useGetPropensityListQuery();
-	// 질문 저장
-	const { mutate, data: mutateData, isError } = usePostPropensitySaveQuery();
-
-	const [userPropensity, setUserPropensity] = useState<PropensityResultSaveInterface>({
-		chl_id: +childIdx,
-		result_list: new Array(20).fill(""),
-	});
-	const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
-	const [progress, setProgress] = useState(0);
-
-	// 질문 이동 함수
-	const questionMoveHandler = (direction: string) => {
-		if (direction === "LEFT") {
-			if (currentQuestionIdx === 0) toast("Error", "이전 질문이 존재하지 않습니다.");
-			else {
-				setCurrentQuestionIdx((prev) => prev - 1);
-				setProgress((prev) => prev - 5);
+	const onPrevNext = (type: "prev" | "next") => {
+		if (type === "prev") {
+			if (currentIdx === 1) {
+				return;
+			} else {
+				setCurrentIdx(currentIdx - 1);
 			}
 		} else {
-			if (currentQuestionIdx === (queryDate?.question_list.length as number) - 1)
-				toast("Error", "다음 질문이 존재하지 않습니다.");
-			else {
-				setCurrentQuestionIdx((prev) => prev + 1);
-				setProgress((prev) => prev + 5);
+			if (currentIdx === 20) {
+				return;
+			} else {
+				setCurrentIdx(currentIdx + 1);
 			}
 		}
 	};
 
-	// 질문 선택
-	const questSelectHandler = (idx: number, data: string) => {
-		setUserPropensity((prev) => ({
-			...prev,
-			result_list: prev.result_list.map((prdn, index) => (index === idx ? (prev.result_list[index] = data) : prdn)),
-		}));
-
-		questionMoveHandler("RIGHT");
-	};
-
-	// 모든 검사에 값이 들어있는지 체크
-	const checkPropensityComplete = () => {
-		const result = userPropensity.result_list.indexOf("");
-
-		if (result === -1) return true;
-		else {
-			setCurrentQuestionIdx(result);
-			return false;
+	const onNextQuestion = (answer: string) => {
+		if (currentIdx === 20) {
+			const chl_id = searchParams.get("childIdx");
+			if (chl_id) {
+				mutate(
+					{ chl_id, result_list: result },
+					{ onError, onSuccess: () => router.push(`/test/result?childIdx=${chl_id}`) },
+				);
+			}
+		} else {
+			if (!result[currentIdx - 1]) {
+				setResult([...result, answer]);
+			} else {
+				setResult(result?.map((el, idx) => (idx === currentIdx - 1 ? answer : el)));
+			}
+			onPrevNext("next");
 		}
 	};
 
-	// 검사 완료
-	const completePropensityTest = () => {
-		if (checkPropensityComplete() === false) toast("Error", "모든 테스트를 완료해주세요.");
-		else {
-			// mutate(userPropensity);
-			// console.log(mutateData);
-			router.push("/test/result");
-		}
-	};
-
-	useEffect(() => {
-		console.log(userPropensity);
-	}, [userPropensity]);
 	return (
-		<>
-			<Progress value={progress} className="w-full h-[4px]" />
-			<div className=" w-full flex flex-col px-[2rem] ">
-				<div className="my-[52px] flex w-full justify-center ">
+		<div className="flex flex-col gap-11 items-center justify-center">
+			<Progress value={currentIdx * 5} className="self-start" />
+			<div className="w-full px-5 flex flex-col gap-[46px] items-center justify-center">
+				<div className="flex gap-4 items-center relative">
 					<div
-						className="w-[36px] h-[36px] bg-gray-99 rounded-full mx-3 relative"
-						onClick={() => questionMoveHandler("LEFT")}>
-						<LeftIcon fill="#C4C4C4" className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] " />
+						onClick={() => onPrevNext("prev")}
+						className={`absolute -left-12 top-0.5 w-9 h-9 ${
+							currentIdx === 1 ? "bg-gray-99 text-gray-90" : "bg-orange-10 text-orange-100"
+						} rounded-full flex justify-center items-center`}>
+						<ArrowLeft size={20} />
 					</div>
-					<p className="head4 text-gray-90 flex  items-center">
-						<span className="title3 text-orange-100 mx-1">
-							{queryDate?.question_list[currentQuestionIdx].test_qstn_id}
-						</span>
-						/ 20
-					</p>
-					<div
-						className="w-[36px] h-[36px] bg-gray-99  rounded-full mx-3 relative"
-						onClick={() => questionMoveHandler("RIGHT")}>
-						<RightIcon
-							fill="#C4C4C4"
-							className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] "
-						/>
-					</div>
-				</div>
-
-				<div>
-					<p className="head3 text-gray-20 mb-[30px]">{queryDate?.question_list[currentQuestionIdx].test_qstn_cntnt}</p>
-
-					<p
-						className="body1 h-[112px] rounded-[8px] bg-gray-99 text-gray-40 p-[20px] my-[15px] hover:text-orange-200 hover:bg-orange-15 hover:border-orange-200 cursor-pointer"
-						onClick={() =>
-							questSelectHandler(currentQuestionIdx, queryDate?.question_list[currentQuestionIdx].chc1_prpns as string)
-						}>
-						{queryDate?.question_list[currentQuestionIdx].chc1_cntnt}
-					</p>
-
-					<p
-						className="body1 h-[112px] rounded-[8px] bg-gray-99 text-gray-40 p-[20px] my-[15px] hover:text-orange-200 hover:bg-orange-15 hover:border-orange-200 cursor-pointer"
-						onClick={() =>
-							questSelectHandler(currentQuestionIdx, queryDate?.question_list[currentQuestionIdx].chc2_prpns as string)
-						}>
-						{queryDate?.question_list[currentQuestionIdx].chc2_cntnt}
+					<p className="text-gray-90 head4">
+						<span className="text-orange-100 title3">{currentIdx}</span> / 20
 					</p>
 				</div>
-
-				{currentQuestionIdx === (queryDate?.question_list.length as number) - 1 ? (
-					<Button variant={"big"} size={"lg"} onClick={completePropensityTest}>
-						성향검사 완료하기
-					</Button>
-				) : (
-					""
-				)}
+				<div className="flex flex-col gap-6 items-center w-full">
+					<p className="head3 gray-20">{currentQuestion?.test_qstn_cntnt}</p>
+					<div className="flex flex-col gap-2 w-full">
+						<div
+							onClick={() => onNextQuestion(currentQuestion?.chc1_prpns)}
+							className={`w-full h-[112px] ${
+								result?.[currentIdx - 1] === currentQuestion?.chc1_prpns
+									? "bg-orange-15 text-orange-200 border border-orange-200"
+									: "bg-gray-99 text-gray-40"
+							} rounded-[8px] hover:bg-orange-15 hover:text-orange-200 hover:border hover:border-orange-200 p-5 flex items-center cursor-pointer`}>
+							{currentQuestion?.chc1_cntnt}
+						</div>
+						<div
+							onClick={() => onNextQuestion(currentQuestion?.chc2_prpns)}
+							className={`w-full h-[112px] ${
+								result?.[currentIdx - 1] === currentQuestion?.chc2_prpns
+									? "bg-orange-15 text-orange-200 border border-orange-200"
+									: "bg-gray-99 text-gray-40"
+							} rounded-[8px] hover:bg-orange-15 hover:text-orange-200 hover:border hover:border-orange-200 p-5 flex items-center cursor-pointer`}>
+							{currentQuestion?.chc2_cntnt}
+						</div>
+					</div>
+				</div>
 			</div>
-		</>
+		</div>
 	);
 }
-
-export default ProcessPage;
