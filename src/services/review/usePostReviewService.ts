@@ -1,16 +1,19 @@
+import { usePostReviewMutation } from "@/api/review/review.query";
 import { SuccessResInterface } from "@/types/resType";
 import { toast } from "@/utils/toast";
-import { useRouter } from "next/navigation";
 
 export const usePostReviewService = () => {
-	const mutation = usePostReviewService();
-	const router = useRouter();
+	const mutation = usePostReviewMutation();
 
 	const onSuccess = (data: SuccessResInterface) => {
 		if (data?.result === "Success") {
 			toast("Success", data?.message);
-			// TODO_JIYEON:
-			router.push("");
 		}
 	};
+
+	const onError = (error: any) => {
+		toast("Error", error.response.data.message);
+	};
+
+	return { ...mutation, onSuccess, onError };
 };

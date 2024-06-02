@@ -12,13 +12,26 @@ import {
 import { Textarea } from "../ui/textarea";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
+import { usePostReviewService } from "@/services/review/usePostReviewService";
 
 export default function ReviewModal() {
+	const { mutate, onSuccess, onError } = usePostReviewService();
 	const { type, isOpen, onClose, setOpenChange } = useModal();
 	const isModalOpen = isOpen && type === "review";
 	const [review, setReview] = useState({ mbr_rvw: "", mbr_star: "" });
 
-	const onSubmit = () => {};
+	const onSubmit = () => {
+		const mbr_id = localStorage.getItem("mbr_id") ?? "";
+		const req = { ...review, mbr_id };
+		mutate(req, {
+			onSuccess: (data) => {
+				onSuccess(data);
+				localStorage.setItem("isReviewed", "true");
+			},
+			onError,
+		});
+		onClose();
+	};
 
 	return (
 		<AlertDialog open={isModalOpen} onOpenChange={setOpenChange}>
@@ -55,7 +68,7 @@ export default function ReviewModal() {
 						<Button variant={"medium"} className="w-full" onClick={onSubmit}>
 							평가 보내기
 						</Button>
-						<p className="mt-[2px] body2 text-gray-80">소중한 후기를 남겨주셔서 감사합니다!</p>
+						<span className="mt-[2px] body2 text-gray-80">소중한 후기를 남겨주셔서 감사합니다!</span>
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 			</AlertDialogContent>
