@@ -1,18 +1,19 @@
 "use client";
 
-import IconBadge from "@/components/@commons/IconBadge";
-import InfoBadge from "@/components/@commons/InfoBadge";
-import ContentBox from "@/components/@layouts/ContentBox";
-import { Button } from "@/components/ui/button";
-import footerText from "./footer-data.json";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useGetUserInfo } from "@/hooks/user/useGetUserInfo";
+import IconBadge from "@/components/@commons/IconBadge";
+import InfoBadge from "@/components/@commons/InfoBadge";
+import ContentBox from "@/components/@layouts/ContentBox";
+import { useGetChildListInfo } from "@/hooks/user/useGetChildListInfo";
+import footerText from "./footer-data.json";
+
+import { Button } from "@/components/ui/button";
 
 export default function TestPage() {
-	const { userInfo } = useGetUserInfo();
-	const childCnt = userInfo?.chl_list?.length ?? 0;
+	const { childList } = useGetChildListInfo();
+	const childCnt = childList?.length ?? 0;
 
 	return (
 		<div className="w-full h-auto flex flex-col">
@@ -35,12 +36,10 @@ export default function TestPage() {
 					<IconBadge title="총 문항수" highlight="20문제" iconHref="/icons/list.svg" />
 					<IconBadge title="예상 소요시간" highlight="약 5분" iconHref="/icons/timer.svg" />
 				</div>
-				<div className="flex flex-col items-center justify-center mt-10">
-					<div className="w-[10rem] h-[10rem] relative">
-						<Image src="/images/infoPic.svg" alt="infoPic" layout="fill" objectFit="cover" className="w-full" />
-					</div>
+				<div className="flex flex-col items-center justify-center">
+					<Image src="/images/search.svg" alt="search" width={105} height={99} className="my-10" />
 					<Link href={childCnt ? "/test/profile" : "/test/setting"}>
-						<Button variant={"medium"} className="w-[13.5rem] mt-10">
+						<Button variant={"medium"} className="w-[13.5rem]">
 							성향 검사 시작하기
 						</Button>
 					</Link>
