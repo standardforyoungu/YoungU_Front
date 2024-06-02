@@ -17,11 +17,13 @@ export const formSchema = z.object({
 });
 
 interface Props {
+	info: string;
+	buttonText: string;
 	defaultValue: z.infer<typeof formSchema>;
 	onSubmit: (value: PostChildInfoReqInterface) => void;
 }
 
-export default function ChildForm({ defaultValue, onSubmit }: Props) {
+export default function ChildForm({ info, buttonText, defaultValue, onSubmit }: Props) {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: defaultValue,
@@ -30,9 +32,7 @@ export default function ChildForm({ defaultValue, onSubmit }: Props) {
 
 	return (
 		<div className="px-[20px] py-[12px]">
-			<p className="h-[72px] flex items-center justify-center bg-mint-10 text-mint-200 rounded-[8px] body1">
-				아이 정보를 수정할 수 있어요
-			</p>
+			<p className="h-[72px] flex items-center justify-center bg-mint-10 text-mint-200 rounded-[8px] body1">{info}</p>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)}>
 					<FormField
@@ -130,7 +130,7 @@ export default function ChildForm({ defaultValue, onSubmit }: Props) {
 						)}
 					/>
 					<Button type="submit" variant={"big"} className="w-full mt-[12px]" disabled={!form.formState.isValid}>
-						저장하기
+						{buttonText}
 					</Button>
 				</form>
 			</Form>

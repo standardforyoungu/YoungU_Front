@@ -22,7 +22,7 @@ function ProfilePage() {
 		if (childList?.length >= 3) {
 			onOpen("maximumChild");
 		} else {
-			router.push("/test/setting");
+			router.push("/test/add-child");
 		}
 	};
 

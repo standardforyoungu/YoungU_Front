@@ -38,7 +38,7 @@ export default function TestPage() {
 				</div>
 				<div className="flex flex-col items-center justify-center">
 					<Image src="/images/search.svg" alt="search" width={105} height={99} className="my-10" />
-					<Link href={childCnt ? "/test/profile" : "/test/setting"}>
+					<Link href={childCnt ? "/test/profile" : "/test/add-child"}>
 						<Button variant={"medium"} className="w-[13.5rem]">
 							성향 검사 시작하기
 						</Button>
