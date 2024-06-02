@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
-import { PostChildInfoReqInterface } from "@/api/myPage/myPage.schema";
+import { PostChildInfoReqInterface } from "@/api/user/user.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@/components/ui/button";

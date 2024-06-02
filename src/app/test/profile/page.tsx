@@ -6,11 +6,11 @@ import React, { useState } from "react";
 
 import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/useModal";
-import { ChildList as ChildListSchema } from "@/api/myPage/myPage.schema";
+import { ChildList as ChildListSchema } from "@/api/user/user.schema";
 import { Plus, Trash2 } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CheckedState } from "@radix-ui/react-checkbox";
-import { useGetChildListInfo } from "@/hooks/myPage/useGetChildListInfo";
+import { useGetChildListInfo } from "@/hooks/user/useGetChildListInfo";
 
 function ProfilePage() {
 	const { childList } = useGetChildListInfo();

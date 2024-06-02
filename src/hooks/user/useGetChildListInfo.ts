@@ -1,4 +1,4 @@
-import { useGetChildInfoListQuery } from "@/api/myPage/myPage.query";
+import { useGetChildInfoListQuery } from "@/api/user/user.query";
 import { useMemo } from "react";
 
 export const useGetChildListInfo = () => {

@@ -1,4 +1,4 @@
-import { useDeleteChildInfoMutation } from "@/api/myPage/myPage.query";
+import { useDeleteChildInfoMutation } from "@/api/user/user.query";
 import { SuccessResInterface } from "@/types/resType";
 import { toast } from "@/utils/toast";
 import { useQueryClient } from "@tanstack/react-query";

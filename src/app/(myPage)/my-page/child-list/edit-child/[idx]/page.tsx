@@ -1,7 +1,7 @@
 "use client";
 
 import ChildForm, { formSchema } from "@/components/myPage/ChildForm";
-import { useGetChildInfo } from "@/hooks/myPage/useGetChildInfo";
+import { useGetChildInfo } from "@/hooks/user/useGetChildInfo";
 import { usePatchChildInfoService } from "@/services/myPage/usePatchChildInfoService";
 import React from "react";
 import * as z from "zod";

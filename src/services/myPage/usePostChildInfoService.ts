@@ -1,5 +1,5 @@
 import { SuccessResInterface } from "./../../types/resType";
-import { usePostChildInfoMutation } from "@/api/myPage/myPage.query";
+import { usePostChildInfoMutation } from "@/api/user/user.query";
 import { toast } from "@/utils/toast";
 import { useRouter } from "next/navigation";
 

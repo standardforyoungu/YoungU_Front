@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import "react-toastify/dist/ReactToastify.css";
-import { useGetUserInfo } from "@/hooks/myPage/useGetUserInfo";
+import { useGetUserInfo } from "@/hooks/user/useGetUserInfo";
 
 import { Baby, ChevronRight, Settings } from "lucide-react";
 

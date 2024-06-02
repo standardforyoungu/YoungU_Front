@@ -1,4 +1,4 @@
-import { usePatchChildInfoMutation } from "@/api/myPage/myPage.query";
+import { usePatchChildInfoMutation } from "@/api/user/user.query";
 import { SuccessResInterface } from "@/types/resType";
 import { toast } from "@/utils/toast";
 import { useRouter } from "next/navigation";

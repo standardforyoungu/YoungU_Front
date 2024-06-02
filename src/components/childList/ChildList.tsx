@@ -1,13 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useGetChildListInfo } from "@/hooks/myPage/useGetChildListInfo";
+import { useGetChildListInfo } from "@/hooks/user/useGetChildListInfo";
 import { useModal } from "@/hooks/useModal";
 import { PenLine, Plus, Trash2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { ChildList as ChildListSchema } from "@/api/myPage/myPage.schema";
+import { ChildList as ChildListSchema } from "@/api/user/user.schema";
 
 export default function ChildList() {
 	const router = useRouter();

@@ -1,4 +1,4 @@
-import { useGetUserInfoQuery } from "@/api/myPage/myPage.query";
+import { useGetUserInfoQuery } from "@/api/user/user.query";
 import { useMemo } from "react";
 
 export const useGetUserInfo = () => {

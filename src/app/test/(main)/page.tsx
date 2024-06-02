@@ -8,7 +8,7 @@ import footerText from "./footer-data.json";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useGetUserInfo } from "@/hooks/myPage/useGetUserInfo";
+import { useGetUserInfo } from "@/hooks/user/useGetUserInfo";
 
 export default function TestPage() {
 	const { userInfo } = useGetUserInfo();

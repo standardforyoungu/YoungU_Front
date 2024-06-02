@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useGetChildInfoQuery } from "@/api/myPage/myPage.query";
+import { useGetChildInfoQuery } from "@/api/user/user.query";
 
 export const useGetChildInfo = (childId: number) => {
 	const { data } = useGetChildInfoQuery(childId);

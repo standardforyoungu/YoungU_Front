@@ -7,10 +7,9 @@ import FemaleIcon from "../../../../public/icons/female.svg";
 import { PenLine, Plus, Trash2 } from "lucide-react";
 import Image from "next/image";
 import { useModal } from "@/hooks/useModal";
-import { ChildInfoInterface } from "@/api/child/child.schema";
 
 interface ChildProfileItemInterface {
-	child: ChildInfoInterface;
+	child: any;
 	onClick: (chl_id: number) => void;
 }
 
