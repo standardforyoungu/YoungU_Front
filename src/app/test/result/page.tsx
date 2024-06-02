@@ -1,90 +1,119 @@
 "use client";
-import { useGetRecommendKdgnListQuery } from "@/api/list/list.query";
+
 import { KdgnListInterface } from "@/api/list/list.schema";
-import ListItem from "@/components/molcules/ListItem/Index";
-import AnimalIcon from "../../../../public/images/animal_hedgehog.svg";
+import CngdList from "@/components/list/CngdList";
+import { useModal } from "@/hooks/useModal";
 import Image from "next/image";
-import React from "react";
-import { motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
+import React, { useEffect, useRef } from "react";
 
-function ResultPage() {
-	const { data, isSuccess } = useGetRecommendKdgnListQuery("ISTJ");
+export default function ResultPage() {
+	const searchParams = useSearchParams();
+	const childIdx = searchParams.get("childIdx");
+	const ref = useRef<HTMLDivElement>(null);
+	const { onOpen } = useModal();
 
-	if (isSuccess) {
-		console.log(data);
-	}
+	useEffect(() => {
+		const isReviewed = localStorage.getItem("isReviewed");
+		const observer = new IntersectionObserver((entries, observer) => {
+			if (!entries[0].isIntersecting) {
+				return;
+			} else {
+				if (isReviewed) {
+					return;
+				} else {
+					onOpen("review");
+				}
+			}
+		});
+
+		if (!!ref?.current) {
+			observer.observe(ref.current);
+		}
+
+		return () => observer.disconnect();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	const list = [
+		{
+			engl_kd_clas_id: 1,
+			engl_kd_clas_nm: "제스아일랜드",
+			engl_kd_clas_addr: "서울시 송파구 위례성대로12길 18, 2층",
+			engl_kd_clas_telno: "02-412-9696",
+			engl_kd_clas_lnk: "http://jesisland.co.kr/SEN3/main.asp",
+		},
+		{
+			engl_kd_clas_id: 23,
+			engl_kd_clas_nm: "쥬빌리프라임주니어(JUBILEEPRIME)어학학원",
+			engl_kd_clas_addr: "서울특별시 송파구 송이로 238",
+			engl_kd_clas_telno: "02-403-0511",
+			engl_kd_clas_lnk: "http://jubileeprime.com/",
+		},
+		{
+			engl_kd_clas_id: 24,
+			engl_kd_clas_nm: "라이즈어학원 송파캠퍼스",
+			engl_kd_clas_addr: "서울특별시 송파구 백제고분로 170, 고광빌딩 3-4층",
+			engl_kd_clas_telno: "02-2088-2360",
+			engl_kd_clas_lnk: "https://www.risekorea.com/#one",
+		},
+		{
+			engl_kd_clas_id: 25,
+			engl_kd_clas_nm: "LCI 잠실",
+			engl_kd_clas_addr: "서울 송파구 석촌호수로 88 대원빌딩 5층",
+			engl_kd_clas_telno: "02-423-0505",
+			engl_kd_clas_lnk: "https://blog.naver.com/lci_jamsil",
+		},
+	];
+
 	return (
-		<div className="flex flex-col w-full  mt-[20px] ">
-			<motion.div
-				initial={{
-					opacity: 0,
-					y: 40,
-				}}
-				animate={{
-					opacity: 1,
-					y: 0,
-				}}
-				transition={{
-					duration: 1,
-				}}
-				className="flex flex-col items-center max-h-[367px] w-full px-[2rem]">
-				<div className="h-[213px] bg-[url('/images/pattern_background.png')] bg-orange-10 w-full rounded-t-[16px] flex flex-col items-center pt-[24px] px-[40px]">
-					<p className="head4 text-gray-40">우리 아이는</p>
-					<p className="head2 text-orange-100">창의적인 고슴도치</p>
-
-					<div className=" relative w-full flex justify-center ">
-						<Image
-							src={"/images/propensity_result_01.png"}
-							alt="결과 이미지"
-							width={185}
-							height={94}
-							className="w-[75%] max-h-[126px]"
-						/>
-						<motion.div
-							animate={{
-								opacity: [0, 1, 1, 1],
-								scale: [0, 1, 0.8, 1],
-								rotate: [0, 0, -20, 0],
-							}}
-							transition={{
-								duration: 0.7,
-								delay: 1.5,
-							}}
-							className="absolute top-[53%] left-[35%]">
-							<Image src={"/images/animal_hedgehog.svg"} alt="결과 이미지" width={102} height={72} />
-							{/* // <AnimalIcon className="absolute top-[80%] left-[50%] translate-x-[-50%] translate-y-[-80%]" /> */}
-						</motion.div>
-					</div>
-				</div>
-				<div className="h-[154px]  bg-orange-5 w-full rounded-b-[16px] flex flex-col items-center px-[40px] pt-[24px] ">
-					<p className="body2 text-gray-20">
-						우리 아이는 정해진 커리큘럼에 따라 배운 지식을 실생활에 적용하는 학습 방식이 잘 맞아요
+		<div>
+			<div className="pt-3 px-5 pb-[18px] w-full">
+				<div className="w-full relative rounded-t-[16px] h-[213px] pt-6 pb-2 px-11 bg-orange-10 flex flex-col gap-2 items-center">
+					<p className="head4 text-gray-40 w-[200px] text-center ">
+						우리 아이는
+						<br />
+						<span className="head3 text-orange-100">창의적인 고슴도치</span>
 					</p>
-
-					<div className="flex flex-row w-full  flex-wrap justify-evenly mt-[10px]">
-						<div className="text-orange-100 head6 bg-White text-center px-[10px] py-[5px] rounded-[4px] m-[4px]">
-							#창작활동
-						</div>
+					<div className="relative w-[233px] h-[126px]">
+						<Image src={"/images/propensity_result_01.png"} alt="graph" width={233} height={126} />
+						<Image
+							src={"/images/animal_hedgehog.svg"}
+							alt="animal"
+							width={102}
+							height={72}
+							className="absolute bottom-0 right-[65px]"
+						/>
 					</div>
 				</div>
-			</motion.div>
-
-			<div className="mt-[20px] border-t-[6px] pt-[2rem] border-gray-99 flex flex-col px-[2rem]">
-				<p className="text-gray-20 head2 ">추천 영어유치부</p>
-
-				{isSuccess &&
-					data?.engl_kd_clas_list.map((item: KdgnListInterface) => (
-						<ListItem
-							title={item.engl_kd_clas_nm}
-							phone={item.engl_kd_clas_telno}
-							address={item.engl_kd_clas_addr}
-							link={item.engl_kd_clas_lnk}
-							key={item.engl_kd_clas_id}
-						/>
-					))}
+				<div className="bg-[#F67B4E]/5 rounded-b-[16px] h-[154px] w-full px-4 py-5 flex flex-col gap-[10px] items-center justify-center">
+					<p className="body2 text-gray-20">우리 아이는 독창적이고 분석적으로 문제를 해결하는 학습 방식이 잘 맞아요</p>
+					<div className="flex flex-wrap justify-center items-center gap-[6px] w-[300px]">
+						{["#손유희", "#창작활동", "#노래&율동", "#그림 그리기", "#스토리텔링"].map((el) => (
+							<div key={el} className="bg-White py-[6px] px-3 text-orange-100 head6">
+								{el}
+							</div>
+						))}
+					</div>
+				</div>
 			</div>
+			<div className="w-full h-[6px] bg-gray-99" />
+			<div className="py-8 px-5">
+				<h2 className="text-gray-20 head2">추천 영어유치부</h2>
+				{list.map((item: KdgnListInterface) => (
+					<CngdList
+						title={item.engl_kd_clas_nm}
+						phone={item.engl_kd_clas_telno}
+						address={item.engl_kd_clas_addr}
+						link={item.engl_kd_clas_lnk}
+						key={item.engl_kd_clas_id}
+					/>
+				))}
+				<div ref={ref} className="h-4" />
+			</div>
+			<button className="w-14 h-14 bg-mint-100 fixed right-5 bottom-[84px] rounded-full flex justify-center items-center">
+				<Image src={"/icons/share.svg"} alt="share" width={20} height={20} />
+			</button>
 		</div>
 	);
 }
-
-export default ResultPage;

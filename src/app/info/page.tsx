@@ -1,7 +1,7 @@
 "use client";
 
 import { KdgnListInterface } from "@/api/list/list.schema";
-import ListItem from "@/components/molcules/ListItem/Index";
+import CngdList from "@/components/list/CngdList";
 import { Button } from "@/components/ui/button";
 import {
 	Pagination,
@@ -32,7 +32,7 @@ function InfoListPage() {
 				<div className="h-full">
 					<div className="px-[1.5rem]">
 						{classList?.map((item: KdgnListInterface) => (
-							<ListItem
+							<CngdList
 								title={item.engl_kd_clas_nm}
 								phone={item.engl_kd_clas_telno}
 								address={item.engl_kd_clas_addr}
