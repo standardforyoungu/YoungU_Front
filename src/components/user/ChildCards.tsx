@@ -27,7 +27,7 @@ export default function ChildCards({ type, checked, setChecked }: Props) {
 		if (childList?.length >= 3) {
 			onOpen("maximumChild");
 		} else {
-			router.push(type === "test" ? "/test/add-child" : "/my-page/child-list/add-child");
+			router.push(type === "test" ? "/test/add-child?isRegistered=Y" : "/my-page/child-list/add-child");
 		}
 	};
 
