@@ -8,6 +8,7 @@ import { toast } from "@/utils/toast";
 
 import { Drawer, DrawerContent, DrawerFooter, DrawerHeader } from "@/components/ui/drawer";
 import { Button } from "../ui/button";
+import KakaoShareBtn from "./KakaoShareBtn";
 
 export default function Share() {
 	const { isOpen, type, onClose, setOpenChange } = useModal();
@@ -21,10 +22,7 @@ export default function Share() {
 		<Drawer open={isModalOpen} onDrag={onClose} onOpenChange={setOpenChange}>
 			<DrawerContent className="gap-1 p-5">
 				<DrawerHeader className="gap-[1px] p-0">
-					<Button className="bg-White text-gray-60 flex justify-center items-center gap-2 rounded-b-none !body1 !h-[56px]">
-						<Image src={"/icons/kakao_disabled.svg"} alt="kakao" width={16} height={16} />
-						<span>카카오톡으로 공유하기</span>
-					</Button>
+					<KakaoShareBtn />
 					<CopyToClipboard text={window.location.href}>
 						<Button
 							onClick={onClickCopyBoard}

@@ -9,6 +9,7 @@ import AuthProvider from "@/providers/authProvider";
 import Layout from "@/components/Layout";
 import ModalProvider from "@/providers/modalProvider";
 import "react-toastify/dist/ReactToastify.css";
+import KakaoProvider from "@/providers/kakaoProvider";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						<AuthProvider />
 						<ModalProvider />
 						<Layout>{children}</Layout>
+						<KakaoProvider />
 					</RecoilProvider>
 				</QueryProvider>
 			</body>
