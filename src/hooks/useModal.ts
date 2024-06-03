@@ -9,7 +9,8 @@ export type ModalType =
 	| "alert"
 	| "confirm"
 	| "review"
-	| "share";
+	| "share"
+	| "escape";
 
 /**
  * ModalStore
