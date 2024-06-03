@@ -23,7 +23,7 @@ export default function Share() {
 			<DrawerContent className="gap-1 p-5">
 				<DrawerHeader className="gap-[1px] p-0">
 					<KakaoShareBtn />
-					<CopyToClipboard text={window.location.href}>
+					<CopyToClipboard text={process.env.NEXT_PUBLIC_CLIENT_DOMAIN ?? ""}>
 						<Button
 							onClick={onClickCopyBoard}
 							className="bg-White text-gray-60 flex justify-center items-center gap-2 rounded-t-none !body1 !h-[56px]">
