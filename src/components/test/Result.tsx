@@ -8,6 +8,7 @@ import { useModal } from "@/hooks/useModal";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 export default function ResultPage() {
 	const searchParams = useSearchParams();
@@ -51,13 +52,19 @@ export default function ResultPage() {
 					</p>
 					<div className="relative w-[233px] h-[126px]">
 						<Image src={prpnsDataDTO?.prpns_chrct_img2} alt="graph" width={233} height={126} />
-						<Image
-							src={prpnsDataDTO?.prpns_chrct_img1}
-							alt="animal"
-							width={102}
-							height={72}
-							className="absolute bottom-4 right-[65px]"
-						/>
+						<motion.div
+							animate={{
+								opacity: [0, 1, 1, 1],
+								scale: [0, 1, 0.8, 1],
+								rotate: [0, 0, -20, 0],
+							}}
+							transition={{
+								duration: 0.7,
+								delay: 1.5,
+							}}
+							className="absolute bottom-4 right-[65px]">
+							<Image src={prpnsDataDTO?.prpns_chrct_img1} alt="animal" width={102} height={72} />
+						</motion.div>
 					</div>
 				</div>
 				<div className="bg-[#F67B4E]/5 rounded-b-[16px] h-[154px] w-full px-4 py-5 flex flex-col gap-[10px] items-center justify-center">
