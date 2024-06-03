@@ -23,7 +23,9 @@ export default function ProcessPage() {
 	const [isBtnClicked, setIsBtnClicked] = useState(false);
 	const currentQuestion: QuestionList = questionList?.[currentIdx - 1];
 	const { mutate, onError } = usePostPropensityResultService();
-	const splited = currentQuestion?.test_qstn_cntnt?.split(",");
+	const splitedQuestion = currentQuestion?.test_qstn_cntnt?.split(",");
+	const splitedAnswer1 = currentQuestion?.chc1_cntnt?.split("\n");
+	const splitedAnswer2 = currentQuestion?.chc2_cntnt?.split("\n");
 
 	const preventClose = (e: BeforeUnloadEvent) => {
 		e.preventDefault();
@@ -114,9 +116,9 @@ export default function ProcessPage() {
 					</div>
 					<div className="flex flex-col gap-6 items-center w-full">
 						<div className="h-[50px]">
-							{splited?.map((el, index) => (
+							{splitedQuestion?.map((el, index) => (
 								<p key={index} className="head3 gray-20 text-center">
-									{splited?.length - 1 === index ? el : `${el},`}
+									{splitedQuestion?.length - 1 === index ? el : `${el},`}
 								</p>
 							))}
 						</div>
@@ -127,8 +129,10 @@ export default function ProcessPage() {
 									result?.[currentIdx - 1] === currentQuestion?.chc1_prpns
 										? "bg-orange-15 text-orange-200 border border-orange-200"
 										: "bg-gray-99 text-gray-40"
-								} rounded-[8px] hover:bg-orange-15 hover:text-orange-200 hover:border hover:border-orange-200 p-5 flex items-center cursor-pointer justify-center`}>
-								{currentQuestion?.chc1_cntnt}
+								} rounded-[8px] hover:bg-orange-15 hover:text-orange-200 hover:border hover:border-orange-200 p-5 flex flex-col items-center cursor-pointer justify-center`}>
+								{splitedAnswer1?.map((el, index) => (
+									<p key={index}>{el}</p>
+								))}
 							</div>
 							<div
 								onClick={() => onNextQuestion(currentQuestion?.chc2_prpns)}
@@ -136,8 +140,10 @@ export default function ProcessPage() {
 									result?.[currentIdx - 1] === currentQuestion?.chc2_prpns
 										? "bg-orange-15 text-orange-200 border border-orange-200"
 										: "bg-gray-99 text-gray-40"
-								} rounded-[8px] hover:bg-orange-15 hover:text-orange-200 hover:border hover:border-orange-200 p-5 flex items-center cursor-pointer justify-center`}>
-								{currentQuestion?.chc2_cntnt}
+								} rounded-[8px] hover:bg-orange-15 hover:text-orange-200 hover:border hover:border-orange-200 p-5 flex flex-col items-center cursor-pointer justify-center`}>
+								{splitedAnswer2?.map((el, index) => (
+									<p key={index}>{el}</p>
+								))}
 							</div>
 						</div>
 					</div>

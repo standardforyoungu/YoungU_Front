@@ -16,6 +16,7 @@ export default function ResultPage() {
 	const ref = useRef<HTMLDivElement>(null);
 	const { onOpen } = useModal();
 	const { kdgnList } = useGetRecommendKdgnList(prpnsDataDTO?.prpns_data);
+	const splitedExplain = prpnsDataDTO?.prpns_expln?.split("\n");
 
 	useEffect(() => {
 		const isReviewed = localStorage.getItem("isReviewed");
@@ -49,9 +50,9 @@ export default function ResultPage() {
 						<span className="head3 text-orange-100">{prpnsDataDTO?.prpns_chrct}</span>
 					</p>
 					<div className="relative w-[233px] h-[126px]">
-						<Image src={"/images/propensity_result_01.png"} alt="graph" width={233} height={126} />
+						<Image src={prpnsDataDTO?.prpns_chrct_img2} alt="graph" width={233} height={126} />
 						<Image
-							src={"/images/animal_hedgehog.svg"}
+							src={prpnsDataDTO?.prpns_chrct_img1}
 							alt="animal"
 							width={102}
 							height={72}
@@ -60,7 +61,13 @@ export default function ResultPage() {
 					</div>
 				</div>
 				<div className="bg-[#F67B4E]/5 rounded-b-[16px] h-[154px] w-full px-4 py-5 flex flex-col gap-[10px] items-center justify-center">
-					<p className="body2 text-gray-20 text-center">{prpnsDataDTO?.prpns_expln}</p>
+					<div>
+						{splitedExplain?.map((el, index) => (
+							<p key={index} className="body2 text-gray-20 text-center">
+								{el}
+							</p>
+						))}
+					</div>
 					<div className="flex flex-wrap justify-center items-center gap-[6px] w-[300px]">
 						{keywords.map((el) => (
 							<div key={el} className="bg-White py-[6px] px-3 text-orange-100 head6">
