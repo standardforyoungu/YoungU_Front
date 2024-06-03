@@ -16,7 +16,7 @@ export default function ResultPage() {
 	const ref = useRef<HTMLDivElement>(null);
 	const { onOpen } = useModal();
 	const { kdgnList } = useGetRecommendKdgnList(prpnsDataDTO?.prpns_data);
-	const splitedExplain = prpnsDataDTO?.prpns_expln?.split("\n");
+	const splitedExplain = prpnsDataDTO?.prpns_expln?.split("\\n");
 
 	useEffect(() => {
 		const isReviewed = localStorage.getItem("isReviewed");
@@ -56,7 +56,7 @@ export default function ResultPage() {
 							alt="animal"
 							width={102}
 							height={72}
-							className="absolute bottom-0 right-[65px]"
+							className="absolute bottom-4 right-[65px]"
 						/>
 					</div>
 				</div>

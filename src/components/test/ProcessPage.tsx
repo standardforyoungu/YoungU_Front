@@ -24,8 +24,8 @@ export default function ProcessPage() {
 	const currentQuestion: QuestionList = questionList?.[currentIdx - 1];
 	const { mutate, onError } = usePostPropensityResultService();
 	const splitedQuestion = currentQuestion?.test_qstn_cntnt?.split(",");
-	const splitedAnswer1 = currentQuestion?.chc1_cntnt?.split("\n");
-	const splitedAnswer2 = currentQuestion?.chc2_cntnt?.split("\n");
+	const splitedAnswer1 = currentQuestion?.chc1_cntnt?.split("\\n");
+	const splitedAnswer2 = currentQuestion?.chc2_cntnt?.split("\\n");
 
 	const preventClose = (e: BeforeUnloadEvent) => {
 		e.preventDefault();
