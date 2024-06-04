@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 
 export default function AuthProvider() {
 	const pathname = usePathname();
-	const path = pathname.includes("my-page") ? pathname.split("/my-page")[1] : pathname;
+	const path = pathname.includes("my-page") ? pathname.split("/my-page")[1] : pathname.split("/")[1];
 	const router = useRouter();
 
 	useEffect(() => {
@@ -14,7 +14,7 @@ export default function AuthProvider() {
 			return;
 		} else {
 			path.includes("/child-list") && router.push("/");
-			["/test", "/setting"].includes(path) && router.push("/");
+			["test", "setting"].includes(path) && router.push("/");
 			return;
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps

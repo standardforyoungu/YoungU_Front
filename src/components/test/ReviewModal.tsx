@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React, { useState } from "react";
 import { useModal } from "@/hooks/useModal";
@@ -13,11 +14,13 @@ import { Textarea } from "../ui/textarea";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { usePostReviewService } from "@/services/review/usePostReviewService";
+import { usePathname } from "next/navigation";
 
 export default function ReviewModal() {
+	const pathname = usePathname();
 	const { mutate, onSuccess, onError } = usePostReviewService();
 	const { type, isOpen, onClose, setOpenChange } = useModal();
-	const isModalOpen = isOpen && type === "review";
+	const isModalOpen = isOpen && pathname === "/test/result" && type === "review";
 	const [review, setReview] = useState({ mbr_rvw: "", mbr_star: "" });
 
 	const onSubmit = () => {
