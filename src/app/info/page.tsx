@@ -32,7 +32,7 @@ function InfoListPage() {
 		<>
 			{isSuccess ? (
 				<div className="h-fit pb-6">
-					<div className="px-[1.5rem]">
+					<div>
 						{classList?.map((item: KdgnListInterface) => (
 							<CngdList
 								title={item.engl_kd_clas_nm}
