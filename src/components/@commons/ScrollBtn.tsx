@@ -17,7 +17,7 @@ export default function ScrollBtn({ showBtn, scrollTopHandler }: ScrollBtnProps)
 			className={`${
 				!showBtn && "hidden"
 			} w-14 h-14 bg-orange-100 rounded-full flex justify-center items-center fixed bottom-5 right-5`}>
-			<Image src={"/icons/arrow-right.svg"} alt="scrollToTop" width={20} height={20} className="-rotate-90" />
+			<Image src={"/icons/arrow.svg"} alt="scrollToTop" width={20} height={20} className="-rotate-90" />
 		</button>
 	);
 }

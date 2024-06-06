@@ -37,7 +37,7 @@ export default function MainCards() {
 					onClick={onClickBtn}
 					className="w-[200px] !h-[40px] flex gap-1 items-center bg-orange-100 text-White !head5">
 					<span className="text-White head5">성향검사 시작하기</span>
-					<Image src={"/icons/arrow-right.svg"} alt="arrow" width={16} height={16} />
+					<Image src={"/icons/arrow.svg"} alt="arrow" width={16} height={16} />
 				</Button>
 			</div>
 			<div
