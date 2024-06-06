@@ -14,14 +14,14 @@ export default function Main() {
 			{isMount && (
 				<>
 					<Image
-						className="absolute -left-4 top-24"
+						className="absolute -left-4 top-[68px]"
 						src={"/icons/main_layer_1.svg"}
 						alt={"layer"}
 						width={72}
 						height={72}
 					/>
 					<Image
-						className="absolute left-20 top-20"
+						className="absolute left-20 top-[2rem]"
 						src={"/icons/main_layer_2.svg"}
 						alt={"layer"}
 						width={15}
@@ -35,20 +35,20 @@ export default function Main() {
 						height={110}
 					/>
 					<Image
-						className="absolute right-0 top-10"
+						className="absolute right-0 top-[0.5rem]"
 						src={"/icons/main_layer_4.svg"}
 						alt={"layer"}
 						width={92}
 						height={98}
 					/>
-					<div className="bg-gray-99 w-full px-[20px] py-[20px]">
-						<div className="flex flex-col gap-[10px] justify-center items-center pt-[44px] pb-[28px] relative">
+					<div className="bg-gray-99 w-full px-[20px] py-[20px] flex flex-col justify-between items-center">
+						<div className="flex flex-col gap-[10px] w-[188px] h-[76px] justify-center items-center relative mt-[24px] mb-[28px]">
 							<Image
 								src={"/icons/beta_tag.svg"}
 								alt={"tag"}
 								width={49}
 								height={25}
-								className="absolute top-[1.5rem] right-[126.4px] sm:right-20"
+								className="absolute -top-4 -right-2"
 							/>
 							<Image src={"/images/logo.svg"} alt={"logo"} width={174} height={42} />
 							<p className="body1 text-gray-60">우리 아이와 딱 맞는 영유 찾기</p>

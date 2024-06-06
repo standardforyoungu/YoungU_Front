@@ -23,7 +23,7 @@ export default function MainCards() {
 	};
 
 	return (
-		<div className="flex flex-col gap-[10px]">
+		<div className="flex flex-col gap-[10px] w-full">
 			<div
 				className={`w-full h-fit rounded-[12px] py-8 flex flex-col gap-4 items-center bg-orange-10 hover:-translate-y-2 duration-300`}>
 				<Image src={`/icons/symbol_orange.svg`} alt="symbol" width={24} height={26} />
