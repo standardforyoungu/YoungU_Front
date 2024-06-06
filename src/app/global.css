@@ -120,4 +120,8 @@
 		letter-spacing: -0.5%;
 		font-weight: 400;
 	}
+
+	.text-emphasis {
+		text-emphasis: filled #f6714e;
+	}
 }

@@ -45,8 +45,8 @@ export default function Layout({ children }: { children: ReactNode }) {
 			<div className="sm:hidden md:hidden flex flex-col justify-center items-center w-[584px] h-screen">
 				<Image src="/images/large_logo.svg" alt="logo" width={584} height={173} />
 				<h3 className="head3 text-gray-40">
-					우리 아이와 <span className="text-orange-100">딱</span> 맞는 <span className="text-orange-100">영유</span>{" "}
-					찾기
+					우리 아이와 <span className="text-orange-100 text-emphasis">딱</span> 맞는{" "}
+					<span className="text-orange-100 text-emphasis">영유</span> 찾기
 				</h3>
 				<div className="absolute flex flex-col justify-center items-center gap-4 bottom-[40px] text-gray-60 body3">
 					<Link
