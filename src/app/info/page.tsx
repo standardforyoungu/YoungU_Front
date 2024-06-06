@@ -50,6 +50,7 @@ function InfoListPage() {
 					<PaginationItem>
 						<PaginationPrevious
 							href="#"
+							disabled={currentPage === 1}
 							onClick={() => {
 								if (currentPage! <= 1) {
 									return;
@@ -79,6 +80,7 @@ function InfoListPage() {
 					</PaginationItem>
 					<PaginationItem>
 						<PaginationNext
+							disabled={currentPage === lastPageNum}
 							onClick={() => {
 								if (currentPage! >= lastPageNum!) {
 									return;

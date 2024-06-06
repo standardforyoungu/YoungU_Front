@@ -1,8 +1,9 @@
 import * as React from "react";
-import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
+import { MoreHorizontal } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { ButtonProps, buttonVariants } from "@/components/ui/button";
+import Image from "next/image";
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
 	<nav
@@ -28,10 +29,11 @@ PaginationItem.displayName = "PaginationItem";
 
 type PaginationLinkProps = {
 	isActive?: boolean;
+	disabled?: boolean;
 } & Pick<ButtonProps, "size"> &
 	React.ComponentProps<"a">;
 
-const PaginationLink = ({ className, isActive, size = "icon", ...props }: PaginationLinkProps) => (
+const PaginationLink = ({ className, isActive, disabled, size = "icon", ...props }: PaginationLinkProps) => (
 	<a
 		aria-current={isActive ? "page" : undefined}
 		className={cn(
@@ -46,16 +48,24 @@ const PaginationLink = ({ className, isActive, size = "icon", ...props }: Pagina
 );
 PaginationLink.displayName = "PaginationLink";
 
-const PaginationPrevious = ({ className, ...props }: React.ComponentProps<typeof PaginationLink>) => (
+const PaginationPrevious = ({ className, disabled = false, ...props }: React.ComponentProps<typeof PaginationLink>) => (
 	<PaginationLink aria-label="Go to previous page" size="default" className={cn("gap-1 pl-2.5", className)} {...props}>
-		<ChevronLeft className="h-4 w-4 text-gray-80" />
+		{disabled ? (
+			<Image src={"/icons/arrow_left_disabled.svg"} alt="arrow" width={32} height={32} />
+		) : (
+			<Image src={"/icons/arrow_left.svg"} alt="arrow" width={32} height={32} />
+		)}
 	</PaginationLink>
 );
 PaginationPrevious.displayName = "PaginationPrevious";
 
-const PaginationNext = ({ className, ...props }: React.ComponentProps<typeof PaginationLink>) => (
+const PaginationNext = ({ className, disabled = false, ...props }: React.ComponentProps<typeof PaginationLink>) => (
 	<PaginationLink aria-label="Go to next page" size="default" className={cn("gap-1 pr-2.5", className)} {...props}>
-		<ChevronRight className="h-4 w-4 text-gray-80" />
+		{disabled ? (
+			<Image src={"/icons/arrow_right_disabled.svg"} alt="arrow" width={32} height={32} />
+		) : (
+			<Image src={"/icons/arrow_right.svg"} alt="arrow" width={32} height={32} />
+		)}
 	</PaginationLink>
 );
 PaginationNext.displayName = "PaginationNext";
