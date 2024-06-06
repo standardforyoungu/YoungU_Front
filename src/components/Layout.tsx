@@ -6,8 +6,10 @@ import { ToastContainer } from "react-toastify";
 import Image from "next/image";
 import Link from "next/link";
 import { Instagram } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Layout({ children }: { children: ReactNode }) {
+	const pathname = usePathname();
 	const contentsRef = useRef<HTMLDivElement>(null);
 	const [showBtn, setShowBtn] = useState(false);
 
@@ -28,6 +30,12 @@ export default function Layout({ children }: { children: ReactNode }) {
 			contentsRef.current.scrollTo({ top: 0, behavior: "smooth" });
 		}
 	};
+
+	useEffect(() => {
+		if (contentsRef?.current) {
+			contentsRef.current.scrollTo({ top: 0 });
+		}
+	}, [pathname]);
 
 	return (
 		<div className="min-w-screen w-full flex items-center justify-center gap-[80px] h-full min-h-screen bg-gray-95">

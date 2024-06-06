@@ -14,7 +14,6 @@ import {
 import { useGetKdgnList } from "@/hooks/list/useGetKdgnList";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-
 import React, { useState } from "react";
 
 function InfoListPage() {
@@ -29,7 +28,7 @@ function InfoListPage() {
 	return (
 		<>
 			{isSuccess ? (
-				<div className="h-full">
+				<div className="h-fit pb-6">
 					<div className="px-[1.5rem]">
 						{classList?.map((item: KdgnListInterface) => (
 							<CngdList
