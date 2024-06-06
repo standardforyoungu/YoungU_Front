@@ -1,6 +1,7 @@
 "use client";
 
 import { KdgnListInterface } from "@/api/list/list.schema";
+import { scrollState } from "@/atom/scrollState";
 import CngdList from "@/components/list/CngdList";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,10 +16,12 @@ import { useGetKdgnList } from "@/hooks/list/useGetKdgnList";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { useRecoilState } from "recoil";
 
 function InfoListPage() {
 	const router = useRouter();
 	const [currentPageNum, setCurrentPageNum] = useState(1);
+	const [scroll, setScroll] = useRecoilState(scrollState);
 	const { isSuccess, lastPageNum, currentPage, classList } = useGetKdgnList({
 		regn: 1,
 		city_cd: 1,
@@ -51,6 +54,7 @@ function InfoListPage() {
 											return;
 										} else {
 											setCurrentPageNum(1);
+											setScroll(scroll * -1);
 										}
 									}}
 								/>
@@ -59,7 +63,10 @@ function InfoListPage() {
 								{lastPageNum &&
 									Array.from({ length: lastPageNum }, (_, index) => (
 										<PaginationLink
-											onClick={() => setCurrentPageNum(index + 1)}
+											onClick={() => {
+												setCurrentPageNum(index + 1);
+												setScroll(scroll * -1);
+											}}
 											key={index}
 											href="#"
 											className={`w-[32px] h-[32px] mx-1 text-gray-80 hover:text-gray-10 hover:bg-gray-99 ${
@@ -76,6 +83,7 @@ function InfoListPage() {
 											return;
 										} else {
 											setCurrentPageNum(lastPageNum!);
+											setScroll(scroll * -1);
 										}
 									}}
 									href="#"

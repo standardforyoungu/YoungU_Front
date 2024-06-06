@@ -7,11 +7,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { Instagram } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useRecoilState } from "recoil";
+import { scrollState } from "@/atom/scrollState";
 
 export default function Layout({ children }: { children: ReactNode }) {
 	const pathname = usePathname();
 	const contentsRef = useRef<HTMLDivElement>(null);
 	const [showBtn, setShowBtn] = useState(false);
+	const [scroll] = useRecoilState(scrollState);
 
 	useEffect(() => {
 		if (contentsRef?.current) {
@@ -35,7 +38,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 		if (contentsRef?.current) {
 			contentsRef.current.scrollTo({ top: 0 });
 		}
-	}, [pathname]);
+	}, [pathname, scroll]);
 
 	return (
 		<div className="min-w-screen w-full flex items-center justify-center gap-[80px] h-full min-h-screen bg-gray-95">
