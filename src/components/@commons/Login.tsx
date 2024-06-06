@@ -44,14 +44,18 @@ export default function Login() {
 					<p className="text-gray-60 body3 text-center">
 						회원가입과 함께{" "}
 						<Link
-							href={"/my-page/terms-and-conditions"}
+							target="_blank"
+							href={
+								"https://docs.google.com/document/d/1UXlXVMll3ZvqEcRQ1e8e66iURPbBqvTMbBXzdpjhXc4/edit#heading=h.i6f49ueysxf7"
+							}
 							onClick={onClose}
 							className="font-semibold underline underline-offset-2 cursor-pointer">
 							이용약관
 						</Link>{" "}
 						및{" "}
 						<Link
-							href={"/my-page/privacy"}
+							target="_black"
+							href={"https://docs.google.com/document/d/1v1JhJ5HGxpJgnRLON_l28P8IXqZAQSHgE7xMz7UInKQ/edit"}
 							onClick={onClose}
 							className="font-semibold underline underline-offset-2 cursor-pointer">
 							개인정보처리방침

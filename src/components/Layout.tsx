@@ -57,10 +57,18 @@ export default function Layout({ children }: { children: ReactNode }) {
 					<div className="flex flex-col gap-[4px] items-center justify-center">
 						<p>email: youngustandard2024@gmail.com</p>
 						<div className="flex gap-3">
-							<Link href={"/my-page/terms-and-conditions"} className="underline underline-offset-1">
+							<Link
+								target="_blank"
+								href={
+									"https://docs.google.com/document/d/1UXlXVMll3ZvqEcRQ1e8e66iURPbBqvTMbBXzdpjhXc4/edit#heading=h.i6f49ueysxf7"
+								}
+								className="underline underline-offset-1">
 								이용약관
 							</Link>
-							<Link href={"/my-page/privacy"} className="underline underline-offset-1">
+							<Link
+								target="_blank"
+								href={"https://docs.google.com/document/d/1v1JhJ5HGxpJgnRLON_l28P8IXqZAQSHgE7xMz7UInKQ/edit"}
+								className="underline underline-offset-1">
 								개인정보 처리방침
 							</Link>
 						</div>
