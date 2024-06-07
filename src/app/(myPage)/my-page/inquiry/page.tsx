@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import Loading from "@/components/@commons/Loading";
 
 const formSchema = z.object({
 	contents: z.string().min(1).max(200),
@@ -39,12 +40,7 @@ export default function InquiryPage() {
 	return (
 		<>
 			{isLoading ? (
-				<div className="w-full h-full flex justify-center items-center">
-					<div className="relative">
-						<div className="w-12 h-12 bg-gradient-to-br from-orange-200 to-orange-10 rounded-full animate-spin" />
-						<div className="w-8 h-8 bg-White rounded-full absolute top-2 right-[7.5px]" />
-					</div>
-				</div>
+				<Loading />
 			) : (
 				<div className="p-[20px] flex flex-col gap-4">
 					<div className="flex flex-col gap-[6px]">
