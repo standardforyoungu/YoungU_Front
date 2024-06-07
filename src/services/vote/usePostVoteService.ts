@@ -10,6 +10,9 @@ export const usePostVoteService = () => {
 	const onSuccess = (res: SuccessResInterface) => {
 		toast("Success", res?.message);
 		router.push("/");
+		if (typeof window !== "undefined") {
+			window.localStorage.setItem("isVoted", "Y");
+		}
 	};
 
 	const onError = (error: any) => {

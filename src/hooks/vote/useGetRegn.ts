@@ -3,7 +3,7 @@ import { RegionList } from "@/api/vote/vote.schema";
 import { useMemo } from "react";
 
 export const useGetRegn = () => {
-	const { data, isSuccess } = useGetRegnQuery();
+	const { data, isSuccess, isPending } = useGetRegnQuery();
 	const regionList: Array<RegionList> = useMemo(() => data?.region_list ?? [], [data]);
 	const voteList: Array<{ cityname: string; list: Array<{ title: string; value: number }> }> = [];
 
@@ -17,5 +17,5 @@ export const useGetRegn = () => {
 		});
 	}
 
-	return { voteList, isSuccess };
+	return { voteList, isSuccess, isPending };
 };

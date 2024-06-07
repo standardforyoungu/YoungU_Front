@@ -12,7 +12,7 @@ export default function LinkBtn({ href, title, bgColor }: Props) {
 	return (
 		<Link
 			href={href}
-			className={`p-[10px] flex gap-1 ${bgColor} rounded-[8px] w-[180px] h-[40px] items-center justify-center`}>
+			className={`p-[10px] flex gap-1 ${bgColor} rounded-[8px] w-[200px] h-[40px] items-center justify-center`}>
 			<span className="text-White head5">{title}</span>
 			<Image src={"/icons/arrow.svg"} alt="arrow" width={16} height={16} />
 		</Link>

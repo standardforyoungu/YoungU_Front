@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LinkBtn from "@/components/LinkBtn";
 import { useIsLoggedIn } from "@/hooks/useIsLoggedIn";
 import { useModal } from "@/hooks/useModal";
@@ -12,6 +12,13 @@ export default function MainCards() {
 	const router = useRouter();
 	const { isLoggedIn } = useIsLoggedIn();
 	const { onOpen } = useModal();
+	const [isVoted, setIsVoted] = useState(false);
+
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			!!window?.localStorage?.getItem("isVoted") && setIsVoted(true);
+		}
+	}, []);
 
 	const onClickBtn = () => {
 		if (!isLoggedIn) {
@@ -60,7 +67,13 @@ export default function MainCards() {
 					<br /> 다음 동네는?
 				</h1>
 				<Image src={"/images/map.svg"} alt="cardImg" width={143.22} height={110} />
-				<LinkBtn href={"/vote"} title={"다음 동네 투표하러 가기"} bgColor={"bg-blue-100"} />
+				<Button
+					disabled={isVoted}
+					onClick={() => router.push("/vote")}
+					className="w-[200px] !h-[40px] flex gap-1 items-center bg-blue-100 text-White !head5">
+					<span className="text-White head5">다음 동네 투표하러 가기</span>
+					<Image src={"/icons/arrow.svg"} alt="arrow" width={16} height={16} />
+				</Button>
 			</div>
 		</div>
 	);
