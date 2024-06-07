@@ -26,6 +26,7 @@ export default function ConfirmEmail() {
 			.then(() => {
 				toast("Success", "답변이 제출되었습니다.");
 				router.push("/my-page");
+				data?.resetForm();
 			})
 			.finally(() => {
 				data?.setIsLoading(false);
@@ -43,10 +44,10 @@ export default function ConfirmEmail() {
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter className="gap-[10px]">
-					<Button onClick={onClose} variant={"popup-secondary"} className="shrink-0">
+					<Button onClick={onClose} variant={"popup-secondary"} className="!head5 w-[135px] px-0">
 						아니요, 수정할게요
 					</Button>
-					<Button onClick={onConfirm} variant={"popup"} className="w-full">
+					<Button onClick={onConfirm} variant={"popup"} className="w-[135px] !head5">
 						네, 맞아요
 					</Button>
 				</AlertDialogFooter>

@@ -28,9 +28,12 @@ export default function InquiryPage() {
 		mode: "onBlur",
 	});
 
-	const onSubmit = (value: z.infer<typeof formSchema>) => {
+	const resetForm = () => {
 		form.reset();
-		onOpen("confirmEmail", { value, setIsLoading });
+	};
+
+	const onSubmit = (value: z.infer<typeof formSchema>) => {
+		onOpen("confirmEmail", { value, setIsLoading, resetForm });
 	};
 
 	return (
