@@ -24,7 +24,7 @@ export default function MyPageList() {
 			{NavList.map(({ path, title }: { path: string; title: string }) => (
 				<Link href={path} key={path} className="px-5 py-4 flex justify-between items-center border-b border-gray-99">
 					<p className="text-gray-40 head4">{title}</p>
-					<ChevronRight size={32} className="text-gray-90" />
+					<ChevronRight size={30} className="text-gray-90" strokeWidth={1} />
 				</Link>
 			))}
 		</div>
