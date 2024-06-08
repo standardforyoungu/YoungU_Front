@@ -7,7 +7,7 @@ import { useGetPropensityResult } from "@/hooks/test/useGetPropensityResult";
 import { useModal } from "@/hooks/useModal";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import React, { useEffect, useRef } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 export default function ResultPage() {
@@ -18,6 +18,13 @@ export default function ResultPage() {
 	const { onOpen } = useModal();
 	const { kdgnList } = useGetRecommendKdgnList(prpnsDataDTO?.prpns_data);
 	const splitedExplain = prpnsDataDTO?.prpns_expln?.split("\\n");
+	const [isMount, setIsMount] = useState(false);
+
+	useEffect(() => {
+		setTimeout(() => {
+			setIsMount(true);
+		}, 200);
+	}, []);
 
 	useEffect(() => {
 		const isReviewed = localStorage.getItem("isReviewed");
@@ -28,7 +35,7 @@ export default function ResultPage() {
 				if (isReviewed) {
 					return;
 				} else {
-					onOpen("review");
+					isMount && onOpen("review");
 				}
 			}
 		});
@@ -39,7 +46,7 @@ export default function ResultPage() {
 
 		return () => observer.disconnect();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [isMount]);
 
 	return (
 		<div>
@@ -51,20 +58,24 @@ export default function ResultPage() {
 						<span className="head3 text-orange-100">{prpnsDataDTO?.prpns_chrct}</span>
 					</p>
 					<div className="relative w-[233px] h-[126px]">
-						<Image src={prpnsDataDTO?.prpns_chrct_img2} alt="graph" width={233} height={126} />
-						<motion.div
-							animate={{
-								opacity: [0, 1, 1, 1],
-								scale: [0, 1, 0.8, 1],
-								rotate: [0, 0, -20, 0],
-							}}
-							transition={{
-								duration: 0.7,
-								delay: 1.5,
-							}}
-							className="absolute bottom-4 right-[65px]">
-							<Image src={prpnsDataDTO?.prpns_chrct_img1} alt="animal" width={102} height={72} />
-						</motion.div>
+						{!!prpnsDataDTO?.prpns_chrct_img2 && (
+							<Image src={prpnsDataDTO?.prpns_chrct_img2} alt="graph" width={233} height={126} />
+						)}
+						{!!prpnsDataDTO?.prpns_chrct_img1 && (
+							<motion.div
+								animate={{
+									opacity: [0, 1, 1, 1],
+									scale: [0, 1, 0.8, 1],
+									rotate: [0, 0, -20, 0],
+								}}
+								transition={{
+									duration: 0.7,
+									delay: 0.5,
+								}}
+								className="absolute bottom-4 right-[65px]">
+								<Image src={prpnsDataDTO?.prpns_chrct_img1} alt="animal" width={102} height={72} />
+							</motion.div>
+						)}
 					</div>
 				</div>
 				<div className="bg-[#F67B4E]/5 rounded-b-[16px] h-[154px] w-full px-4 py-5 flex flex-col gap-[10px] items-center justify-center">
@@ -76,8 +87,8 @@ export default function ResultPage() {
 						))}
 					</div>
 					<div className="flex flex-wrap justify-center items-center gap-[6px] w-[300px]">
-						{keywords.map((el) => (
-							<div key={el} className="bg-White py-[6px] px-3 text-orange-100 head6">
+						{keywords.map((el, idx) => (
+							<div key={idx} className="bg-White py-[6px] px-3 text-orange-100 head6">
 								#{el}
 							</div>
 						))}
@@ -85,17 +96,18 @@ export default function ResultPage() {
 				</div>
 			</div>
 			<div className="w-full h-[6px] bg-gray-99" />
-			<div className="py-8 px-5">
-				<h2 className="text-gray-20 head2">추천 영어유치부</h2>
+			<div className="py-8">
+				<h2 className="text-gray-20 head2 px-5">추천 영어유치부</h2>
 				{!!kdgnList?.length &&
 					kdgnList.map((item: KdgnListInterface) => (
-						<CngdList
-							title={item.engl_kd_clas_nm}
-							phone={item.engl_kd_clas_telno}
-							address={item.engl_kd_clas_addr}
-							link={item.engl_kd_clas_lnk}
-							key={item.engl_kd_clas_id}
-						/>
+						<div key={item.engl_kd_clas_id}>
+							<CngdList
+								title={item.engl_kd_clas_nm}
+								phone={item.engl_kd_clas_telno}
+								address={item.engl_kd_clas_addr}
+								link={item.engl_kd_clas_lnk}
+							/>
+						</div>
 					))}
 				<div ref={ref} className="h-4" />
 			</div>

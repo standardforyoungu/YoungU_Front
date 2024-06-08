@@ -14,7 +14,7 @@ export interface ListItemInterface {
 
 export default function CngdList({ title, phone, address, link }: ListItemInterface) {
 	return (
-		<div className="max-h-[165]  w-full py-[1.5rem] bg-White border-b border-gray-99">
+		<div className="max-h-[165] w-full py-[1.5rem] bg-White border-b border-gray-99">
 			<div className="flex flex-col w-full px-6">
 				<h4 className="head4 text-gray-20 my-1">{title}</h4>
 				<div className="flex gap-[2.5px] items-center my-[0.2rem]">
