@@ -43,7 +43,7 @@ export default function ChildCards({ type, checked, setChecked }: Props) {
 	if (isPending) return <Loading />;
 
 	return !!childList?.length ? (
-		<div className="pt-[20px] pb-[36px] px-5">
+		<div className="pt-[20px] pb-[36px]">
 			<div className="flex flex-col gap-3 pb-3">
 				{childList.map((el: ChildListType, index: number) => (
 					<div key={el?.chl_id} className="flex gap-4 items-center">
@@ -121,7 +121,7 @@ export default function ChildCards({ type, checked, setChecked }: Props) {
 			</Button>
 		</div>
 	) : (
-		<div className="flex flex-col items-center justify-center gap-4 flex-1">
+		<div className="flex flex-col items-center justify-center gap-4 flex-1 py-10">
 			<Image src="/images/icon_diabled.svg" alt="logo" width={72} height={72} />
 			<div className="flex flex-col gap-[2px] items-center">
 				<p className="head4 text-gray-40">등록된 아이가 없습니다</p>
