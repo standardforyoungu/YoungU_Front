@@ -93,17 +93,17 @@ export const usePatchChildInfoMutation = () => {
 
 // 아이 정보 삭제
 export const useDeleteChildInfoMutation = () => {
-	let mbr_id: string;
-	if (typeof window !== "undefined") {
-		try {
-			mbr_id = window.localStorage.getItem("mbr_id") ?? "";
-		} catch {
-			mbr_id = "";
-		}
-	}
+	// let mbr_id: string;
+	// if (typeof window !== "undefined") {
+	// 	try {
+	// 		mbr_id = window.localStorage.getItem("mbr_id") ?? "";
+	// 	} catch {
+	// 		mbr_id = "";
+	// 	}
+	// }
 	return useMutation({
 		mutationKey: ["DELETE", "childInfo"],
 		mutationFn: (req: DeleteChildInfoReqInterface) =>
-			http.delete(`/youngustandard/user/${mbr_id}/child`, { data: req }).then((res) => res.data),
+			http.delete(`/youngustandard/user/child`, { data: req }).then((res) => res.data),
 	});
 };
