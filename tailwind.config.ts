@@ -19,8 +19,8 @@ const config = {
 		},
 		screens: {
 			sm: { max: "480px" }, // 모바일 전용
-			md: { min: "481px", max: "1023px" }, // 태블릿 전용
-			lg: "1024px", // 웹 전용
+			md: { min: "481px", max: "1149px" }, // 태블릿 전용
+			lg: "1150px", // 웹 전용
 		},
 		colors: {
 			"gray-99": "#F7F7F7",
