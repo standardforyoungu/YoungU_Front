@@ -30,7 +30,6 @@ export default function ReviewModal() {
 		mutate(req, {
 			onSuccess: (data) => {
 				onSuccess(data);
-				localStorage.setItem("isReviewed", "true");
 			},
 			onError,
 		});

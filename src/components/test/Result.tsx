@@ -7,27 +7,35 @@ import { useGetPropensityResult } from "@/hooks/test/useGetPropensityResult";
 import { useModal } from "@/hooks/useModal";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useGetIsReviewedQuery } from "@/api/review/review.query";
 
 export default function ResultPage() {
 	const searchParams = useSearchParams();
 	const childIdx = searchParams.get("childIdx");
+	const { data } = useGetIsReviewedQuery();
 	const { prpnsDataDTO, keywords } = useGetPropensityResult(childIdx!);
 	const ref = useRef<HTMLDivElement>(null);
 	const { onOpen } = useModal();
 	const { kdgnList } = useGetRecommendKdgnList(prpnsDataDTO?.prpns_data);
 	const splitedExplain = prpnsDataDTO?.prpns_expln?.split("\\n");
 	const [isMount, setIsMount] = useState(false);
+	const [isReviewed, setIsReviewed] = useState(false);
+
+	useEffect(() => {
+		if (data?.review_cnt) {
+			setIsReviewed(true);
+		}
+	}, [data?.review_cnt]);
 
 	useEffect(() => {
 		setTimeout(() => {
 			setIsMount(true);
-		}, 200);
+		}, 300);
 	}, []);
 
 	useEffect(() => {
-		const isReviewed = !!localStorage.getItem("isReviewed");
 		const observer = new IntersectionObserver((entries, observer) => {
 			if (!entries[0].isIntersecting) {
 				return;
