@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { usePostReviewService } from "@/services/review/usePostReviewService";
 import { usePathname } from "next/navigation";
+import { getMbrId } from "@/utils/getMbrId";
 
 export default function ReviewModal() {
 	const pathname = usePathname();
@@ -24,7 +25,7 @@ export default function ReviewModal() {
 	const [review, setReview] = useState({ mbr_rvw: "", mbr_star: "" });
 
 	const onSubmit = () => {
-		const mbr_id = localStorage.getItem("mbr_id") ?? "";
+		const mbr_id = getMbrId();
 		const req = { ...review, mbr_id };
 		mutate(req, {
 			onSuccess: (data) => {
