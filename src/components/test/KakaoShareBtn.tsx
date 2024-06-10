@@ -26,7 +26,7 @@ export default function KakaoShareBtn() {
 			content: {
 				title: "영유 스탠다드",
 				description: "영어 유치부가 고민될땐? 성향검사를 통해 아이에게 맞는 학습법을 찾아보세요!",
-				imageUrl: "",
+				imageUrl: "https://youngu-s3-bucket.s3.ap-northeast-2.amazonaws.com/propensity_result/kakaoShare.png",
 				link: {
 					mobileWebUrl: "http://young-u-standard.site",
 					webUrl: "http://young-u-standard.site",
