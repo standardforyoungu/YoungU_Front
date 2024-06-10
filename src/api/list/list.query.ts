@@ -15,5 +15,6 @@ export const useGetRecommendKdgnListQuery = (prpns_data: string) => {
 		queryKey: ["GET", prpns_data],
 		queryFn: () => http.get(`youngustandard/recommend/${prpns_data}`).then((res) => res.data),
 		placeholderData: keepPreviousData,
+		enabled: !!prpns_data,
 	});
 };
