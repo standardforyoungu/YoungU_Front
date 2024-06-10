@@ -18,7 +18,15 @@ export default function VotePage() {
 	const { mutate, onSuccess, onError } = usePostVoteService();
 
 	const onSubmit = () => {
-		const req = { info: selected?.map(({ regn, city }) => [regn, city]) };
+		const req = {
+			info: selected?.map(({ regn, city }) => {
+				if (+city <= 7) {
+					return [+regn, +city];
+				} else {
+					return [+regn, +city - 7];
+				}
+			}),
+		};
 		mutate(req, {
 			onSuccess: (res) => {
 				onSuccess(res);
@@ -51,7 +59,7 @@ export default function VotePage() {
 									<Checkbox
 										onCheckedChange={(isChecked) => {
 											if (isChecked) {
-												setSelected([...selected, { regn: `${index}`, city: `${value}` }]);
+												setSelected([...selected, { regn: `${index + 1}`, city: `${value}` }]);
 											} else {
 												setSelected(selected.filter(({ city }: { city: string }) => +city !== value));
 											}

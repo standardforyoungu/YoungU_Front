@@ -11,7 +11,7 @@ export interface GetRegnInterface {
 	region_list: Array<RegionList>;
 }
 
-export type VoteType = Array<string>;
+export type VoteType = Array<number>;
 
 export interface PostVoteInterface {
 	info: Array<VoteType>;
