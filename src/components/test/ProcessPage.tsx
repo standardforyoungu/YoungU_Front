@@ -73,16 +73,14 @@ export default function ProcessPage() {
 
 	const onNextQuestion = (answer: string) => {
 		if (currentIdx === 20) {
-			setResult([...result, answer]);
 			setIsDisabled(false);
-		} else {
-			if (!result[currentIdx - 1]) {
-				setResult([...result, answer]);
-			} else {
-				setResult(result?.map((el, idx) => (idx === currentIdx - 1 ? answer : el)));
-			}
-			onPrevNext("next");
 		}
+		if (!result[currentIdx - 1]) {
+			setResult([...result, answer]);
+		} else {
+			setResult(result?.map((el, idx) => (idx === currentIdx - 1 ? answer : el)));
+		}
+		onPrevNext("next");
 	};
 
 	const onSubmit = () => {
@@ -91,7 +89,13 @@ export default function ProcessPage() {
 		if (chl_id) {
 			mutate(
 				{ chl_id, result_list: result },
-				{ onError, onSuccess: () => router.push(`/test/result?childIdx=${chl_id}`) },
+				{
+					onError,
+					onSuccess: () => {
+						router.push(`/test/result?childIdx=${chl_id}`);
+						setResult([]);
+					},
+				},
 			);
 		}
 	};

@@ -27,7 +27,7 @@ export default function ResultPage() {
 	}, []);
 
 	useEffect(() => {
-		const isReviewed = localStorage.getItem("isReviewed");
+		const isReviewed = !!localStorage.getItem("isReviewed");
 		const observer = new IntersectionObserver((entries, observer) => {
 			if (!entries[0].isIntersecting) {
 				return;
