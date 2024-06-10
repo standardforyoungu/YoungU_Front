@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { http } from "../axios";
 
 export const usePostLoginMutation = () => {
@@ -12,5 +12,12 @@ export const useDeleteWithdrawMutation = () => {
 	return useMutation({
 		mutationKey: ["DELETE", "withdraw"],
 		mutationFn: () => http.delete(`/youngustandard/withdraw`).then((res) => res.data),
+	});
+};
+
+export const useGetLogoutMutation = () => {
+	return useMutation({
+		mutationKey: ["GET", "logout"],
+		mutationFn: () => http.get("/youngustandard/logout").then((res) => res.data),
 	});
 };
