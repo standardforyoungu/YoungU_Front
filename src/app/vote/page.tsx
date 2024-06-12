@@ -70,7 +70,7 @@ export default function VotePage() {
 										}`}
 									/>
 									<Label
-										className={`py-[13.5px] w-full px-4 border rounded-[8px] hover:bg-orange-10 hover:border-orange-100 hover:text-orange-200 hover:!head4 ${
+										className={`py-[13.5px] w-full px-4 border rounded-[8px] cursor-pointer ${
 											!!selected?.find(({ city }: { city: string }) => +city === value)
 												? "bg-orange-10 border-orange-100 text-orange-200 !head4"
 												: "border-gray-97 text-gray-40 !body1"
