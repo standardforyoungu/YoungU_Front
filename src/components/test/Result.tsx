@@ -94,12 +94,27 @@ export default function ResultPage() {
 							</p>
 						))}
 					</div>
-					<div className="flex flex-wrap justify-center items-center gap-[6px] w-[300px]">
-						{keywords.map((el, idx) => (
-							<div key={idx} className="bg-White py-[6px] px-3 text-orange-100 head6">
-								#{el}
-							</div>
-						))}
+					<div className="flex flex-col gap-[6px]">
+						<div className="flex justify-center items-center gap-[6px]">
+							{keywords.map(
+								(el, idx) =>
+									idx < 3 && (
+										<div key={idx} className="bg-White py-[6px] px-3 text-orange-100 head6">
+											#{el}
+										</div>
+									),
+							)}
+						</div>
+						<div className="flex justify-center items-center gap-[6px]">
+							{keywords.map(
+								(el, idx) =>
+									idx >= 3 && (
+										<div key={idx} className="bg-White py-[6px] px-3 text-orange-100 head6">
+											#{el}
+										</div>
+									),
+							)}
+						</div>
 					</div>
 				</div>
 			</div>
