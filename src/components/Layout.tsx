@@ -84,7 +84,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 				<div
 					className="flex flex-col sm:min-w-[360px] !relative sm:max-w-[480px] sm:w-full sm:mx-auto w-[480px] min-h-screen h-full overflow-scroll max-h-screen scrollbar-hide bg-White"
 					ref={contentsRef}>
-					<div className="h-full">{children}</div>
+					<div className="h-full flex-1">{children}</div>
 
 					<ScrollBtn showBtn={showBtn} scrollTopHandler={scrollTopHandler} />
 					<ToastContainer

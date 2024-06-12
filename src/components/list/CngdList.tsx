@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { cn } from "@/lib/utils";
 
-import { buttonVariants } from "../ui/button";
+import { Button } from "../ui/button";
 
 export interface ListItemInterface {
 	title: string;
@@ -25,12 +24,15 @@ export default function CngdList({ title, phone, address, link }: ListItemInterf
 					<Image src={"/icons/map-pin.svg"} alt="pin" width={16} height={16} />
 					<p className="body2 text-gray-40">{address}</p>
 				</div>
-				<Link
-					className={cn(buttonVariants({ variant: link ? "list-big" : "disable", size: "lg" }), "mt-3 rounded-[8px]")}
-					href={link ? link : "#"}
-					target="_blank">
-					{link ? "홈페이지 바로가기" : "홈페이지를 찾을 수 없어요"}
-				</Link>
+				<Button
+					variant={link ? "list-big" : "disable"}
+					size={"lg"}
+					className="mt-3 rounded-[8px] disabled:opacity-1"
+					disabled={!link}>
+					<Link href={link ? link : ""} target="_blank">
+						{link ? "홈페이지 바로가기" : "홈페이지를 찾을 수 없어요"}
+					</Link>
+				</Button>
 			</div>
 		</div>
 	);
