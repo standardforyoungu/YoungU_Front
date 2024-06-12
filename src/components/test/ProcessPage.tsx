@@ -93,6 +93,8 @@ export default function ProcessPage() {
 					onError,
 					onSuccess: () => {
 						router.push(`/test/result?childIdx=${chl_id}`);
+					},
+					onSettled: () => {
 						setResult([]);
 					},
 				},
