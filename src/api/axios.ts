@@ -30,7 +30,7 @@ http.interceptors.response.use(
 	},
 	function (error) {
 		// 로그아웃
-		if (error.response?.status === 405) {
+		if (error.response?.status === 401) {
 			if (typeof window !== "undefined") {
 				window.localStorage.removeItem("OU_UserAttribute");
 				window.localStorage.removeItem("mbr_id");
