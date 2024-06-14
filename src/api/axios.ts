@@ -29,14 +29,15 @@ http.interceptors.response.use(
 		return response;
 	},
 	function (error) {
-		// 로그아웃
-		if (error.response?.status === 401) {
-			if (typeof window !== "undefined") {
+		switch (error.response?.status) {
+			// 엑세스 토큰 없을 때
+			case 401:
+			// 리프레시 토큰 만료
+			case 408:
 				window.localStorage.removeItem("OU_UserAttribute");
 				window.localStorage.removeItem("mbr_id");
 				location.replace("/");
 				toast("Error", "토큰이 만료되었습니다. 다시 로그인 해주세요.");
-			}
 		}
 		return Promise.reject(error);
 	},
