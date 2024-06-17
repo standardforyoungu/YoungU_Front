@@ -93,7 +93,7 @@ export default function ChildForm({ info, buttonText, defaultValue, onSubmit }: 
 												}`}
 												onClick={() => field.onChange("F")}>
 												<Image
-													src={`/icons/female${field.value !== "M" ? "_active" : ""}.svg`}
+													src={`/icons/female${field.value === "F" ? "_active" : ""}.svg`}
 													alt="female"
 													width={16}
 													height={16}
