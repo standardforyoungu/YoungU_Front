@@ -73,20 +73,22 @@ export default function ChildForm({ info, buttonText, defaultValue, onSubmit }: 
 											<Button
 												type="button"
 												variant={"outline"}
-												className={`head5 w-full border-gray-95 text-gray-60 ${
+												className={`head5 w-full border-gray-95 text-gray-60 flex justify-center items-center gap-1 ${
 													field.value === "M" && "border-orange-200 text-orange-200 hover:text-orange-200"
 												}`}
 												onClick={() => field.onChange("M")}>
-												♂ 남자
+												<span>♂</span>
+												<span>남자</span>
 											</Button>
 											<Button
 												type="button"
 												variant={"outline"}
-												className={`head5 flex gap-1 border-gray-95 w-full text-gray-60 ${
+												className={`head5 flex gap-1 items-center justify-center border-gray-95 w-full text-gray-60 ${
 													field.value === "F" && "border-orange-200 text-orange-200 hover:text-orange-200"
 												}`}
 												onClick={() => field.onChange("F")}>
-												<span className="rotate-45">♀</span> 여자
+												<span className="rotate-45">♀</span>
+												<span>여자</span>
 											</Button>
 										</div>
 									</FormControl>
