@@ -80,8 +80,8 @@ export default function ChildForm({ info, buttonText, defaultValue, onSubmit }: 
 												<Image
 													src={`/icons/male${field.value === "M" ? "_active" : ""}.svg`}
 													alt="male"
-													width={16}
-													height={16}
+													width={14}
+													height={14}
 												/>
 												<span>남자</span>
 											</Button>
@@ -95,8 +95,8 @@ export default function ChildForm({ info, buttonText, defaultValue, onSubmit }: 
 												<Image
 													src={`/icons/female${field.value === "F" ? "_active" : ""}.svg`}
 													alt="female"
-													width={16}
-													height={16}
+													width={14}
+													height={14}
 												/>
 												<span>여자</span>
 											</Button>
