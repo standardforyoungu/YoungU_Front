@@ -72,12 +72,12 @@ export default function ChildCards({ type, checked, setChecked }: Props) {
 										<p className="flex gap-2 items-center text-gray-40 !body2">
 											{el?.chl_sex === "F" ? (
 												<>
-													<Image src={`/icons/female.svg`} alt="female" width={14} height={14} />
+													<Image src={`/icons/female.svg`} alt="female" width={12} height={12} />
 													<span>여자</span>
 												</>
 											) : (
 												<>
-													<Image src={`/icons/male.svg`} alt="male" width={14} height={14} />
+													<Image src={`/icons/male.svg`} alt="male" width={12} height={12} />
 													<span>남자</span>
 												</>
 											)}
