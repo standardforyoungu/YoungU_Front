@@ -10,8 +10,10 @@ export const useDeleteWithdrawService = () => {
 	const onSuccess = (res: SuccessResInterface) => {
 		if (res?.result === "Success") {
 			toast("Success", res.message);
-			router.push("/");
-			window.localStorage.clear();
+			setTimeout(() => {
+				router.push("/");
+				window.localStorage.clear();
+			}, 300);
 		}
 	};
 
