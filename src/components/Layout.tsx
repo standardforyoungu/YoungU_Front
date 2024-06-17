@@ -57,11 +57,12 @@ export default function Layout({ children }: { children: ReactNode }) {
 					<div className="absolute flex flex-col justify-center items-center gap-4 bottom-[40px] text-gray-60 body3">
 						<Link
 							href={"https://www.instagram.com/youngu_standard?igsh=cTE5Nzlxa2JyOHc3&utm_source=qr"}
+							target="_blank"
 							className="w-12 h-12 flex justify-center items-center rounded-full bg-gray-90">
 							<Instagram className="text-gray-40" size={24} />
 						</Link>
 						<div className="flex flex-col gap-[4px] items-center justify-center">
-							<p>email: youngustandard2024@gmail.com</p>
+							<p>이메일: youngustandard2024@gmail.com</p>
 							<div className="flex gap-3">
 								<Link
 									target="_blank"
