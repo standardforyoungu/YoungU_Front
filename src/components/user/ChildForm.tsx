@@ -47,7 +47,7 @@ export default function ChildForm({ info, buttonText, defaultValue, onSubmit }: 
 										<Input
 											placeholder="별명을 입력해주세요."
 											{...field}
-											className={`w-full h-[40px] rounded-[6px] border border-gray-95 focus:border-orange-200 text-orange-200 head5 placeholder:text-gray-60 ${
+											className={`w-full !py-[11px] rounded-[6px] border !head5 border-gray-95 focus:border-orange-200 text-orange-200 placeholder:text-gray-60 ${
 												field.value && "border-orange-200"
 											}`}
 										/>
@@ -73,21 +73,21 @@ export default function ChildForm({ info, buttonText, defaultValue, onSubmit }: 
 											<Button
 												type="button"
 												variant={"outline"}
-												className={`head5 w-full border-gray-95 text-gray-60 flex justify-center items-center gap-1 ${
+												className={`!head5 w-full border-gray-95 text-gray-60 flex justify-center !items-center gap-1 ${
 													field.value === "M" && "border-orange-200 text-orange-200 hover:text-orange-200"
 												}`}
 												onClick={() => field.onChange("M")}>
-												<span>♂</span>
+												<span className="!text-[16px]">♂</span>
 												<span>남자</span>
 											</Button>
 											<Button
 												type="button"
 												variant={"outline"}
-												className={`head5 flex gap-1 items-center justify-center align-baseline border-gray-95 w-full text-gray-60 ${
+												className={`!head5 flex gap-1 !items-center justify-center border-gray-95 w-full text-gray-60 ${
 													field.value === "F" && "border-orange-200 text-orange-200 hover:text-orange-200"
 												}`}
 												onClick={() => field.onChange("F")}>
-												<span className="rotate-45">♀</span>
+												<span className="rotate-45 !text-[16px]">♀</span>
 												<span>여자</span>
 											</Button>
 										</div>
@@ -108,7 +108,7 @@ export default function ChildForm({ info, buttonText, defaultValue, onSubmit }: 
 									<FormControl>
 										<Select value={field.value} onValueChange={field.onChange}>
 											<SelectTrigger
-												className={`w-full text-gray-60 border-gray-95 focus:border-orange-200 rounded-[6px] ${
+												className={`w-full !py-[11px] !head5 text-gray-60 border-gray-95 focus:border-orange-200 rounded-[6px] ${
 													field.value && "border-orange-200 text-orange-200"
 												}`}>
 												<SelectValue
