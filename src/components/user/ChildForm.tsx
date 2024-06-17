@@ -83,7 +83,7 @@ export default function ChildForm({ info, buttonText, defaultValue, onSubmit }: 
 											<Button
 												type="button"
 												variant={"outline"}
-												className={`head5 flex gap-1 items-center justify-center border-gray-95 w-full text-gray-60 ${
+												className={`head5 flex gap-1 items-center justify-center align-baseline border-gray-95 w-full text-gray-60 ${
 													field.value === "F" && "border-orange-200 text-orange-200 hover:text-orange-200"
 												}`}
 												onClick={() => field.onChange("F")}>
