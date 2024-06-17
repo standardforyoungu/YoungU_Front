@@ -77,7 +77,12 @@ export default function ChildForm({ info, buttonText, defaultValue, onSubmit }: 
 													field.value === "M" && "border-orange-200 text-orange-200 hover:text-orange-200"
 												}`}
 												onClick={() => field.onChange("M")}>
-												<span className="!text-[16px]">♂</span>
+												<Image
+													src={`/icons/male${field.value === "M" ? "_active" : ""}.svg`}
+													alt="male"
+													width={16}
+													height={16}
+												/>
 												<span>남자</span>
 											</Button>
 											<Button
@@ -87,7 +92,12 @@ export default function ChildForm({ info, buttonText, defaultValue, onSubmit }: 
 													field.value === "F" && "border-orange-200 text-orange-200 hover:text-orange-200"
 												}`}
 												onClick={() => field.onChange("F")}>
-												<span className="rotate-45 !text-[16px]">♀</span>
+												<Image
+													src={`/icons/female${field.value !== "M" ? "_active" : ""}.svg`}
+													alt="female"
+													width={16}
+													height={16}
+												/>
 												<span>여자</span>
 											</Button>
 										</div>
