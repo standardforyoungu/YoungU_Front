@@ -11,9 +11,11 @@ export const useGetLogoutService = () => {
 		if (data?.result === "Success") {
 			if (typeof window !== "undefined") {
 				toast("Success", data.message);
-				window.localStorage.removeItem("OU_UserAttribute");
-				window.localStorage.removeItem("mbr_id");
-				router.push("/");
+				setTimeout(() => {
+					window.localStorage.removeItem("OU_UserAttribute");
+					window.localStorage.removeItem("mbr_id");
+					router.push("/");
+				}, 300);
 			}
 		}
 	};
