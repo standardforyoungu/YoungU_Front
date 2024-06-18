@@ -13,24 +13,11 @@ import { scrollState } from "@/atom/scrollState";
 export default function Layout({ children }: { children: ReactNode }) {
 	const pathname = usePathname();
 	const contentsRef = useRef<HTMLDivElement>(null);
-	const [showBtn, setShowBtn] = useState(false);
 	const [scroll] = useRecoilState(scrollState);
 	const [isMount, setIsMount] = useState(false);
 
 	useEffect(() => {
 		setIsMount(true);
-	}, []);
-
-	useEffect(() => {
-		if (contentsRef?.current) {
-			contentsRef.current.addEventListener("scroll", () => {
-				if (contentsRef.current && contentsRef.current.scrollTop < 50) {
-					setShowBtn(false);
-				} else {
-					setShowBtn(true);
-				}
-			});
-		}
 	}, []);
 
 	const scrollTopHandler = () => {
@@ -87,7 +74,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 					ref={contentsRef}>
 					<div className="h-full flex-1">{children}</div>
 
-					<ScrollBtn showBtn={showBtn} scrollTopHandler={scrollTopHandler} />
+					<ScrollBtn scrollTopHandler={scrollTopHandler} />
 					<ToastContainer
 						autoClose={1000}
 						hideProgressBar
