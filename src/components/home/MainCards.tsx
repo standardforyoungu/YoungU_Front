@@ -42,7 +42,7 @@ export default function MainCards() {
 				<Image src={"/images/search.svg"} alt="cardImg" width={105} height={99} />
 				<Button
 					onClick={onClickBtn}
-					className="w-[200px] !h-[40px] flex gap-1 items-center bg-orange-100 text-White !head5">
+					className="w-[220px] !h-[40px] flex gap-1 items-center bg-orange-100 text-White !head5">
 					<span className="text-White head5">성향검사 시작하기</span>
 					<Image src={"/icons/arrow.svg"} alt="arrow" width={16} height={16} />
 				</Button>
@@ -70,7 +70,7 @@ export default function MainCards() {
 				<Button
 					disabled={isVoted}
 					onClick={() => router.push("/vote")}
-					className="w-[200px] !h-[40px] flex gap-1 items-center bg-blue-100 text-White !head5">
+					className="w-[220px] !h-[40px] flex gap-1 items-center bg-blue-100 text-White !head5">
 					<span className="text-White head5">다음 동네 투표하러 가기</span>
 					<Image src={"/icons/arrow.svg"} alt="arrow" width={16} height={16} />
 				</Button>

@@ -42,7 +42,7 @@ export default function Main() {
 						height={98}
 					/>
 					<div className="bg-gray-99 w-full px-[20px] py-[20px] flex flex-col justify-between items-center">
-						<div className="flex flex-col gap-[10px] w-[188px] h-[76px] justify-center items-center relative mt-[24px] mb-[28px]">
+						<div className="flex flex-col gap-[10px] h-[76px] justify-center items-center relative mt-[24px] mb-[28px]">
 							<Image
 								src={"/icons/beta_tag.svg"}
 								alt={"tag"}
