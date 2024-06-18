@@ -37,7 +37,7 @@ http.interceptors.response.use(
 				window.localStorage.removeItem("mbr_id");
 				location.replace("/");
 			// 토큰 만료 후 재발급
-			case 201:
+			case 405:
 				const accessToken = error.response?.data?.access_token;
 				window.localStorage.setItem("OU_UserAttribute", accessToken);
 				error.config.headers.Authorization = `Bearer ${accessToken}`;
