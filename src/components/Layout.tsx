@@ -43,7 +43,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 					</h3>
 					<div className="absolute flex flex-col justify-center items-center gap-4 bottom-[40px] text-gray-60 body3">
 						<Link
-							href={"https://www.instagram.com/youngu_standard?igsh=cTE5Nzlxa2JyOHc3&utm_source=qr"}
+							href={"https://www.instagram.com/youngu_standard"}
 							target="_blank"
 							className="w-12 h-12 flex justify-center items-center rounded-full bg-gray-90">
 							<Instagram className="text-gray-40" size={24} />
