@@ -11,8 +11,9 @@ export const useDeleteWithdrawService = () => {
 		if (res?.result === "Success") {
 			toast("Success", res.message);
 			setTimeout(() => {
+				window.localStorage.removeItem("OU_UserAttribute");
+				window.localStorage.removeItem("mbr_id");
 				router.push("/");
-				window.localStorage.clear();
 			}, 300);
 		}
 	};
