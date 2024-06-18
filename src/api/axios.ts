@@ -1,4 +1,3 @@
-import { toast } from "@/utils/toast";
 import axios from "axios";
 
 export const http = axios.create({
@@ -37,7 +36,12 @@ http.interceptors.response.use(
 				window.localStorage.removeItem("OU_UserAttribute");
 				window.localStorage.removeItem("mbr_id");
 				location.replace("/");
-				toast("Error", "토큰이 만료되었습니다. 다시 로그인 해주세요.");
+			// 토큰 만료 후 재발급
+			case 201:
+				const accessToken = error.response?.data?.access_token;
+				window.localStorage.setItem("OU_UserAttribute", accessToken);
+				error.config.headers.Authorization = `Bearer ${accessToken}`;
+				return axios(error.config);
 		}
 		return Promise.reject(error);
 	},
