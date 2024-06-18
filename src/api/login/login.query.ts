@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { http } from "../axios";
+import { getMbrId } from "@/utils/getMbrId";
 
 export const usePostLoginMutation = () => {
 	return useMutation({
@@ -9,9 +10,10 @@ export const usePostLoginMutation = () => {
 };
 
 export const useDeleteWithdrawMutation = () => {
+	const mbr_id = getMbrId();
 	return useMutation({
 		mutationKey: ["DELETE", "withdraw"],
-		mutationFn: () => http.delete(`/youngustandard/withdraw`).then((res) => res.data),
+		mutationFn: () => http.delete(`/youngustandard/withdraw/${mbr_id}`).then((res) => res.data),
 	});
 };
 
