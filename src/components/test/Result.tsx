@@ -99,7 +99,7 @@ export default function ResultPage() {
 							{keywords.map(
 								(el, idx) =>
 									idx < 3 && (
-										<div key={idx} className="bg-White py-[6px] px-3 text-orange-100 head6">
+										<div key={idx} className="bg-White py-[6px] px-3 text-orange-100 head6 rounded-sm">
 											#{el}
 										</div>
 									),
@@ -109,7 +109,7 @@ export default function ResultPage() {
 							{keywords.map(
 								(el, idx) =>
 									idx >= 3 && (
-										<div key={idx} className="bg-White py-[6px] px-3 text-orange-100 head6">
+										<div key={idx} className="bg-White py-[6px] px-3 text-orange-100 head6 rounded-sm">
 											#{el}
 										</div>
 									),
