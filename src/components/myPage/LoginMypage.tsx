@@ -41,7 +41,7 @@ export default function LoginMypage() {
 					<Baby className="text-gray-60" size={20} />
 					<p className="text-gray-40">아이 정보 관리</p>
 				</div>
-				<ChevronRight className="text-gray-90" size={30} strokeWidth={1.5} />
+				<ChevronRight className="text-gray-90" size={24} strokeWidth={1.6} />
 			</Link>
 		</div>
 	);
