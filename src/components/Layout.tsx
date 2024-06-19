@@ -76,7 +76,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 
 					<ScrollBtn scrollTopHandler={scrollTopHandler} />
 					<ToastContainer
-						autoClose={1000}
+						autoClose={3000}
 						hideProgressBar
 						closeOnClick
 						theme="dark"
