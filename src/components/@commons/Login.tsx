@@ -22,7 +22,7 @@ export default function Login() {
 					</div>
 					<DrawerTitle className="flex flex-col items-center gap-6">
 						<Image src={"/icons/main_symbol.svg"} alt="symbol" width={55} height={63} />
-						<p className="head2">
+						<p className="head2 text-center">
 							지금 로그인하고
 							<br />
 							<span className="text-orange-100">아이 성향 테스트</span> 받아보세요
