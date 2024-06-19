@@ -36,7 +36,7 @@ function InfoListPage() {
 			{isPending ? (
 				<Loading />
 			) : isSuccess ? (
-				<div className="h-fit pb-6">
+				<div className="h-fit pb-24">
 					<div>
 						{classList?.map((item: KdgnListInterface) => (
 							<CngdList
