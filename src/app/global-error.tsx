@@ -11,7 +11,7 @@ export default function GlobalError() {
 					<Image src={"/images/error.svg"} alt="error" width={72} height={72} />
 					<div className="flex flex-col gap-[2px] items-center justify-center">
 						<h4 className="!head4 text-gray-40">시스템 오류가 발생했어요</h4>
-						<p className="!body1 text-gray-60">
+						<p className="!body1 text-gray-60 text-center">
 							문제를 해결하기 위해 노력하고 있습니다.
 							<br />
 							잠시 후 다시 확인해 주세요
