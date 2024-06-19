@@ -27,7 +27,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 	};
 
 	useEffect(() => {
-		if (contentsRef?.current) {
+		if (contentsRef?.current && pathname !== "/test/process") {
 			contentsRef.current.scrollTo({ top: 0 });
 		}
 	}, [pathname, scroll]);

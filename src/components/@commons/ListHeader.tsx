@@ -21,7 +21,7 @@ export default function ListHeader({ mainTitle, subTitle, url, onClick = () => {
 				className="text-gray-10 cursor-pointer"
 				size={24}
 				onClick={() => {
-					router.push(url);
+					router.push(url, { scroll: false });
 					onClick();
 				}}
 			/>
