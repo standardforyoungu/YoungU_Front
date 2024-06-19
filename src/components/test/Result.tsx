@@ -59,7 +59,8 @@ export default function ResultPage() {
 	return (
 		<div>
 			<div className="pt-3 px-5 pb-[18px] w-full">
-				<div className="w-full relative rounded-t-[16px] h-[213px] pt-6 pb-2 px-11 bg-orange-10 flex flex-col gap-2 items-center">
+				<div className="w-full relative rounded-t-[16px] h-[213px] overflow-hidden pt-6 pb-2 px-11 bg-orange-100/5 flex flex-col gap-2 items-center">
+					<Image src={"/images/union.svg"} alt="pattern" className="w-full absolute top-0" width={340} height={148} />
 					<p className="head4 text-gray-40 w-[200px] text-center ">
 						우리 아이는
 						<br />
@@ -86,7 +87,7 @@ export default function ResultPage() {
 						)}
 					</div>
 				</div>
-				<div className="bg-[#F67B4E]/5 rounded-b-[16px] h-[154px] w-full px-4 py-5 flex flex-col gap-[10px] items-center justify-center">
+				<div className="bg-orange-100/10 rounded-b-[16px] h-[154px] w-full px-4 py-5 flex flex-col gap-[10px] items-center justify-center">
 					<div>
 						{splitedExplain?.map((el, index) => (
 							<p key={index} className="body2 text-gray-20 text-center">
