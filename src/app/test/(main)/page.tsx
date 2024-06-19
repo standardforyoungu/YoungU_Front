@@ -47,10 +47,10 @@ export default function TestPage() {
 			</ContentBox>
 			<div className="w-full h-auto px-5 py-12 bg-gray-97 text-gray-60">
 				<p className="head4 my-3">검사 전 확인해주세요.</p>
-				<ul className="list-disc px-5">
+				<ul>
 					{footerText.map((data, _idx) => (
-						<li className="body3 leading-5 mb-1" key={_idx}>
-							{data}
+						<li className="body3 leading-5 mb-1 flex items-center gap-[5px] pl-[5px]" key={_idx}>
+							<span>•</span> {data}
 						</li>
 					))}
 				</ul>
