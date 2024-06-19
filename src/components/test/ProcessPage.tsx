@@ -37,6 +37,10 @@ export default function ProcessPage() {
 	};
 
 	useEffect(() => {
+		return () => setResult([]);
+	}, []);
+
+	useEffect(() => {
 		if (!isBtnClicked) {
 			window.addEventListener("beforeunload", preventClose);
 			window.addEventListener("popstate", () => {
@@ -61,6 +65,9 @@ export default function ProcessPage() {
 				return;
 			} else {
 				setCurrentIdx(currentIdx - 1);
+				if (result?.[currentIdx - 1]) {
+					setResult(result.filter((_, idx) => idx !== currentIdx - 1));
+				}
 			}
 		} else {
 			if (currentIdx === 20) {
