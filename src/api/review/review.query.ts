@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { http } from "../axios";
 import { PostReviewReqInterface } from "./review.schema";
 import { getMbrId } from "@/utils/getMbrId";
@@ -14,10 +14,15 @@ export const useGetIsReviewedQuery = () => {
 };
 
 // 리뷰 작성
-
 export const usePostReviewMutation = () => {
+	const queryClient = useQueryClient();
 	return useMutation({
 		mutationKey: ["POST", "review"],
 		mutationFn: (req: PostReviewReqInterface) => http.post("/youngustandard/review", req).then((res) => res.data),
+		onSuccess: () => {
+			queryClient.invalidateQueries({
+				queryKey: ["GET", "review"],
+			});
+		},
 	});
 };
