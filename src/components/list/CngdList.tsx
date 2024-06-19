@@ -24,15 +24,14 @@ export default function CngdList({ title, phone, address, link }: ListItemInterf
 					<Image src={"/icons/map-pin.svg"} alt="pin" width={16} height={16} />
 					<p className="body2 text-gray-40">{address}</p>
 				</div>
-				<Button
-					variant={link ? "list-big" : "disable"}
-					size={"lg"}
-					className="mt-3 rounded-[8px] disabled:opacity-1"
-					disabled={!link}>
-					<Link href={link ? link : ""} target="_blank">
+				<Link className="w-full" href={link ? link : ""} target={link ? "_blank" : ""} scroll={false}>
+					<Button
+						variant={link ? "list-big" : "disable"}
+						className="mt-3 rounded-[8px] disabled:opacity-1 w-full"
+						disabled={!link}>
 						{link ? "홈페이지 바로가기" : "홈페이지를 찾을 수 없어요"}
-					</Link>
-				</Button>
+					</Button>
+				</Link>
 			</div>
 		</div>
 	);
