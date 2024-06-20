@@ -20,13 +20,7 @@ import { getMbrId } from "@/utils/getMbrId";
 export default function ReviewModal() {
 	const pathname = usePathname();
 	const { mutate, onSuccess, onError } = usePostReviewService();
-	const {
-		type,
-		isOpen,
-		onClose,
-		setOpenChange,
-		data: { setIsReviewed },
-	} = useModal();
+	const { type, isOpen, onClose, setOpenChange, data: modalData } = useModal();
 	const isModalOpen = isOpen && pathname === "/test/result" && type === "review";
 	const [review, setReview] = useState({ mbr_rvw: "", mbr_star: "" });
 
@@ -36,7 +30,7 @@ export default function ReviewModal() {
 		mutate(req, {
 			onSuccess: (data) => {
 				onSuccess(data);
-				setIsReviewed && setIsReviewed(true);
+				modalData.setIsReviewed(true);
 				onClose();
 				setReview({ mbr_rvw: "", mbr_star: "" });
 			},
