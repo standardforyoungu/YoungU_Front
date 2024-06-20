@@ -19,6 +19,8 @@ export default function Oauth() {
 		if (!authCode) {
 			return;
 		} else {
+			console.log("mutate start");
+
 			mutate(authCode, { onSuccess, onError });
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps

@@ -25,6 +25,8 @@ export const usePostLoginService = () => {
 	};
 
 	const onError = (error: any) => {
+		console.log(error);
+
 		toast("Error", error.response.data.message);
 	};
 
