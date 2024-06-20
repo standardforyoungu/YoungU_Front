@@ -8,9 +8,11 @@ export const usePostLoginService = () => {
 	const mutation = usePostLoginMutation();
 
 	const onSuccess = (data: LoginResInterface) => {
-		console.log(typeof window);
+		console.log("window>>>", typeof window);
 
 		if (data?.result === "Success") {
+			console.log("success");
+
 			if (typeof window !== "undefined") {
 				console.log(data?.access_token);
 				console.log(data?.mbr_id);
