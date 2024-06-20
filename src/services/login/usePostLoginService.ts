@@ -8,15 +8,8 @@ export const usePostLoginService = () => {
 	const mutation = usePostLoginMutation();
 
 	const onSuccess = (data: LoginResInterface) => {
-		console.log("window>>>", typeof window);
-
 		if (data?.result === "Success") {
-			console.log("success");
-
 			if (typeof window !== "undefined") {
-				console.log(data?.access_token);
-				console.log(data?.mbr_id);
-
 				window.localStorage.setItem("OU_UserAttribute", data?.access_token);
 				window.localStorage.setItem("mbr_id", data?.mbr_id);
 				const redirect = window.sessionStorage.getItem("redirect");
@@ -27,8 +20,6 @@ export const usePostLoginService = () => {
 	};
 
 	const onError = (error: any) => {
-		console.log(error);
-
 		toast("Error", error.response.data.message);
 	};
 
