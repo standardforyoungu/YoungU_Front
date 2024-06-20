@@ -54,7 +54,7 @@ export default function ResultPage() {
 
 		return () => observer.disconnect();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isMount]);
+	}, [isMount, isReviewed]);
 
 	return (
 		<div>
