@@ -29,6 +29,8 @@ http.interceptors.response.use(
 	},
 	function (error) {
 		switch (error.response?.status) {
+			// 회원정보 받아올 수 없는 경우가 많음
+			case 400:
 			// 엑세스 토큰 없을 때
 			case 401:
 			// 리프레시 토큰 만료
