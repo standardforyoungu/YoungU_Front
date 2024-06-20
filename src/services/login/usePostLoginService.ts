@@ -15,6 +15,8 @@ export const usePostLoginService = () => {
 				const redirect = window.sessionStorage.getItem("redirect");
 				router.push(redirect ?? "/");
 				toast("Success", "로그인을 성공했습니다.");
+			} else {
+				toast("Error", "오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
 			}
 		}
 	};
