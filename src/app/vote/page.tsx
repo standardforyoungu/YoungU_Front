@@ -41,7 +41,7 @@ export default function VotePage() {
 	return isSuccess ? (
 		<div className="pt-6 pb-5 px-5 flex flex-col gap-6">
 			<div className="flex flex-col items-center justify-center gap-2">
-				<Image src="/icons/symbol_blue.svg" alt="symbol" width={23} height={26} />
+				<Image src="/icons/symbol_blue_fill.svg" alt="symbol" width={23} height={26} />
 				<h3 className="head3 text-gray-10 pb-2 text-center">
 					영유스탠다드가 찾아갈
 					<br />
