@@ -10,11 +10,14 @@ export const usePostLoginService = () => {
 	const onSuccess = (data: LoginResInterface) => {
 		if (data?.result === "Success") {
 			if (typeof window !== "undefined") {
-				toast("Success", "로그인을 성공했습니다.");
+				console.log(data?.access_token);
+				console.log(data?.mbr_id);
+
 				window.localStorage.setItem("OU_UserAttribute", data?.access_token);
 				window.localStorage.setItem("mbr_id", data?.mbr_id);
 				const redirect = window.sessionStorage.getItem("redirect");
 				router.push(redirect ?? "/");
+				toast("Success", "로그인을 성공했습니다.");
 			}
 		}
 	};
