@@ -56,13 +56,13 @@ export default function Layout({ children }: { children: ReactNode }) {
 									href={
 										"https://docs.google.com/document/d/1UXlXVMll3ZvqEcRQ1e8e66iURPbBqvTMbBXzdpjhXc4/edit#heading=h.i6f49ueysxf7"
 									}
-									className="underline underline-offset-1">
+									className="underline underline-offset-2">
 									이용약관
 								</Link>
 								<Link
 									target="_blank"
 									href={"https://docs.google.com/document/d/1v1JhJ5HGxpJgnRLON_l28P8IXqZAQSHgE7xMz7UInKQ/edit"}
-									className="underline underline-offset-1">
+									className="underline underline-offset-2">
 									개인정보 처리방침
 								</Link>
 							</div>
