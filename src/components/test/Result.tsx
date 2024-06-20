@@ -43,7 +43,7 @@ export default function ResultPage() {
 				if (isReviewed) {
 					return;
 				} else {
-					isMount && onOpen("review");
+					isMount && onOpen("review", { setIsReviewed });
 				}
 			}
 		});
