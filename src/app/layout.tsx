@@ -18,9 +18,9 @@ export const metadata: Metadata = {
 		url: "https://young-u-standard.site/",
 		siteName: "영유스탠다드",
 		images: {
-			url: "https://youngu-s3-bucket.s3.ap-northeast-2.amazonaws.com/propensity_result/OG_800x400.jpg",
-			width: 800,
-			height: 400,
+			url: "https://youngu-s3-bucket.s3.ap-northeast-2.amazonaws.com/propensity_result/OG_320x320.png",
+			width: 320,
+			height: 320,
 		},
 		type: "website",
 	},
