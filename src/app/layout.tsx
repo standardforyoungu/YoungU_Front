@@ -7,6 +7,7 @@ import ModalProvider from "@/providers/modalProvider";
 import "react-toastify/dist/ReactToastify.css";
 import KakaoProvider from "@/providers/kakaoProvider";
 import { Metadata, Viewport } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
 	title: "영유스탠다드",
@@ -23,6 +24,9 @@ export const metadata: Metadata = {
 			height: 320,
 		},
 		type: "website",
+	},
+	verification: {
+		other: { "naver-site-verification": "d3c9ec702d78e624760b446af79416a80dcf6d69" },
 	},
 };
 
@@ -44,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					</RecoilProvider>
 				</QueryProvider>
 			</body>
+			<GoogleAnalytics gaId="G-6Z759ZSCPP" />
 		</html>
 	);
 }
