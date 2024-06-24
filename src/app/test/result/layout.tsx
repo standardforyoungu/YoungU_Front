@@ -1,8 +1,11 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+	title: "성향검사 결과 | 영유스탠다드",
+};
 
 export default function layout({ children }: { children: React.ReactNode }) {
 	return (

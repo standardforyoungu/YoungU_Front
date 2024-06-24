@@ -10,7 +10,7 @@ import { Metadata, Viewport } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
-	title: "영유스탠다드",
+	title: "딱 맞는 영유찾기 | 영유스탠다드",
 	description: "영어 유치부가 고민될땐? 성향검사를 통해 아이에게 맞는 학습법을 찾아보세요!",
 	keywords: [],
 	openGraph: {
