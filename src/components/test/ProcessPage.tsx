@@ -87,7 +87,9 @@ export default function ProcessPage() {
 		} else {
 			setResult(result?.map((el, idx) => (idx === currentIdx - 1 ? answer : el)));
 		}
-		onPrevNext("next");
+		setTimeout(() => {
+			onPrevNext("next");
+		}, 300);
 	};
 
 	const onSubmit = () => {
@@ -142,7 +144,7 @@ export default function ProcessPage() {
 									result?.[currentIdx - 1] === currentQuestion?.chc1_prpns
 										? "bg-orange-15 text-orange-200 border border-orange-200"
 										: "bg-gray-99 text-gray-40"
-								} rounded-[8px] lg:hover:bg-orange-15 lg:hover:text-orange-200 lg:hover:border lg:hover:border-orange-200 p-5 flex flex-col items-center cursor-pointer justify-center`}>
+								} rounded-[8px] p-5 flex flex-col items-center cursor-pointer justify-center`}>
 								{splitedAnswer1?.map((el, index) => (
 									<p key={index}>{el}</p>
 								))}
@@ -153,7 +155,7 @@ export default function ProcessPage() {
 									result?.[currentIdx - 1] === currentQuestion?.chc2_prpns
 										? "bg-orange-15 text-orange-200 border border-orange-200"
 										: "bg-gray-99 text-gray-40"
-								} rounded-[8px] lg:hover:bg-orange-15 lg:hover:text-orange-200 lg:hover:border lg:hover:border-orange-200 p-5 flex flex-col items-center cursor-pointer justify-center`}>
+								} rounded-[8px] p-5 flex flex-col items-center cursor-pointer justify-center`}>
 								{splitedAnswer2?.map((el, index) => (
 									<p key={index}>{el}</p>
 								))}
